@@ -65,28 +65,3 @@ public class ListClient {
 	} // end of main method
 
 } // end of ListClient
-
-class ServerListener implements Runnable {
-	ListClient lc;
-	Scanner in; // this is used to read which is a blocking call
-
-	ServerListener(ListClient lc, Socket s) {
-		try {
-			this.lc = lc;
-			in = new Scanner(new BufferedInputStream(s.getInputStream()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void run() {
-		while (true) { // run forever
-			System.out.println("Client - waiting to read");
-			String cmd = in.next();
-			String s = in.nextLine();
-			lc.handleMessage(cmd, s);
-		}
-
-	}
-}
