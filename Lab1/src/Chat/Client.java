@@ -3,11 +3,9 @@ package Chat;
 
 import java.net.*;
 import java.util.Scanner;
-
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import java.awt.EventQueue;
 import java.io.*;
 
