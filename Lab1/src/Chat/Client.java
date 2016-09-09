@@ -2,6 +2,7 @@ package Chat;
 
 
 import java.net.*;
+import java.util.Scanner;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -41,6 +42,12 @@ public class Client implements Runnable
 	public void run()
 	{
 		//TODO check for a new message, once we receive it, steamOut will send it to the server
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter your name: (Type in your name, then press Enter");
+		String name = scan.next();
+		
+		//TODO other stuff
+		scan.close();
 		
 	}
 

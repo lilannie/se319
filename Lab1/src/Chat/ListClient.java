@@ -14,7 +14,7 @@ public class ListClient {
 	int serverPortNumber = 4444;
 	ServerListener sl;
 
-	ListClient() {
+	public ListClient() {
 		// 1. CONNECT TO THE SERVER
 		try {
 			serverSocket = new Socket(serverHostName, serverPortNumber);
