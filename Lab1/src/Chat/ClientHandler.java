@@ -7,11 +7,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class ListClientHandler implements Runnable {
+public class ClientHandler implements Runnable {
 	Socket s; // this is socket on the server side that connects to the CLIENT
 	int num; // keeps track of its number just for identifying purposes
 
-	ListClientHandler(Socket s, int n) {
+	public ClientHandler(Socket s, int n) {
 		this.s = s;
 		num = n;
 	}

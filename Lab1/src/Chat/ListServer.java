@@ -47,7 +47,7 @@ public class ListServer {
 				// 2.2 SPAWN A THREAD TO HANDLE CLIENT REQUEST
 				System.out.println("Server got connected to a client"
 						+ ++clientNum);
-				Thread t = new Thread(new ListClientHandler(clientSocket, clientNum));
+				Thread t = new Thread(new ClientHandler(clientSocket, clientNum));
 				t.start();
 
 			} catch (IOException e) {
