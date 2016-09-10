@@ -11,7 +11,7 @@ public class ListClient {
 
 	Socket serverSocket;
 	String serverHostName = "localhost";
-	int serverPortNumber = 4444;
+	int serverPortNumber = 8080;
 	ServerListener sl;
 
 	public ListClient() {

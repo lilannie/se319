@@ -42,7 +42,7 @@ public class Client implements Runnable
 		//TODO check for a new message, once we receive it, steamOut will send it to the server
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter your name: (Type in your name, then press Enter");
-		String name = scan.next();
+		this.username = scan.next();
 		
 		//TODO other stuff
 		scan.close();
