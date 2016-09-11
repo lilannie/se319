@@ -15,10 +15,10 @@ public class Client extends Thread
 	// my unique id (easier for deconnection)
 	int id;
 	String username;
-	ChatMessage cm;
+	Message cm;
 	String date;
 
-	public Client(Socket socket) {
+	public Client(Socket socket, controllers.Server server) {
 		// a unique id
 		// TODO set uniqueId;
 //		id = ++server.uniqueId;
