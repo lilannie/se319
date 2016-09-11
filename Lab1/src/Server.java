@@ -3,7 +3,10 @@ import java.net.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Server {	
+
+public class Server {
+
+	
 	private static int uniqueId;
 	private ArrayList<ClientThread> al;
 	private ServerGUI sg;
@@ -313,3 +316,5 @@ public class Server {
 	}
 
 }
+
+

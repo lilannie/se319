@@ -69,7 +69,7 @@ public class Client
 		// creates the Thread to listen from the server 
 		new ListenFromServer().start();
 		// Send our username to the server this is the only message that we
-		// will send as a String. All other messages will be Message objects
+		// will send as a String. All other messages will be ChatMessage objects
 		try
 		{
 			sOutput.writeObject(username);
