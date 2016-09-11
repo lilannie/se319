@@ -81,7 +81,7 @@ public class Chat extends JFrame {
 					{
 						try
 						{
-							Client client = new Client("localhost", name, 8080);
+							Client client = new Client(name);
 							System.out.println("You made it!");
 							System.exit(0);
 						} catch (Exception e) {

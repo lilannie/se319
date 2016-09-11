@@ -6,10 +6,10 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ServerListener implements Runnable{
-	ListClient lc;
+	Client lc;
 	Scanner in; // this is used to read which is a blocking call
 
-	ServerListener(ListClient lc, Socket s) {
+	ServerListener(Client lc, Socket s) {
 		try {
 			this.lc = lc;
 			in = new Scanner(new BufferedInputStream(s.getInputStream()));

@@ -1,68 +1,72 @@
 package Chat;
 
-
 import java.net.*;
 import java.util.Scanner;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import java.awt.EventQueue;
 import java.io.*;
 
-public class Client implements Runnable
-{
-	private Socket socket = null;
-	private Thread thread = null;
-	private DataOutputStream streamOut = null;
-	//private ClientThread client = null;
-	private String username;
+public class Client {
 
-	public Client(String ipAddr, String username, int serverPort)
-	{
-		this.username = username;
+	Socket serverSocket;
+	String serverHostName = "localhost";
+	int serverPortNumber = 4444;
+	ServerListener sl;
+
+	public Client(String name) {
+		// 1. CONNECT TO THE SERVER
+		try {
+			serverSocket = new Socket(serverHostName, serverPortNumber);
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// 2. SPAWN A LISTENER FOR THE SERVER. THIS WILL KEEP RUNNING
+		// when a message is received, an appropriate method is called
+		sl = new ServerListener(this, serverSocket);
+		new Thread(sl).start();
+	}
+
+	public void printServer() {
+		 PrintWriter out;
+		 try {
+		 out = new PrintWriter(new
+		 BufferedOutputStream(serverSocket.getOutputStream()));
 		
-		// set up the socket to connect to the gui
-		try
-		{
-			socket = new Socket(ipAddr, serverPort);
-			start();
-		} catch (UnknownHostException h)
-		{
-			JOptionPane.showMessageDialog(new JFrame(), "Unknown Host " + h.getMessage());
-			System.exit(1);
-		} catch (IOException e)
-		{
-			JOptionPane.showMessageDialog(new JFrame(), "IO exception: " + e.getMessage());
-			System.exit(1);
+		 // 3. SEND THREE WISHES TO SERVER
+		 out.println("wish 1: one million bucks ");
+		 out.flush(); // force the output
+		 out.println("wish 2: uh oh! ");
+		 out.flush(); // force the output
+		 out.println("wish 3: get rid of the bucks ");
+		 out.flush(); // force the output
+		
+		 } catch (IOException e) {
+		 // TODO Auto-generated catch block
+		 e.printStackTrace();
+		 }
+	}
+
+	public void handleMessage(String cmd, String s) {
+		switch (cmd) {
+		case "print":
+			System.out.println("client side: " + s);
+			break;
+		case "exit":
+			System.exit(-1);
+			break;
+		default:
+			System.out.println("client side: unknown command received:" + cmd);
 		}
 	}
 
-	public void run()
-	{
-		//TODO check for a new message, once we receive it, steamOut will send it to the server
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter your name: (Type in your name, then press Enter");
-		this.username = scan.next();
-		
-		//TODO other stuff
-		scan.close();
-		
+	public static void main(String[] args) {
+		Client lc = new Client("Fake name");
 	}
 
-	public synchronized void handleChat(String msg)
-	{
-		//TODO
-	}
-
-	public void start() throws IOException
-	{
-		//TODO 
-		
-	}
-
-	public void stop()
-	{
-		//TODO
-	
-	}
 }
