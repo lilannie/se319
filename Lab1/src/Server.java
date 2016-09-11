@@ -195,7 +195,7 @@ public class Server {
 		// my unique id (easier for deconnection)
 		int id;
 		String username;
-		ChatMessage cm;
+		Message cm;
 		String date;
 
 
@@ -237,7 +237,7 @@ public class Server {
 				// read a String (which is an object)
 				try 
 				{
-					cm = (ChatMessage) sInput.readObject();
+					cm = (Message) sInput.readObject();
 				}
 				catch (IOException e) {
 					display(username + " Exception reading Streams: " + e);
@@ -253,14 +253,14 @@ public class Server {
 				switch(cm.getType()) 
 				{
 
-				case ChatMessage.MESSAGE:
+				case Message.MESSAGE:
 					broadcast(username + ": " + message);
 					break;
-				case ChatMessage.LOGOUT:
+				case Message.LOGOUT:
 					display(username + " disconnected with a LOGOUT message.");
 					keepGoing = false;
 					break;
-				case ChatMessage.WHOISIN:
+				case Message.WHOISIN:
 					writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
 					// scan al the users connected
 					for(int i = 0; i < al.size(); ++i) {

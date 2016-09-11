@@ -12,11 +12,8 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 	private Server server;
 	
 	ServerGUI(int port) {
-
-
 		super("Chat Server");
 		server = null;
-		
 		// in the NorthPanel the PortNumber the Start and Stop buttons
 		
 		JPanel north = new JPanel(new BorderLayout());
@@ -33,60 +30,30 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		// to stop or start the server, we start with "Start"
 		stopStart = new JButton("Start");
 		stopStart.setBackground(Color.BLACK);
-		stopStart.setForeground(Color.WHITE);
 		stopStart.setFont(new Font("Calibri", Font.BOLD, 15));
 		stopStart.addActionListener(this);
 		p.add(stopStart);
 		north.add(p,"South");
 		add(north, BorderLayout.NORTH);
 		north.setBackground(Color.black);
-		p.setBackground(Color.orange);
+		p.setBackground(Color.BLACK);
 		
 		// the event and chat room
 
 		JPanel center = new JPanel(new GridLayout(2,1));
 
-		chat = new JTextArea(10,20)
-		{
-			Image image =new ImageIcon("images/bak13.jpg").getImage();// imageIcon.getImage();
-
-			  Image grayImage = GrayFilter.createDisabledImage(image);
-			  {
-				setOpaque(false);
-			  }
-
-			  public void paint(Graphics g) {
-				  
-				g.drawImage(grayImage, 0, 0,getWidth(),getHeight(), this);
-				super.paint(g);
-				
-			  }
-				};
+		chat = new JTextArea(10,20);
 		chat.setEditable(false);
 		chat.setWrapStyleWord(true);
 		chat.setFont(new Font("Arial",Font.BOLD,19));
-		chat.setForeground(Color.yellow);
+		chat.setForeground(Color.BLUE);
 		appendRoom("Chat room.\n");
 
 		center.add(new JScrollPane(chat));
 
-		event = new JTextArea(10,20){
-			Image image =new ImageIcon("images/bak16.jpg").getImage();// imageIcon.getImage();
-
-			  Image grayImage = GrayFilter.createDisabledImage(image);
-			  {
-				setOpaque(false);
-			  }
-
-			  public void paint(Graphics g) {
-				  
-				g.drawImage(grayImage, 0, 0,getWidth(),getHeight(), this);
-				super.paint(g);
-				
-			  }
-		};
+		event = new JTextArea(10,20);
 		event.setFont(new Font("Arial",Font.BOLD,19));
-		event.setForeground(Color.yellow);
+		event.setForeground(Color.BLUE);
 		event.setEditable(false);
 
 		appendEvent("Events log.\n");

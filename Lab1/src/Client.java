@@ -69,7 +69,7 @@ public class Client
 		// creates the Thread to listen from the server 
 		new ListenFromServer().start();
 		// Send our username to the server this is the only message that we
-		// will send as a String. All other messages will be ChatMessage objects
+		// will send as a String. All other messages will be Message objects
 		try
 		{
 			sOutput.writeObject(username);
@@ -96,7 +96,7 @@ public class Client
 	/*
 	 * To send a message to the server
 	 */
-	void sendMessage(ChatMessage msg) {
+	void sendMessage(Message msg) {
 		try {
 			sOutput.writeObject(msg);
 		}
@@ -194,16 +194,16 @@ public class Client
 			String msg = scan.nextLine();
 			// logout if message is LOGOUT
 			if(msg.equalsIgnoreCase("LOGOUT")) {
-				client.sendMessage(new ChatMessage(ChatMessage.LOGOUT, ""));
+				client.sendMessage(new Message(Message.LOGOUT, ""));
 				// break to do the disconnect
 				break;
 			}
 			// message WhoIsIn
 			else if(msg.equalsIgnoreCase("WHOISIN")) {
-				client.sendMessage(new ChatMessage(ChatMessage.WHOISIN, ""));				
+				client.sendMessage(new Message(Message.WHOISIN, ""));				
 			}
 			else {				// default to ordinary message
-				client.sendMessage(new ChatMessage(ChatMessage.MESSAGE, msg));
+				client.sendMessage(new Message(Message.MESSAGE, msg));
 			}
 		}
 		// done disconnect
