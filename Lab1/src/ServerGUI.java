@@ -52,10 +52,6 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		setVisible(true);
 	}
 
-	public static void main(String[] arg) {
-		new ServerGUI(8080);
-	}
-
 	public void appendRoom(String string) {
 		chat.append(string);
 		chat.setCaretPosition(chat.getText().length() - 1);

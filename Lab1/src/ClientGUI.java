@@ -165,10 +165,4 @@ public class ClientGUI extends JFrame implements ActionListener {
 		}
 
 	}
-
-	public static void main(String[] args) {
-
-		new ClientGUI("localhost", 8080, "default username");
-	}
-
 }
