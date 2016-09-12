@@ -4,19 +4,19 @@ import java.io.*;
 import java.util.*;
 
 public class Client {
-	private ObjectInputStream sInput; 
-	private ObjectOutputStream sOutput; 
+	private ObjectInputStream input; 
+	private ObjectOutputStream output; 
 	private Socket socket;
 
-	private ClientGUI cg;
+	private ClientGUI gui;
 	private String server, username;
 	private int port;
 
-	public Client(String server, int port, String username, ClientGUI cg) {
+	public Client(String server, int port, String username, ClientGUI gui) {
 		this.server = server;
 		this.port = port;
 		this.username = username;
-		this.cg = cg;
+		this.gui = gui;
 	}
 
 	public boolean start() {
@@ -31,16 +31,16 @@ public class Client {
 		display(msg);
 
 		try {
-			sInput = new ObjectInputStream(socket.getInputStream());
-			sOutput = new ObjectOutputStream(socket.getOutputStream());
+			input = new ObjectInputStream(socket.getInputStream());
+			output = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException eIO) {
 			display("Exception creating new Input/output Streams: " + eIO);
 			return false;
 		}
 
-		new ListenFromServer().start();
+		new ServerListener(this).start();
 		try {
-			sOutput.writeObject(username);
+			output.writeObject(username);
 		} catch (IOException eIO) {
 			display("Exception doing login : " + eIO);
 			disconnect();
@@ -49,16 +49,16 @@ public class Client {
 		return true;
 	}
 
-	private void display(String msg) {
-		if (cg == null)
+	public void display(String msg) {
+		if (gui == null)
 			System.out.println(msg); 		
 		else
-			cg.append(msg + "\n"); 
+			gui.append(msg + "\n"); 
 	}
 	
 	void sendMessage(Message msg) {
 		try {
-			sOutput.writeObject(msg);
+			output.writeObject(msg);
 		} catch (IOException e) {
 			display("Exception writing to server: " + e);
 		}
@@ -66,42 +66,44 @@ public class Client {
 
 	private void disconnect() {
 		try {
-			if (sInput != null)
-				sInput.close();
+			if (input != null)
+				input.close();
 		} catch (Exception e) {} 
 		try {
-			if (sOutput != null)
-				sOutput.close();
+			if (output != null)
+				output.close();
 		} catch (Exception e) {} 
 		try {
 			if (socket != null)
 				socket.close();
 		} catch (Exception e) {}
 		
-		if (cg != null)
-			cg.connectionFailed();
+		if (gui != null)
+			gui.connectionFailed();
 	}
 
-	class ListenFromServer extends Thread {
-
-		public void run() {
-			while (true) {
-				try {
-					String msg = (String) sInput.readObject();
-					if (cg == null) {
-						System.out.println(msg);
-						System.out.print("> ");
-					} else {
-						cg.append(msg);
-					}
-				} catch (IOException e) {
-					display("Server has close the connection: " + e);
-					if (cg != null)
-						cg.connectionFailed();
-					break;
-				} catch (ClassNotFoundException e2) {
-				}
-			}
-		}
+	public ObjectInputStream getInput() {
+		return input;
 	}
+
+	public void setInput(ObjectInputStream input) {
+		this.input = input;
+	}
+
+	public ObjectOutputStream getOutput() {
+		return output;
+	}
+
+	public void setOutput(ObjectOutputStream output) {
+		this.output = output;
+	}
+
+	public ClientGUI getGui() {
+		return gui;
+	}
+
+	public void setGui(ClientGUI gui) {
+		this.gui = gui;
+	}
+	
 }
