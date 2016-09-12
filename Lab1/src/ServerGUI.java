@@ -56,17 +56,17 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		new ServerGUI(8080);
 	}
 
-	public void appendRoom(String str) {
-		chat.append(str);
+	public void appendRoom(String string) {
+		chat.append(string);
 		chat.setCaretPosition(chat.getText().length() - 1);
 	}
 
-	public void appendEvent(String str) {
-		event.append(str);
+	public void appendEvent(String string) {
+		event.append(string);
 		event.setCaretPosition(chat.getText().length() - 1);
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent event) {
 		if (server != null) {
 			server.stop();
 			server = null;
@@ -74,10 +74,11 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 			stopStart.setText("Start");
 			return;
 		}
+		
 		int port;
 		try {
 			port = Integer.parseInt(tPortNumber.getText().trim());
-		} catch (Exception er) {
+		} catch (Exception error) {
 			appendEvent("Invalid port number");
 			return;
 		}
@@ -99,24 +100,6 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		System.exit(0);
 	}
 
-	public void windowClosed(WindowEvent e) {
-	}
-
-	public void windowOpened(WindowEvent e) {
-	}
-
-	public void windowIconified(WindowEvent e) {
-	}
-
-	public void windowDeiconified(WindowEvent e) {
-	}
-
-	public void windowActivated(WindowEvent e) {
-	}
-
-	public void windowDeactivated(WindowEvent e) {
-	}
-
 	class ServerRunning extends Thread {
 		public void run() {
 			server.start();
@@ -127,4 +110,10 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		}
 	}
 
+	public void windowClosed(WindowEvent e) {}
+	public void windowOpened(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
 }
