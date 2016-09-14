@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="javascript" src="../js/validation.js"></script>
+    <title>Validation Form</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td><h3>First Name</h3></td>
+                <td><input id="firstName" type="text" name="firstName" required/></td>
+                <td><img id="firstNameCorrect" src="../image/correct.png" />
+                    <img id="firstNameWrong" src="../image/wrong.png" /></td>
+            </tr>
+            <tr>
+                <td><h3>Last Name</h3></td>
+                <td><input id="lastName" type="text" name="lastName" required/></td>
+                <td><img id="lastNameCorrect" src="../image/correct.png" />
+                    <img id="lastNameWrong" src="../image/wrong.png" /></td>
+            </tr>
+            <tr>
+                <td><h3>Gender</h3></td>
+                <td>
+                    <select id="gender" name="gender"  required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+                <td><img id="genderCorrect" src="../image/correct.png" />
+                    <img id="genderWrong" src="../image/wrong.png" /></td>
+            </tr>
+            <tr>
+                <td><h3>State</h3></td>
+                <td>
+                    <select id="state" name="state"  required>
+                        <option value="California">California</option>
+                        <option value="Florida">Florida</option>
+                        <option value="New York">New York</option>
+                        <option value="Washington">Washington</option>
+                        <option value="Colorado">Colorado</option>
+                        <option value="Virginia">Virginia</option>
+                        <option value="Iowa">Iowa</option>
+                        <option value="Arizona">Arizona</option>
+                    </select>
+                </td>
+                <td><img id="stateCorrect" src="../image/correct.png" />
+                    <img id="stateWrong" src="../image/wrong.png" /></td>
+            </tr>
+        </table>
+        <input type="submit"/>
+    </form>
+</body>
+</html>
