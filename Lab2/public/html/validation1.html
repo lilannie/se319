@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation Form</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../libraries/font-awesome-4.6.3/css/font-awesome.min.css">
+</head>
+
+<body>
+<script>
+    var firstName = $('#firstName');
+    var firstNameCheck = $("#firstNameCheck");
+    $(firstName).change('change', function () {
+        if ($(firstName).val().length == 0 || isValid($(firstName).val())) {
+            firstNameCheck.removeClass('fa-check-square');
+            firstNameCheck.addClass('fa-check-square-o');
+            console.log('is okay');
+        } else {
+            firstNameCheck.removeClass('fa-check-square-o');
+            firstNameCheck.addClass('fa-check-square');
+            console.log('not okay');
+        }
+    });
+
+//    $("#lastNameCheck").removeClass('fa-check-square-o');
+//    $("#lastNameCheck").addClass('fa-check-square');
+//
+//    $("#genderCheck").removeClass('fa-check-square-o');
+//    $("#genderCheck").addClass('fa-check-square');
+//
+//    $("#stateCheck").removeClass('fa-check-square-o');
+//    $("#stateCheck").addClass('fa-check-square');
+
+    function isValid(str) {
+        return /^\w+$/.test(str);
+    }
+</script>
+
+<div class="panel panel-default" style="margin: 0 auto; width: 60%;">
+
+    <div class="panel-heading">
+        <h1 style="text-align: center;">Validation
+            <span class="label label-default" style="margin: 0 auto;">Form</span>
+        </h1>
+    </div>
+
+    <div class="panel-body">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <span style="font-size: small;">
+                <strong>Success!</strong>
+                Your form was submitted. All fields must be filled out to continue. <br/>
+            </span>
+            <span style="padding-left: 3.5em;
+                font-size: x-small;">*Check for missing fields and resubmit.
+            </span>
+        </div>
+        <br/>
+        <form name="basic" onsubmit="checkForm()">
+            <div style="margin: 0 auto; width: 65%;">
+                <div class="input-group">
+                    <span class="input-group-addon" id="firstNameLabel">First Name</span>
+                    <input type="text" class="form-control" placeholder="First Name"
+                           style="width: 90%;" required
+                           id="firstName" aria-describedby="firstNameLabel" name="firstName">
+                    <i id="firstNameCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon" id="lastNameLabel">Last Name</span>
+                    <input type="text" class="form-control" placeholder="Last Name"
+                           style="width: 90%;" required
+                           id="lastName" aria-describedby="lastNameLabel" name="lastName">
+                    <i id="lastNameCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon" id="genderLabel">Gender</span>
+                    <select id="gender" name="gender" required class="form-control"
+                            style="width: 90%;" aria-describedby="genderLabel">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <i id="genderCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon" id="stateLabel">State</span>
+                    <select id="state" name="state" required style="width: 90%;"
+                            class="form-control" aria-describedby="stateLabel">
+                        <option value="California">California</option>
+                        <option value="Florida">Florida</option>
+                        <option value="New York">New York</option>
+                        <option value="Washington">Washington</option>
+                        <option value="Colorado">Colorado</option>
+                        <option value="Virginia">Virginia</option>
+                        <option value="Iowa">Iowa</option>
+                        <option value="Arizona">Arizona</option>
+                    </select>
+                    <i id="stateCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                </div>
+            </div>
+
+            <br/> <br/>
+            <div style="text-align: center;">
+                <input type="submit" class="btn btn-success"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
