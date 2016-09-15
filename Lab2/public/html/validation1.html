@@ -17,31 +17,49 @@
 
 <body>
 <script>
+    $("#success").hide();
+    $("#failure").hide();
+    var states = ["California", "Florida", "New York", "Texas", "Hawaii", "Washington", "Colorado", "Virginia", "Iowa", "Arizona"];
     var firstName = $('#firstName');
-    var firstNameCheck = $("#firstNameCheck");
-    $(firstName).change('change', function () {
-        if ($(firstName).val().length == 0 || isValid($(firstName).val())) {
-            firstNameCheck.removeClass('fa-check-square');
-            firstNameCheck.addClass('fa-check-square-o');
-            console.log('is okay');
-        } else {
-            firstNameCheck.removeClass('fa-check-square-o');
-            firstNameCheck.addClass('fa-check-square');
-            console.log('not okay');
-        }
-    });
+    var firstNameCheck = $('#firstNameCheck');
 
-//    $("#lastNameCheck").removeClass('fa-check-square-o');
-//    $("#lastNameCheck").addClass('fa-check-square');
-//
-//    $("#genderCheck").removeClass('fa-check-square-o');
-//    $("#genderCheck").addClass('fa-check-square');
-//
-//    $("#stateCheck").removeClass('fa-check-square-o');
-//    $("#stateCheck").addClass('fa-check-square');
+    function checkForm() {
+        var firstNameFlag = false, lastNameFlag = false, genderFlag = false, stateFlag = false;
+        if (isValid(document.forms['basic']['firstName'].value)) {
+            $("#firstNameCheck").removeClass('fa-check-square-o');
+            $("#firstNameCheck").addClass('fa-check-square');
+            firstNameFlag = true;
+        }
+        if (isValid(document.forms['basic']['lastName'].value)) {
+            $("#lastNameCheck").removeClass('fa-check-square-o');
+            $("#lastNameCheck").addClass('fa-check-square');
+            lastNameFlag = true;
+        }
+        if (document.forms['basic']['gender'].value != null) {
+            $("#genderCheck").removeClass('fa-check-square-o');
+            $("#genderCheck").addClass('fa-check-square');
+            genderFlag = true;
+        }
+        if (document.forms['basic']['state'].value != null && states.indexOf(document.forms['basic']['state'].value) > 0) {
+            $("#stateCheck").removeClass('fa-check-square-o');
+            $("#stateCheck").addClass('fa-check-square');
+            document.cookie = "state="+document.forms['basic']['state'].value;
+            stateFlag = true;
+        }
+
+        if (firstNameFlag && lastNameFlag && genderFlag && stateFlag)
+        {
+            $("#success").show();
+        }
+        else
+        {
+            $("#failure").show();
+        }
+    }
 
     function isValid(str) {
-        return /^\w+$/.test(str);
+        var alphanumeric = /^[a-z0-9]+$/i;
+        return alphanumeric.test(str);
     }
 </script>
 
@@ -54,19 +72,29 @@
     </div>
 
     <div class="panel-body">
-        <div class="alert alert-success alert-dismissible" role="alert">
+
+        <div id="success" class="project-success alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
             <span style="font-size: small;">
                 <strong>Success!</strong>
-                Your form was submitted. All fields must be filled out to continue. <br/>
+                Your form was submitted. Click continue.<br/>
+            </span>
+        </div>
+        <div id="failure" class="project-failure alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <span style="font-size: small;">
+                <strong>Failure!</strong>
+                All fields must be filled out to continue. <br/>
             </span>
             <span style="padding-left: 3.5em;
                 font-size: x-small;">*Check for missing fields and resubmit.
             </span>
         </div>
         <br/>
-        <form name="basic" onsubmit="checkForm()">
+
+        <form name="basic">
             <div style="margin: 0 auto; width: 65%;">
                 <div class="input-group">
                     <span class="input-group-addon" id="firstNameLabel">First Name</span>
@@ -76,6 +104,7 @@
                     <i id="firstNameCheck" class="fa fa-check-square-o" aria-hidden="true"
                        style="margin-left: 5px;"></i>
                 </div>
+
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon" id="lastNameLabel">Last Name</span>
@@ -84,6 +113,7 @@
                            id="lastName" aria-describedby="lastNameLabel" name="lastName">
                     <i id="lastNameCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
                 </div>
+
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon" id="genderLabel">Gender</span>
@@ -95,6 +125,7 @@
                     <i id="genderCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
                 </div>
                 <br/>
+
                 <div class="input-group">
                     <span class="input-group-addon" id="stateLabel">State</span>
                     <select id="state" name="state" required style="width: 90%;"
@@ -113,10 +144,10 @@
             </div>
 
             <br/> <br/>
-            <div style="text-align: center;">
-                <input type="submit" class="btn btn-success"/>
-            </div>
         </form>
+        <div style="text-align: center;">
+            <button id="complete" value="submit" class="btn btn-success" onclick="checkForm()">Submit</button>
+        </div>
     </div>
 </div>
 
