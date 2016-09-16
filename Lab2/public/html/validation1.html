@@ -21,10 +21,8 @@
         $("#success").hide();
         $("#failure").hide();
     });
-    var states = ["California", "Florida", "New York", "Texas", "Hawaii", "Washington", "Colorado", "Virginia", "Iowa", "Arizona"];
-    var firstName = $('#firstName');
-    var firstNameCheck = $('#firstNameCheck');
-
+    var states = ["California", "Florida", "New York", "Texas", "Hawaii", "Washington",
+        "Colorado", "Virginia", "Iowa", "Arizona"];
     function checkForm() {
         if ($("#complete").html() == 'Continue') {
             window.location = "./validation2.html";
@@ -120,7 +118,8 @@
                     <input type="text" class="form-control" placeholder="Last Name"
                            style="width: 90%;" required
                            id="lastName" aria-describedby="lastNameLabel" name="lastName">
-                    <i id="lastNameCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                    <i id="lastNameCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
                 </div>
 
                 <br/>
@@ -131,7 +130,8 @@
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
-                    <i id="genderCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                    <i id="genderCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
                 </div>
                 <br/>
 
@@ -155,7 +155,7 @@
             <br/> <br/>
         </form>
         <div style="text-align: center;">
-            <button id="complete" value="submit" class="btn btn-success" onclick="checkForm()">Submit</button>
+            <button id="complete" class="btn btn-success" onclick="checkForm()">Submit</button>
         </div>
     </div>
 </div>
