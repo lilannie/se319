@@ -22,7 +22,8 @@
     });
 
     function checkForm() {
-        if ($("#complete").html() == 'Finish') {
+        if ($("#complete").html() == 'Finished') {
+            window.location = "./googleMap.html";
         }
         var emailFlag = false, phoneNumberFlag = false, addressFlag = false;
         if (isValidEmail(document.forms['contact']['email'].value)) {
@@ -39,6 +40,7 @@
             $("#addressCheck").removeClass('fa-check-square-o');
             $("#addressCheck").addClass('fa-check-square');
             addressFlag = true;
+            localStorage.setItem("address", document.forms['contact']['address'].value);
         }
         if (emailFlag && phoneNumberFlag && addressFlag) {
             $("#success").slideDown();
