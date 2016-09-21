@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Information</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../libraries/font-awesome-4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        $("#success").hide();
+        $("#failure").hide();
+    });
+
+    function checkForm() {
+        if ($("#complete").html() == 'Finished') {
+            window.location = "./googleMap.html";
+        }
+        var emailFlag = false, phoneNumberFlag = false, addressFlag = false;
+        if (isValidEmail(document.forms['contact']['email'].value)) {
+            $("#emailCheck").removeClass('fa-check-square-o');
+            $("#emailCheck").addClass('fa-check-square');
+            emailFlag = true;
+        }
+        if (isValidPhoneNumber(document.forms['contact']['phoneNumber'].value)) {
+            $("#phoneNumberCheck").removeClass('fa-check-square-o');
+            $("#phoneNumberCheck").addClass('fa-check-square');
+            phoneNumberFlag = true;
+        }
+        if (isValidAddress(document.forms['contact']['address'].value)) {
+            $("#addressCheck").removeClass('fa-check-square-o');
+            $("#addressCheck").addClass('fa-check-square');
+            addressFlag = true;
+            localStorage.setItem("address", document.forms['contact']['address'].value);
+        }
+        if (emailFlag && phoneNumberFlag && addressFlag) {
+            $("#success").slideDown();
+            $('#email').prop('disabled', true);
+            $('#phoneNumber').prop('disabled', true);
+            $('#address').prop('disabled', true);
+            $("#complete").html('Finished');
+        }
+    }
+    function isValidEmail(email) {
+        var split1 = email.split('@');
+        if (split1.size == 2 && isValid(split1[0])) {
+            var split2 = split1[1].split('.');
+            if (split2.size == 2 && isValid(split2[0])
+                    && isValid(split2[1])) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function isValidPhoneNumber(phoneNumber) {
+        var split = phoneNumber.split('-');
+        if (split.size == 1) {
+            return isValid(phoneNumber);
+        }
+        else {
+            for (var string in split) {
+                if (!isValid(string)) {
+                    return false;
+                }
+            }
+        }
+    }
+    function isValidAddress(address) {
+        var split = address.split(' ');
+        for (var i = 0; i < split.size; i++) {
+            if (split[i].contains(',')) {
+                if (isValid(split[i].split(',')) && i + 1 != split.size &&
+                        isValid(split[i + 1])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    function isValid(str) {
+        var alphanumeric = /^[a-z0-9]+$/i;
+        return alphanumeric.test(str);
+    }
+</script>
+
+<div class="panel panel-default" style="margin: 0 auto; width: 60%;">
+
+    <div class="panel-heading">
+        <h1 style="text-align: center;">Contact
+            <span class="label label-default" style="margin: 0 auto;">Information</span>
+        </h1>
+    </div>
+
+    <div class="panel-body">
+
+        <div id="success" class="project-success alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <span style="font-size: small;">
+                <strong>Success!</strong>
+                Your form was submitted. Click continue.<br/>
+            </span>
+        </div>
+        <div id="failure" class="project-failure alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <span style="font-size: small;">
+                <strong>Failure!</strong>
+                All fields must be filled out to continue. <br/>
+            </span>
+            <span style="padding-left: 3.5em;
+                font-size: x-small;">*Check for missing fields and resubmit.
+            </span>
+        </div>
+        <br/>
+
+        <form name="contact">
+            <div style="margin: 0 auto; width: 65%;">
+                <div class="input-group">
+                    <span class="input-group-addon" id="emailLabel">Email</span>
+                    <input type="text" class="form-control" placeholder="Email"
+                           style="width: 90%;" required
+                           id="email" aria-describedby="emailLabel" name="email">
+                    <i id="emailCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
+                </div>
+
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon" id="phoneNumberLabel">Phone Number</span>
+                    <input type="text" class="form-control" placeholder="Phone Number"
+                           style="width: 90%;" required
+                           id="phoneNumber" aria-describedby="phoneNumberLabel" name="phoneNumber">
+                    <i id="phoneNumberCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
+                </div>
+
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon" id="addressLabel">Address</span>
+                    <input type="text" class="form-control" placeholder="Address"
+                           style="width: 90%;" required
+                           id="address" aria-describedby="addressLabel" name="address">
+                    <i id="addressCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
+                </div>
+            </div>
+
+            <br/> <br/>
+        </form>
+        <div style="text-align: center;">
+            <button id="complete" class="btn btn-success" onclick="checkForm()">Submit</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

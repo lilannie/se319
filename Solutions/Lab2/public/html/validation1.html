@@ -17,13 +17,16 @@
 
 <body>
 <script>
-    $("#success").hide();
-    $("#failure").hide();
-    var states = ["California", "Florida", "New York", "Texas", "Hawaii", "Washington", "Colorado", "Virginia", "Iowa", "Arizona"];
-    var firstName = $('#firstName');
-    var firstNameCheck = $('#firstNameCheck');
-
+    $(document).ready(function () {
+        $("#success").hide();
+        $("#failure").hide();
+    });
+    var states = ["California", "Florida", "New York", "Texas", "Hawaii", "Washington",
+        "Colorado", "Virginia", "Iowa", "Arizona"];
     function checkForm() {
+        if ($("#complete").html() == 'Continue') {
+            window.location = "./validation2.html";
+        }
         var firstNameFlag = false, lastNameFlag = false, genderFlag = false, stateFlag = false;
         if (isValid(document.forms['basic']['firstName'].value)) {
             $("#firstNameCheck").removeClass('fa-check-square-o');
@@ -31,6 +34,7 @@
             firstNameFlag = true;
         }
         if (isValid(document.forms['basic']['lastName'].value)) {
+            console.log(document.forms['basic']['lastName'].value);
             $("#lastNameCheck").removeClass('fa-check-square-o');
             $("#lastNameCheck").addClass('fa-check-square');
             lastNameFlag = true;
@@ -43,17 +47,20 @@
         if (document.forms['basic']['state'].value != null && states.indexOf(document.forms['basic']['state'].value) > 0) {
             $("#stateCheck").removeClass('fa-check-square-o');
             $("#stateCheck").addClass('fa-check-square');
-            document.cookie = "state="+document.forms['basic']['state'].value;
+            document.cookie = "state=" + document.forms['basic']['state'].value;
             stateFlag = true;
         }
 
-        if (firstNameFlag && lastNameFlag && genderFlag && stateFlag)
-        {
-            $("#success").show();
+        if (firstNameFlag && lastNameFlag && genderFlag && stateFlag) {
+            $("#success").slideDown();
+            $("#complete").html('Continue');
         }
-        else
-        {
-            $("#failure").show();
+        else {
+            $("#failure").slideDown(function () {
+                setTimeout(function () {
+                    $("#failure").slideUp();
+                }, 5000);
+            });
         }
     }
 
@@ -111,7 +118,8 @@
                     <input type="text" class="form-control" placeholder="Last Name"
                            style="width: 90%;" required
                            id="lastName" aria-describedby="lastNameLabel" name="lastName">
-                    <i id="lastNameCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                    <i id="lastNameCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
                 </div>
 
                 <br/>
@@ -122,7 +130,8 @@
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
-                    <i id="genderCheck" class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 5px;"></i>
+                    <i id="genderCheck" class="fa fa-check-square-o" aria-hidden="true"
+                       style="margin-left: 5px;"></i>
                 </div>
                 <br/>
 
@@ -146,7 +155,7 @@
             <br/> <br/>
         </form>
         <div style="text-align: center;">
-            <button id="complete" value="submit" class="btn btn-success" onclick="checkForm()">Submit</button>
+            <button id="complete" class="btn btn-success" onclick="checkForm()">Submit</button>
         </div>
     </div>
 </div>
