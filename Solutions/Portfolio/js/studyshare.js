@@ -7,21 +7,47 @@ angular.module('studyShare', []).controller('studyShareController',
         $scope.decks = [
             {
                 id: 0,
-                name: 'Example Name',
-                classes: 'COM S 363',
-                descriptions: 'Example Description',
+                name: 'Software User Interfaces',
+                classes: 'COM S 319, S E 319',
+                descriptions: 'Course Terms',
                 cards: [
-                    {front: "Pretend front", back: "Pretend back"},
-                    {front: "Pretend front", back: "Pretend back"}
+                    {
+                        front: "POST Request",
+                        back: "POST is one of many request methods supported by " +
+                        "the HTTP protocol used by the World Wide Web. " +
+                        "By design, the POST request method requests that a " +
+                        "web server accepts and stores the data enclosed in " +
+                        "the body of the request message. It is often used when " +
+                        "uploading a file or submitting a completed web form."
+                    },
+                    {
+                        front: "GET Request",
+                        back: "Can be cached. Remain in the browser history. " +
+                        "Can be bookmarked. Should never be used when dealing " +
+                        "with sensitive data. Have length restrictions. " +
+                        "Should be used only to retrieve data"
+                    }
                 ]
             },
             {
                 id: 1,
-                name: 'Example Name',
-                classes: 'COM S 363',
-                descriptions: 'Example Description',
-                cards: [{front: "Pretend front", back: "Pretend back"},
-                    {front: "Pretend front", back: "Pretend back"}
+                name: 'Groceries for Beginners',
+                classes: 'Children 101',
+                descriptions: 'Terms of different Grocery items',
+                cards: [
+                    {front: "Apples", back: "he round fruit of a tree of " +
+                    "the rose family, which typically has thin red or green " +
+                    "skin and crisp flesh. "},
+                    {front: "Cherries", back: "A small, round stone fruit that is typically bright or dark red."}
+                ]
+            },
+            {
+                id: 2,
+                name: 'States and Capitols',
+                classes: 'American Studies',
+                descriptions: 'States on Front, Capitols on Back',
+                cards: [{front: "Nebraska", back: "Lincoln"},
+                    {front: "Iowa", back: "Des Moines"}
                 ]
             }
         ];
@@ -32,12 +58,18 @@ angular.module('studyShare', []).controller('studyShareController',
          */
         $scope.cards = [];
 
-        $scope.deck_counter = 2;
+        $scope.deck_counter = 3;
         $scope.active_deck = null;
         $scope.card_error = false;
 
         $scope.init = function () {
             $scope.closeError();
+            for (var i = 0; i < $scope.decks.length; i++) {
+                $('#collapse' + $scope.decks[i].id).hide();
+                $('.deck-button').hover(function () {
+                    $(this).css("background-color", "#A1887F");
+                });
+            }
         };
 
         $scope.closeDeckModal = function () {
@@ -47,22 +79,25 @@ angular.module('studyShare', []).controller('studyShareController',
         };
 
         $scope.saveDeckModal = function () {
-            $scope.decks.push({
+            $scope.active_deck = {
                 id: $scope.deck_counter,
                 name: $scope.deck_name != "" ? $scope.deck_name : "Default Name",
                 classes: $scope.deck_classes != "" ? $scope.deck_classes : "Default Classes",
-                description: $scope.deck_description != "" ? $scope.deck_description : "Default Description" ,
+                description: $scope.deck_description != "" ? $scope.deck_description : "Default Description",
                 cards: []
-            });
-            $scope.active_deck = $scope.deck_counter;
-            $scope.closeDeckModal();
+            };
+            $scope.decks.push($scope.active_deck);
             $scope.deck_counter++;
+            $('#deck-button'+ $scope.active_deck.id).hover(function () {
+                $(this).css("background-color", "#A1887F");
+            });
+            $scope.closeDeckModal();
         };
 
         $scope.closeCardModal = function () {
             $scope.card_front = "";
             $scope.card_back = "";
-            $('#notecardModal').hide();
+            $('#notecardModal').modal('hide');
         };
 
         $scope.saveCardModal = function () {
@@ -79,25 +114,36 @@ angular.module('studyShare', []).controller('studyShareController',
             $scope.closeCardModal();
         };
 
-        $scope.view = function(deck_id) {
+        $scope.view = function (deck_id) {
+            console.log("deck_id: "+ deck_id);
             if ($scope.active_deck != null)
-                $scope.active_deck.hide();
-            $scope.active_deck =  $('#collapse'+deck_id);
-            $scope.active_deck.show();
+                $('#collapse'+$scope.active_deck.id).hide();
+            $scope.active_deck = $scope.findDeck(deck_id);
+            $('#collapse'+$scope.active_deck.id).show();
+            console.log("active_deck: "+ $scope.active_deck.id);
         };
 
-        $scope.findDeck = function(deck_id) {
-            var i = 0;
-            while(i < $scope.decks.length) {
-                if ($scope.decks[i].id == deck_id){
-                    return $scope.decks[i];
+        $scope.findDeck = function (deck_id) {
+            var min_index = 0;
+            var max_index = this.length - 1;
+            var current_index;
+            var current_deck;
+            while (min_index <= max_index) {
+                current_index = (min_index + max_index) / 2 | 0;
+                console.log("current_index: "+ current_index);
+                current_deck = $scope.decks[current_index];
+                if (current_deck < deck_id) {
+                    min_index = current_index + 1;
+                } else if (current_deck > deck_id) {
+                    max_index = current_index - 1;
+                } else {
+                    return current_deck;
                 }
-                i++;
             }
-            return null;
+            return -1;
         };
 
-        $scope.closeError = function() {
+        $scope.closeError = function () {
             $('#form_error').hide();
         }
     });

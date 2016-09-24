@@ -379,10 +379,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #F05F40;
   border-color: #F05F40;
 }
-.btn-primary .badge {
-  color: #F05F40;
-  background-color: white;
-}
+
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   border: none;
