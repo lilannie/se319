@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Portfolio</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="css/studyshare.css" rel="stylesheet">
+</head>
+
+<body id="page-top" ng-app="studyShare" ng-controller="studyShareController" ng-init="init()">
+<!-- Modal -->
+<div class="modal fade" id="deckModal" tabindex="-1" role="dialog" aria-labelledby="deckModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="deckModalLabel">Create Deck</h2>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="deck_name" class="col-xs-2 col-form-label">Name</label>
+                        <div class="col-xs-10">
+                            <input id="deck_name" type="text" name="deck_name"
+                                   placeholder="Exam 1 Review" ng-model="deck_name"/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="deck_class" class="col-xs-2 col-form-label">Class(es)</label>
+                        <div class="col-xs-10">
+                            <input id="deck_class" type="text" name="deck_class"
+                                   placeholder="COM S 319, S E 319" ng-model="deck_classes"/> <br/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="deck_description" class="col-xs-2 col-form-label">Description</label>
+                        <div class="col-xs-10">
+                            <input id="deck_description" type="text" name="deck_description"
+                                   placeholder="Vocabulary Terms" ng-model="deck_description"/> <br/></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg"
+                        data-dismiss="modal" ng-click="closeDeckModal()">Close
+                </button>
+                <button type="button" class="btn btn-primary btn-lg"
+                        data-dismiss="modal" ng-click="saveDeckModal()">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="notecardModal" tabindex="-1" role="dialog" aria-labelledby="notecardModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="notecardModalLabel">Create Deck</h3>
+            </div>
+            <div class="modal-body">
+                <div id="form_error" class="alert alert-warning" role="alert">
+                    <button type="button" class="close" aria-label="Close" ng-click="closeError()"><span aria-hidden="true">&times;</span></button>
+                    <strong>Error!</strong> Please create a deck before you create notecards.
+                </div>
+                <form>
+                    <form>
+                        <h4>Front Side</h4>
+                        <input type="text" name="card_front"
+                               placeholder="Annie Steesnon" ng-model="card_front"/> <br/>
+                        <h4>Back Side</h4>
+                        <input type="text" name="card_back"
+                               placeholder="Noun. A super cool person." ng-model="card_back"/> <br/>
+                    </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg"
+                        ng-click="closeCardModal()">Close
+                </button>
+                <button type="button" class="btn btn-primary btn-lg"
+                        ng-click="saveCardModal()">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Study Share</a>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">Welcome to Study Share</h1>
+            <hr>
+            <p>Study Smarter not Harder</p>
+            <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+        </div>
+    </div>
+</header>
+
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Stay Organized! Share Collections!</h2>
+                <hr class="light">
+                <p class="text-faded">Study Share allows students to create virtual decks of note card for studying.
+                    The site is currently under construction. Decks will be lost after window is closed.</p>
+                <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="row text-center">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#deckModal">Create a
+                Deck
+            </button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#notecardModal">Create
+                a Notecard
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="no-padding">
+    <div class="container" ng-show="decks.length != 0" role="navigation">
+        <h1 class="page-header">Your Decks</h1>
+        <ul class="nav nav-pills">
+            <li ng-repeat="deck in decks track by $index" id="{{ 'deck-button'+deck.id }}"
+                role="presentation" class="deck-button">
+                <a style="color: white; background-color: #6D4C41;"
+                   ng-click="view(deck.id)">{{ deck.name }}</a>
+            </li>
+        </ul>
+        <div class="deck-card-container" ng-repeat="deck in decks track by $index"
+             id="{{ 'collapse'+deck.id }}" style="display: none;">
+            <div class="card-container" ng-repeat="card in deck.cards track by $index">
+                <div class="note-card">
+                    <div class="face front">
+                        <h6 style="text-align: right; height: 30%;">{{ deck.name }}</h6>
+                        <h2 style="">{{ card.front }}</h2>
+                    </div>
+                    <div class="face back">
+                        <p style="padding: 1em; margin-bottom: 1em;">{{ card.back }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <hr class="primary">
+                <p>Have Questions?</p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-phone fa-3x sr-contact"></i>
+                <p>402-578-3545</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                <p><a href="mailto:anniesteenso@gmail.com">anniesteenso@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!-- Theme JavaScript -->
+<script src="js/creative.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
+        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+        crossorigin="anonymous"></script>
+<script src="./vendor/angular/angular.min.js"></script>
+<script src="./js/studyshare.js"></script>
+</body>
+</html>
