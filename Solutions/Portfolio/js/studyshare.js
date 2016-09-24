@@ -1,4 +1,3 @@
-var testCard = {front: "Pretend front", back: "Pretend back"};
 angular.module('studyShare', []).controller('studyShareController',
     function StudyShareController($scope) {
         /**
@@ -11,14 +10,19 @@ angular.module('studyShare', []).controller('studyShareController',
                 name: 'Example Name',
                 classes: 'COM S 363',
                 descriptions: 'Example Description',
-                cards: [testCard, testCard]
+                cards: [
+                    {front: "Pretend front", back: "Pretend back"},
+                    {front: "Pretend front", back: "Pretend back"}
+                ]
             },
             {
                 id: 1,
                 name: 'Example Name',
                 classes: 'COM S 363',
                 descriptions: 'Example Description',
-                cards: [testCard, testCard]
+                cards: [{front: "Pretend front", back: "Pretend back"},
+                    {front: "Pretend front", back: "Pretend back"}
+                ]
             }
         ];
 
@@ -30,6 +34,11 @@ angular.module('studyShare', []).controller('studyShareController',
 
         $scope.deck_counter = 2;
         $scope.active_deck = null;
+        $scope.card_error = false;
+
+        $scope.init = function () {
+            $scope.closeError();
+        };
 
         $scope.closeDeckModal = function () {
             $scope.deck_name = "";
@@ -53,13 +62,42 @@ angular.module('studyShare', []).controller('studyShareController',
         $scope.closeCardModal = function () {
             $scope.card_front = "";
             $scope.card_back = "";
+            $('#notecardModal').hide();
         };
 
         $scope.saveCardModal = function () {
-            $scope.cards.push({
+            if ($scope.active_deck == null) {
+                $("#form_error").show();
+                console.log("null");
+                return;
+            }
+            var deck = $scope.findDeck($scope.active_deck.id);
+            deck.cards.push({
                 front: $scope.card_front != "" ? $scope.card_front : "Default Card Front",
                 back: $scope.card_back != "" ? $scope.card_back : "Default Card Back"
             });
             $scope.closeCardModal();
+        };
+
+        $scope.view = function(deck_id) {
+            if ($scope.active_deck != null)
+                $scope.active_deck.hide();
+            $scope.active_deck =  $('#collapse'+deck_id);
+            $scope.active_deck.show();
+        };
+
+        $scope.findDeck = function(deck_id) {
+            var i = 0;
+            while(i < $scope.decks.length) {
+                if ($scope.decks[i].id == deck_id){
+                    return $scope.decks[i];
+                }
+                i++;
+            }
+            return null;
+        };
+
+        $scope.closeError = function() {
+            $('#form_error').hide();
         }
     });

@@ -25,60 +25,68 @@
     <link href="css/creative.min.css" rel="stylesheet">
 
     <style>
-        .notecard {
-            position: relative;
-            margin: 0 auto;
+        .card-container {
+            width: 300px;
             height: 300px;
-            width: 35%;
-            border: 1px solid black;
-            @include background-image(linear-gradient(top, #ffffff 15 %, #F94545 16 %, #ffffff 16 %,
-                #ffffff 25 %, #85b2d3 26 %, #ffffff 26 %, #ffffff 35 %, #85b2d3 36 %, #ffffff 36 %,
-                #ffffff 45 %, #85b2d3 46 %, #ffffff 46 %, #ffffff 55 %, #85b2d3 56 %, #ffffff 56 %,
-                #ffffff 65 %, #85b2d3 66 %, #ffffff 66 %, #ffffff 75 %, #85b2d3 76 %, #ffffff 76 %,
-                #ffffff 85 %, #85b2d3 86 %, #ffffff 86 %, #ffffff 95 %, #85b2d3 96 %, #ffffff 96 %));
-            @include transition(.6 s ease-in);
-            @include transform-style(preserve-3d);
-            &  :hover {
-                @include transform(rotateY(180 deg));
-            }
-            p {
-                font: 1em/.9 "Lucida Grande", Helvetica, Sans-Serif;
-                margin-left: auto;
-                margin-right: auto;
-                text-align: center;
-                &  :first-child {
-                    margin-top: 2em;
-                }
-            }
-            div {
-                position: absolute;
-                @include backface-visibility(hidden);
-                width: 100%;
-                margin: 0 auto;
-            }
-            .front {
-                z-index: 100;
-            }
-            .back {
-                z-index: 50;
-                @include transform(rotateY(- 180 deg));
-            }
+            position: relative;
+            perspective: 800px;
         }
-        .deck-buttons {
+        .note-card {
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1.0s linear;
+            margin: 2em 2em;
+            color: white;
+            padding: 0.5em 0.5em;
+        }
+        .note-card:hover .front {
+            transform: rotateY(-180deg);
+        }
+        .note-card:hover .back {
+            transform: rotateY(0deg);
+        }
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition: 0.5s;
+            padding: 1em 1em;
+            border-radius: 15%;
+            border-color: #6D4C41;
+        }
+        .face.front {
+            background: #F05F40;
+            transform: rotateY(0deg);
+        }
+        .face.back {
+            display: block;
+            box-sizing: border-box;
+            padding: 1em 1em;
+            color: white;
+            text-align: left;
+            background-color: #6D4C41;
+            transform: rotateY(180deg);
+        }
+        .deck-button {
             margin: 0 2em;
             min-width: 20%;
             background-color: #5D4037;
-            border-radius: 5%;
+            border-radius: 10%;
+            color: white;
         }
-
-        .deck-buttons:hover {
-            background-color: #8D6E63;
-            border-radius: 15%;
+        .deck-button:hover {
+            background-color: #6D4C41;
+            border-radius: 20%;
         }
     </style>
 </head>
 
-<body id="page-top" ng-app="studyShare" ng-controller="studyShareController">
+<body id="page-top" ng-app="studyShare" ng-controller="studyShareController" ng-init="init()">
 <!-- Modal -->
 <div class="modal fade" id="deckModal" tabindex="-1" role="dialog" aria-labelledby="deckModalLabel">
     <div class="modal-dialog" role="document">
@@ -134,6 +142,10 @@
                 <h3 class="modal-title" id="notecardModalLabel">Create Deck</h3>
             </div>
             <div class="modal-body">
+                <div id="form_error" class="alert alert-warning" role="alert">
+                    <button type="button" class="close" aria-label="Close" ng-click="closeError()"><span aria-hidden="true">&times;</span></button>
+                    <strong>Error!</strong> Please create a deck before you create notecards.
+                </div>
                 <form>
                     <form>
                         <h4>Front Side</h4>
@@ -147,10 +159,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-lg"
-                        data-dismiss="modal" ng-click="closeCardModal()">Close
+                        ng-click="closeCardModal()">Close
                 </button>
                 <button type="button" class="btn btn-primary btn-lg"
-                        data-dismiss="modal" ng-click="saveCardModal()">Save
+                        ng-click="saveCardModal()">Save
                 </button>
             </div>
         </div>
@@ -205,26 +217,39 @@
                 Deck
             </button>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#notecardModal">
-                Create a Notecard
+            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#notecardModal">Create
+                a Notecard
             </button>
         </div>
     </div>
 </section>
 <section class="no-padding" id="portfolio">
     <div class="container" ng-show="decks.length != 0" role="navigation">
-        <h1 class="page-header">Decks</h1>
+        <h1 class="page-header">Your Decks</h1>
         <ul class="nav nav-pills">
-            <li class="deck-buttons" ng-repeat="deck in decks" role="presentation">
-                <a href="#{{'collapse'+deck.id }}" data-target="{{'collapse'+ deck.id }}">{{ deck.name}}</a>
+            <li class="deck-button" ng-repeat="deck in decks track by $index" role="presentation">
+                <a href="{{'#collapse'+deck.id }}" style="color: white;">{{ deck.name}}</a>
             </li>
         </ul>
-        <div class="notecard" ng-repeat="card in deck.cards">
-            <div class="front">
-                <h2>{{ card.front }}</h2>
-            </div>
-            <div class="back">
-                <h2>{{ card.back }}</h2>
+        <div class="deck-card-container hidden" ng-repeat="deck in decks track by $index"
+             id="{{'collapse'+deck.id}}" ng-click="view(deck.id)">
+            <div class="card-container" ng-repeat="card in deck.cards track by $index">
+                <div class="note-card">
+                    <div class="face front">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                    <div class="face back">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
