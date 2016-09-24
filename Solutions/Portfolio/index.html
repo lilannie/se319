@@ -13,30 +13,149 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
           rel='stylesheet' type='text/css'>
-
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-
     <!-- Theme CSS -->
     <link href="css/creative.min.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <style>
+        .notecard {
+            position: relative;
+            margin: 0 auto;
+            height: 300px;
+            width: 35%;
+            border: 1px solid black;
+            @include background-image(linear-gradient(top, #ffffff 15 %, #F94545 16 %, #ffffff 16 %,
+                #ffffff 25 %, #85b2d3 26 %, #ffffff 26 %, #ffffff 35 %, #85b2d3 36 %, #ffffff 36 %,
+                #ffffff 45 %, #85b2d3 46 %, #ffffff 46 %, #ffffff 55 %, #85b2d3 56 %, #ffffff 56 %,
+                #ffffff 65 %, #85b2d3 66 %, #ffffff 66 %, #ffffff 75 %, #85b2d3 76 %, #ffffff 76 %,
+                #ffffff 85 %, #85b2d3 86 %, #ffffff 86 %, #ffffff 95 %, #85b2d3 96 %, #ffffff 96 %));
+            @include transition(.6 s ease-in);
+            @include transform-style(preserve-3d);
+            &  :hover {
+                @include transform(rotateY(180 deg));
+            }
+            p {
+                font: 1em/.9 "Lucida Grande", Helvetica, Sans-Serif;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                &  :first-child {
+                    margin-top: 2em;
+                }
+            }
+            div {
+                position: absolute;
+                @include backface-visibility(hidden);
+                width: 100%;
+                margin: 0 auto;
+            }
+            .front {
+                z-index: 100;
+            }
+            .back {
+                z-index: 50;
+                @include transform(rotateY(- 180 deg));
+            }
+        }
+        .deck-buttons {
+            margin: 0 2em;
+            min-width: 20%;
+            background-color: #5D4037;
+            border-radius: 5%;
+        }
 
+        .deck-buttons:hover {
+            background-color: #8D6E63;
+            border-radius: 15%;
+        }
+    </style>
 </head>
 
-<body id="page-top">
+<body id="page-top" ng-app="studyShare" ng-controller="studyShareController">
+<!-- Modal -->
+<div class="modal fade" id="deckModal" tabindex="-1" role="dialog" aria-labelledby="deckModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="deckModalLabel">Create Deck</h2>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="deck_name" class="col-xs-2 col-form-label">Name</label>
+                        <div class="col-xs-10">
+                            <input id="deck_name" type="text" name="deck_name"
+                                   placeholder="Exam 1 Review" ng-model="deck_name"/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="deck_class" class="col-xs-2 col-form-label">Class(es)</label>
+                        <div class="col-xs-10">
+                            <input id="deck_class" type="text" name="deck_class"
+                                   placeholder="COM S 319, S E 319" ng-model="deck_classes"/> <br/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="deck_description" class="col-xs-2 col-form-label">Description</label>
+                        <div class="col-xs-10">
+                            <input id="deck_description" type="text" name="deck_description"
+                                   placeholder="Vocabulary Terms" ng-model="deck_description"/> <br/></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg"
+                        data-dismiss="modal" ng-click="closeDeckModal()">Close
+                </button>
+                <button type="button" class="btn btn-primary btn-lg"
+                        data-dismiss="modal" ng-click="saveDeckModal()">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="notecardModal" tabindex="-1" role="dialog" aria-labelledby="notecardModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="notecardModalLabel">Create Deck</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <form>
+                        <h4>Front Side</h4>
+                        <input type="text" name="card_front"
+                               placeholder="Annie Steesnon" ng-model="card_front"/> <br/>
+                        <h4>Back Side</h4>
+                        <input type="text" name="card_back"
+                               placeholder="Noun. A super cool person." ng-model="card_back"/> <br/>
+                    </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg"
+                        data-dismiss="modal" ng-click="closeCardModal()">Close
+                </button>
+                <button type="button" class="btn btn-primary btn-lg"
+                        data-dismiss="modal" ng-click="saveCardModal()">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -47,15 +166,6 @@
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="#page-top">Study Share</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="#about">About</a>
-                </li>
-            </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -89,131 +199,32 @@
 
 <section id="services">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Create a Deck</h2>
-                <hr class="primary">
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <form>
-                        <h3>Name</h3> <input type="text" name="deck_name" placeholder="Exam 1 Review"/> <br/>
-                        <h3>Class(es)</h3> <input type="text" name="deck_class" placeholder="COM S 319, S E 319"/> <br/>
-                        <h3>Description</h3> <input type="description" name="deck_description" placeholder="Vocabulary Terms"/>
-                        <button>Submit</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-12 text-center">
-                <br/> <br/>
-                <h2 class="section-heading">Create Note Card</h2>
-                <hr class="primary">
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <form>
-                        <h3>Front</h3> <input type="text" name="card_front" placeholder="Annie Steesnon"/> <br/>
-                        <h3>Back</h3> <input type="description" name="card_back" placeholder="A super cool person."/> <br/>
-                        <button>Submit</button>
-                    </form>
-                </div>
-            </div>
+        <div class="row text-center">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#deckModal">Create a
+                Deck
+            </button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#notecardModal">
+                Create a Notecard
+            </button>
         </div>
     </div>
 </section>
-
 <section class="no-padding" id="portfolio">
-    <div class="container-fluid">
-        <div class="row no-gutter popup-gallery">
-            <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
+    <div class="container" ng-show="decks.length != 0" role="navigation">
+        <h1 class="page-header">Decks</h1>
+        <ul class="nav nav-pills">
+            <li class="deck-buttons" ng-repeat="deck in decks" role="presentation">
+                <a href="#{{'collapse'+deck.id }}" data-target="{{'collapse'+ deck.id }}">{{ deck.name}}</a>
+            </li>
+        </ul>
+        <div class="notecard" ng-repeat="card in deck.cards">
+            <div class="front">
+                <h2>{{ card.front }}</h2>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/4.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/6.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
+            <div class="back">
+                <h2>{{ card.back }}</h2>
             </div>
         </div>
     </div>
@@ -249,7 +260,11 @@
 <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <!-- Theme JavaScript -->
 <script src="js/creative.min.js"></script>
-
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
+        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+        crossorigin="anonymous"></script>
+<script src="./vendor/angular/angular.min.js"></script>
+<script src="./js/studyshare.js"></script>
 </body>
-
 </html>
