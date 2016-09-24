@@ -35,10 +35,16 @@ angular.module('studyShare', []).controller('studyShareController',
                 classes: 'Children 101',
                 descriptions: 'Terms of different Grocery items',
                 cards: [
-                    {front: "Apples", back: "he round fruit of a tree of " +
-                    "the rose family, which typically has thin red or green " +
-                    "skin and crisp flesh. "},
-                    {front: "Cherries", back: "A small, round stone fruit that is typically bright or dark red."}
+                    {
+                        front: "Apples",
+                        back: "The round fruit of a tree of " +
+                        "the rose family, which typically has thin red or green " +
+                        "skin and crisp flesh. "
+                    },
+                    {
+                        front: "Cherries",
+                        back: "A small, round stone fruit that is typically bright or dark red."
+                    }
                 ]
             },
             {
@@ -46,8 +52,15 @@ angular.module('studyShare', []).controller('studyShareController',
                 name: 'States and Capitols',
                 classes: 'American Studies',
                 descriptions: 'States on Front, Capitols on Back',
-                cards: [{front: "Nebraska", back: "Lincoln"},
-                    {front: "Iowa", back: "Des Moines"}
+                cards: [
+                    {
+                        front: "Nebraska",
+                        back: "Lincoln"
+                    },
+                    {
+                        front: "Iowa",
+                        back: "Des Moines"
+                    }
                 ]
             }
         ];
@@ -125,16 +138,16 @@ angular.module('studyShare', []).controller('studyShareController',
 
         $scope.findDeck = function (deck_id) {
             var min_index = 0;
-            var max_index = this.length - 1;
+            var max_index = $scope.decks.length - 1; //$scope.decks instead of this
             var current_index;
             var current_deck;
             while (min_index <= max_index) {
                 current_index = (min_index + max_index) / 2 | 0;
                 console.log("current_index: "+ current_index);
                 current_deck = $scope.decks[current_index];
-                if (current_deck < deck_id) {
+                if (current_deck.id < deck_id) { //current_deck.id instead of just current.deck
                     min_index = current_index + 1;
-                } else if (current_deck > deck_id) {
+                } else if (current_deck.id > deck_id) { //current_deck.id instead of just current.deck
                     max_index = current_index - 1;
                 } else {
                     return current_deck;
