@@ -107,6 +107,13 @@ angular.module('studyShare', []).controller('studyShareController',
             $scope.closeDeckModal();
         };
 
+        $scope.openCardModal = function() {
+            if ($scope.active_deck == null) {
+                $("#form_error").show();
+                console.log("null");
+            }
+        };
+
         $scope.closeCardModal = function () {
             $scope.card_front = "";
             $scope.card_back = "";
@@ -129,10 +136,11 @@ angular.module('studyShare', []).controller('studyShareController',
 
         $scope.view = function (deck_id) {
             console.log("deck_id: "+ deck_id);
+            var collapseid = $('#collapse'+$scope.active_deck.id);
             if ($scope.active_deck != null)
-                $('#collapse'+$scope.active_deck.id).hide();
+                collapseid.hide();
             $scope.active_deck = $scope.findDeck(deck_id);
-            $('#collapse'+$scope.active_deck.id).show();
+            collapseid.show();
             console.log("active_deck: "+ $scope.active_deck.id);
         };
 
@@ -158,5 +166,53 @@ angular.module('studyShare', []).controller('studyShareController',
 
         $scope.closeError = function () {
             $('#form_error').hide();
+        };
+
+        //creates a little card display on hover. Not really the best way to do it, but kind of fun.
+        $scope.indicateCards = function (event, deck) {
+            element = event.currentTarget;
+            cards = deck.cards.length;
+            cardList = document.createElement("div");
+            cardList.className = 'deck-hover-wrapper';
+            element.appendChild(cardList);
+            var i = 0;
+            var loop = function () {
+                setTimeout(function(){
+                    card = document.createElement('div');
+                    card.className = 'deck-hover-display';
+                    card.style.zIndex = cards - i;
+                    card.style.backgroundColor = 'rgba(109,76,65,' + (0.6-i*(0.6/5)) + ')';
+                    card.style.width = (element.offsetWidth - i*2) + 'px';
+                    card.style.height = (30 - i*2) + 'px';
+                    cardList.appendChild(card);
+                    i++;
+                    if (i < 5){
+                        loop();
+                    }
+                }, 20);
+            };
+            loop();
         }
+
     });
+
+function removeCardDisplay(element){
+    cards = element.childNodes[1];
+    if (!cards){
+        return;
+    }
+    var i = cards.childNodes.length-1;
+    var loop = function () {
+        setTimeout(function(){
+            // cards = element.childNodes[1];
+            cards.removeChild(cards.childNodes[i]);
+            i--;
+            if (i > 0){
+                loop();
+            } else {
+                element.removeChild(cards);
+            }
+        }, 20);
+    };
+    loop();
+}

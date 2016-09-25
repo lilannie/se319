@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Portfolio</title>
+    <title>StudyShare</title>
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -17,6 +17,7 @@
     <!-- Theme CSS -->
     <link href="css/creative.min.css" rel="stylesheet">
     <link href="css/studyshare.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/stack.png" />
 </head>
 
 <body id="page-top" ng-app="studyShare" ng-controller="studyShareController" ng-init="init()">
@@ -72,7 +73,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title" id="notecardModalLabel">Create Deck</h3>
+                <h3 class="modal-title" id="notecardModalLabel">Create Notecard for {{active_deck.name}}</h3>
             </div>
             <div class="modal-body">
                 <div id="form_error" class="alert alert-warning" role="alert">
@@ -146,12 +147,12 @@
     <div class="container">
         <div class="row text-center">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#deckModal">Create a
-                Deck
+            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#deckModal">
+                Create a Deck
             </button>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target="#notecardModal">Create
-                a Notecard
+            <button type="button" class="btn btn-primary btn-xl" ng-click="openCardModal()" data-toggle="modal" data-target="#notecardModal">
+                Create a Notecard
             </button>
         </div>
     </div>
@@ -164,7 +165,7 @@
             <li ng-repeat="deck in decks track by $index" id="{{ 'deck-button'+deck.id }}"
                 role="presentation" class="deck-button">
                 <a style="color: white; background-color: #6D4C41;"
-                   ng-click="view(deck.id)">{{ deck.name }}</a>
+                   ng-click="view(deck.id)" ng-mouseover="indicateCards($event,deck)" onmouseleave="removeCardDisplay(this)">{{ deck.name }}</a>
             </li>
         </ul>
         <div class="deck-card-container" ng-repeat="deck in decks track by $index"
@@ -222,9 +223,9 @@
 <!-- Theme JavaScript -->
 <script src="js/creative.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
-        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
-        crossorigin="anonymous"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"-->
+        <!--integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"-->
+        <!--crossorigin="anonymous"></script>-->
 <script src="./vendor/angular/angular.min.js"></script>
 <script src="./js/studyshare.js"></script>
 </body>
