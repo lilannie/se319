@@ -136,10 +136,13 @@ angular.module('studyShare', []).controller('studyShareController',
 
         $scope.view = function (deck_id) {
             console.log("deck_id: "+ deck_id);
-            var collapseid = $('#collapse'+$scope.active_deck.id);
-            if ($scope.active_deck != null)
+            var collapseid = null;
+            if ($scope.active_deck != null) {
+                 collapseid = $('#collapse' + $scope.active_deck.id);
                 collapseid.hide();
+            }
             $scope.active_deck = $scope.findDeck(deck_id);
+            collapseid = $('#collapse' + $scope.active_deck.id);
             collapseid.show();
             console.log("active_deck: "+ $scope.active_deck.id);
         };
