@@ -1,3 +1,8 @@
+header {
+    /*background-image: url('../img/study.jpg') !important;*/
+    background-image: url('../img/studyedit.jpg') !important;
+}
+
 .card-container {
     width: 300px;
     min-height: 400px;
@@ -56,5 +61,34 @@
 }
 .deck-button:hover {
     background-color: #6D4C41;
+    cursor: pointer;
     border-radius: 20%;
+}
+
+button:focus{
+    outline: none !important;
+}
+
+.deck-hover-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+.deck-hover-display {
+    position: relative;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: -20px;
+    width: 100%;
+    background-color: #6D4C41;
+    border: 1px solid #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    list-style: none;
+}
+.deck-hover-display:before{
+    display: none;
 }
