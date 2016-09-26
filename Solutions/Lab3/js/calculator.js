@@ -127,7 +127,7 @@ var Calculator = {
         Calculator.Model.justEvaluated = true;
         Calculator.Model.currentInput = '';
     },
-    //TODO: Fix this
+    
     clearScreenOp: function(){
         document.getElementById(Calculator.View.screen.id).innerHTML = '';
         if (!Calculator.Model.wasRead) {
@@ -152,10 +152,12 @@ var Calculator = {
 
     addToMemory: function(){
         Calculator.Model.currentInput += document.getElementById(Calculator.View.screen.id).innerHTML;
+        Calculator.Model.justEvaluated = false;
     },
 
     subtractFromMemory: function(){
         Calculator.Model.currentInput.replace(document.getElementById(Calculator.View.screen.id).innerHTML, '');
+        Calculator.Model.justEvaluated = false;
     }
 
 };

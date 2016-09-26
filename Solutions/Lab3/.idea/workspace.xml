@@ -71,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/js/calculator.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
-              <caret line="128" column="6" selection-start-line="128" selection-start-column="6" selection-end-line="128" selection-end-column="6" />
+              <caret line="129" column="4" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="4" />
               <folding>
                 <element signature="n#!!block;n#Controller#0;n#!!block;n#Calculator#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#run#0;n#run#0;n#!!block;n#Calculator#0;n#!!top" expanded="false" />
@@ -280,12 +280,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1474831016774</updated>
-      <workItem from="1474831018380" duration="11341000" />
+      <workItem from="1474831018380" duration="11581000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11341000" />
+    <option name="totallyTimeSpent" value="11581000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -395,7 +395,7 @@
     <entry file="file://$PROJECT_DIR$/js/calculator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
-          <caret line="128" column="6" selection-start-line="128" selection-start-column="6" selection-end-line="128" selection-end-column="6" />
+          <caret line="129" column="4" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="4" />
           <folding>
             <element signature="n#!!block;n#Controller#0;n#!!block;n#Calculator#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#run#0;n#run#0;n#!!block;n#Calculator#0;n#!!top" expanded="false" />
