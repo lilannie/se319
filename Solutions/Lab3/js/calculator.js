@@ -2,11 +2,14 @@ var Calculator = {
     Model: {
         currentInput: "",
         lastOperation: "",
-        lastValue: ""
+        lastValue: "",
+        lastResult: "",
+        justEvaluated: false,
+        wasRead: false
     },
 
     View: {
-        screen: {id: "decimal-screen", tag: "div", value: "Hello", row: 0, onclick: ""},
+        screen: {id: "decimal-screen", tag: "div", value: "", row: 0, onclick: ""},
 
         seven: {id: "decimal-seven", tag: "button", value: 7, row: 1, onclick: ""},
         eight: {id: "decimal-eight", tag: "button", value: 8, row: 1, onclick: ""},
@@ -79,6 +82,7 @@ var Calculator = {
         Calculator.View.four.onclick = "Calculator.input(Calculator.View.four.value, true)";
         Calculator.View.five.onclick = "Calculator.input(Calculator.View.five.value, true)";
         Calculator.View.six.onclick = "Calculator.input(Calculator.View.six.value, true)";
+        Calculator.View.seven.onclick = "Calculator.input(Calculator.View.seven.value, true)";
         Calculator.View.eight.onclick = "Calculator.input(Calculator.View.eight.value, true)";
         Calculator.View.nine.onclick = "Calculator.input(Calculator.View.nine.value, true)";
         Calculator.View.zero.onclick = "Calculator.input(Calculator.View.zero.value, true)";
@@ -89,27 +93,69 @@ var Calculator = {
         Calculator.View.multiply.onclick = "Calculator.input(Calculator.View.multiply.value, false)";
         Calculator.View.divide.onclick = "Calculator.input(Calculator.View.divide.value, false)";
 
-        Calculator.View.equal.onclick = "evaluateInput()";
+        Calculator.View.equal.onclick = "Calculator.evaluateInput()";
+        Calculator.View.clearScreen.onclick = "Calculator.clearScreenOp()";
+        Calculator.View.clearMem.onclick = "Calculator.clearMemory()";
+        Calculator.View.readMem.onclick = "Calculator.readMemory()";
+        Calculator.View.addToMem.onclick = "Calculator.addToMemory()";
+        Calculator.View.subFromMem.onclick = "Calculator.subtractFromMemory()";
     },
 
-    input: function(value, isNum){
-        isNum = (typeof isNum !== 'undefined') ?  isNum : false;
-        if(!isNum){
+    input: function(value, isNum) {
+        isNum = (typeof isNum !== 'undefined') ? isNum : false;
+        if (!isNum) {
             document.getElementById(Calculator.View.screen.id).innerHTML = '';
             Calculator.Model.lastOperation = value;
-        } else {
+            Calculator.Model.lastValue = '';
+        } else if(Calculator.Model.justEvaluated){
+            Calculator.Model.justEvaluated = false;
+            document.getElementById(Calculator.View.screen.id).innerHTML = value;
+            Calculator.Model.lastValue = '' + value;
+        }else {
             document.getElementById(Calculator.View.screen.id).innerHTML += value;
+            Calculator.Model.lastValue += value;
         }
         Calculator.Model.currentInput += value;
     },
 
     evaluateInput: function(){
-        //perform function
-        var result = 'result';
-        document.getElementById(Calculator.View.screen.id).innerHTML = result;
-        Calculator.Model.lastValue = result;
-        // Calculator.View.lastOperation = value;
+        if(Calculator.Model.justEvaluated) {
+            Calculator.Model.currentInput = Calculator.Model.lastResult + Calculator.Model.lastOperation + Calculator.Model.lastValue;
+        }
+        Calculator.Model.lastResult = eval(Calculator.Model.currentInput);
+        document.getElementById(Calculator.View.screen.id).innerHTML = Calculator.Model.lastResult;
+        Calculator.Model.justEvaluated = true;
         Calculator.Model.currentInput = '';
+    },
+    //TODO: Fix this
+    clearScreenOp: function(){
+        document.getElementById(Calculator.View.screen.id).innerHTML = '';
+        if (!Calculator.Model.wasRead) {
+            Calculator.Model.currentInput = Calculator.Model.currentInput.substring(0, Calculator.Model.currentInput.length - Calculator.Model.lastValue.length);
+            Calculator.Model.lastValue = '';
+            Calculator.Model.justEvaluated = false;
+        }
+    },
+
+    clearMemory: function(){
+        Calculator.Model.currentInput = '';
+        Calculator.Model.lastValue = '';
+        Calculator.Model.lastOperation = '';
+        Calculator.Model.lastResult = '';
+        Calculator.Model.justEvaluated = false;
+    },
+
+    readMemory: function(){
+        document.getElementById(Calculator.View.screen.id).innerHTML = Calculator.Model.currentInput;
+        Calculator.Model.wasRead = true;
+    },
+
+    addToMemory: function(){
+        Calculator.Model.currentInput += document.getElementById(Calculator.View.screen.id).innerHTML;
+    },
+
+    subtractFromMemory: function(){
+        Calculator.Model.currentInput.replace(document.getElementById(Calculator.View.screen.id).innerHTML, '');
     }
 
 };

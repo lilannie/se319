@@ -10,6 +10,7 @@
     text-align: right;
     background-color: #eee;
     padding-right: 2px;
+    min-height: 32px;
 }
 
 .calc-row{

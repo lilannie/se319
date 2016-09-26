@@ -4,7 +4,7 @@ var BinaryCalculator = {
     },
 
     View: {
-        screen: {id: "binary-screen", tag: "div", value: "Hello", row: 0, onclick: ""},
+        screen: {id: "binary-screen", tag: "div", value: "", row: 0, onclick: ""},
 
         one: {id: "binary-one", tag: "button", value: 1, row: 1, onclick: ""},
         zero: {id: "binary-zero", tag: "button", value: 0, row: 1, onclick: ""},
