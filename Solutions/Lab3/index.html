@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script type="application/javascript" src="js/calculator.js"></script>
+    <script type="application/javascript" src="js/calculatorbinary.js"></script>
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+    <div id="decimal-calculator"></div>
+    <div id="binary-calculator"></div>
+    <script>
+        window.onload = function(){
+            document.getElementById('binary-calculator').innerHTML = BinaryCalculator.run();
+            document.getElementById('decimal-calculator').innerHTML = Calculator.run();
+        };
+    </script>
+</body>
+</html>

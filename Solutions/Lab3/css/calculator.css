@@ -1,0 +1,44 @@
+.calc-body{
+    display: inline-block;
+    border: 1px solid #aaa;
+}
+
+#decimal-screen, #binary-screen{
+    font-family: sans-serif;
+    font-size: 28px;
+    color: #333;
+    text-align: right;
+    background-color: #eee;
+    padding-right: 2px;
+    min-height: 32px;
+}
+
+.calc-row{
+    border-top: 1px solid #aaa;
+    width: 100%;
+}
+
+.calc-row button {
+    width: 60px;
+    height: 55px;
+    background: #fff;
+    border: none;
+    font-family: sans-serif;
+    font-size: 25px;
+    color: #333;
+}
+.calc-row button:not(:last-child){
+    border-right: 1px solid #aaa;
+}
+.calc-row button:only-child{
+    border-right: 1px solid #aaa !important;
+}
+.calc-row button:hover{
+    background-color: #aaa;
+    transition: all 0.2s;
+}
+
+body > div {
+    display: inline-block;
+    margin: 10px;
+}
