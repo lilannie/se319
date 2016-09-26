@@ -1,6 +1,8 @@
 var Calculator = {
     Model: {
-
+        currentInput: "",
+        lastOperation: "",
+        lastValue: ""
     },
 
     View: {
@@ -71,11 +73,43 @@ var Calculator = {
     },
 
     attachHandlers: function() {
+        Calculator.View.one.onclick = "Calculator.input(Calculator.View.one.value, true)";
+        Calculator.View.two.onclick = "Calculator.input(Calculator.View.two.value, true)";
+        Calculator.View.three.onclick = "Calculator.input(Calculator.View.three.value, true)";
+        Calculator.View.four.onclick = "Calculator.input(Calculator.View.four.value, true)";
+        Calculator.View.five.onclick = "Calculator.input(Calculator.View.five.value, true)";
+        Calculator.View.six.onclick = "Calculator.input(Calculator.View.six.value, true)";
+        Calculator.View.eight.onclick = "Calculator.input(Calculator.View.eight.value, true)";
+        Calculator.View.nine.onclick = "Calculator.input(Calculator.View.nine.value, true)";
+        Calculator.View.zero.onclick = "Calculator.input(Calculator.View.zero.value, true)";
+        Calculator.View.decimal.onclick = "Calculator.input(Calculator.View.decimal.value, true)";
 
+        Calculator.View.add.onclick = "Calculator.input(Calculator.View.add.value, false)";
+        Calculator.View.subtract.onclick = "Calculator.input(Calculator.View.subtract.value, false)";
+        Calculator.View.multiply.onclick = "Calculator.input(Calculator.View.multiply.value, false)";
+        Calculator.View.divide.onclick = "Calculator.input(Calculator.View.divide.value, false)";
+
+        Calculator.View.equal.onclick = "evaluateInput()";
+    },
+
+    input: function(value, isNum){
+        isNum = (typeof isNum !== 'undefined') ?  isNum : false;
+        if(!isNum){
+            document.getElementById(Calculator.View.screen.id).innerHTML = '';
+            Calculator.Model.lastOperation = value;
+        } else {
+            document.getElementById(Calculator.View.screen.id).innerHTML += value;
+        }
+        Calculator.Model.currentInput += value;
+    },
+
+    evaluateInput: function(){
+        //perform function
+        var result = 'result';
+        document.getElementById(Calculator.View.screen.id).innerHTML = result;
+        Calculator.Model.lastValue = result;
+        // Calculator.View.lastOperation = value;
+        Calculator.Model.currentInput = '';
     }
 
-
-};
-window.onload = function(){
-    document.getElementById('decimal-calculator').innerHTML = Calculator.run();
 };

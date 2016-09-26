@@ -3,12 +3,13 @@
     border: 1px solid #aaa;
 }
 
-#decimal-screen{
+#decimal-screen, #binary-screen{
     font-family: sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     color: #333;
     text-align: right;
     background-color: #eee;
+    padding-right: 2px;
 }
 
 .calc-row{
@@ -17,12 +18,12 @@
 }
 
 .calc-row button {
-    width: 40px;
-    height: 35px;
+    width: 60px;
+    height: 55px;
     background: #fff;
     border: none;
     font-family: sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     color: #333;
 }
 .calc-row button:not(:last-child){
@@ -34,4 +35,9 @@
 .calc-row button:hover{
     background-color: #aaa;
     transition: all 0.2s;
+}
+
+body > div {
+    display: inline-block;
+    margin: 10px;
 }
