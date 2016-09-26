@@ -127,7 +127,7 @@ var Calculator = {
         Calculator.Model.justEvaluated = true;
         Calculator.Model.currentInput = '';
     },
-    
+
     clearScreenOp: function(){
         document.getElementById(Calculator.View.screen.id).innerHTML = '';
         if (!Calculator.Model.wasRead) {
