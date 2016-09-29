@@ -11,6 +11,7 @@ header {
     float: left;
     margin: 2em 1em;
 }
+
 .note-card {
     text-align: center;
     position: absolute;
@@ -21,12 +22,15 @@ header {
     color: white;
     padding: 0.5em 0.5em;
 }
+
 .note-card:hover .front {
     transform: rotateY(-180deg);
 }
+
 .note-card:hover .back {
     transform: rotateY(0deg);
 }
+
 .face {
     position: absolute;
     width: 100%;
@@ -38,11 +42,13 @@ header {
     border-radius: 15%;
     border-color: #6D4C41;
 }
+
 .face.front {
     background: #F05F40;
     transform: rotateY(0deg);
     padding: 2em 2em;
 }
+
 .face.back {
     display: block;
     box-sizing: border-box;
@@ -52,6 +58,7 @@ header {
     background-color: #6D4C41;
     transform: rotateY(180deg);
 }
+
 .deck-button {
     margin: 1em 2em;
     min-width: 20%;
@@ -59,13 +66,14 @@ header {
     border-radius: 10%;
     color: white;
 }
+
 .deck-button:hover {
     background-color: #6D4C41;
     cursor: pointer;
     border-radius: 20%;
 }
 
-button:focus{
+button:focus {
     outline: none !important;
 }
 
@@ -89,6 +97,7 @@ button:focus{
     border-bottom-right-radius: 5px;
     list-style: none;
 }
-.deck-hover-display:before{
+
+.deck-hover-display:before {
     display: none;
 }

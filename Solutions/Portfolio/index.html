@@ -4,20 +4,16 @@
 <head>
     <meta charset="utf-8">
     <title>StudyShare</title>
-    <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
           rel='stylesheet' type='text/css'>
-    <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <!-- Theme CSS -->
     <link href="css/creative.min.css" rel="stylesheet">
     <link href="css/studyshare.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/stack.png" />
+    <link rel="shortcut icon" href="img/stack.png"/>
 </head>
 
 <body id="page-top" ng-app="studyShare" ng-controller="studyShareController" ng-init="init()">
@@ -77,16 +73,17 @@
             </div>
             <div class="modal-body">
                 <div id="form_error" class="alert alert-warning" role="alert">
-                    <button type="button" class="close" aria-label="Close" ng-click="closeError()"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" aria-label="Close" ng-click="closeError()"><span
+                            aria-hidden="true">&times;</span></button>
                     <strong>Error!</strong> Please create a deck before you create notecards.
                 </div>
                 <form>
-                        <h4>Front Side</h4>
-                        <input type="text" name="card_front"
-                               placeholder="Annie Steenson" ng-model="card_front"/> <br/>
-                        <h4>Back Side</h4>
-                        <input type="text" name="card_back"
-                               placeholder="Noun. A super cool person." ng-model="card_back"/> <br/>
+                    <h4>Front Side</h4>
+                    <input type="text" name="card_front"
+                           placeholder="Annie Steenson" ng-model="card_front"/> <br/>
+                    <h4>Back Side</h4>
+                    <input type="text" name="card_back"
+                           placeholder="Noun. A super cool person." ng-model="card_back"/> <br/>
                 </form>
             </div>
             <div class="modal-footer">
@@ -149,7 +146,8 @@
                 Create a Deck
             </button>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-xl" ng-click="openCardModal()" data-toggle="modal" data-target="#notecardModal">
+            <button type="button" class="btn btn-primary btn-xl" ng-click="openCardModal()" data-toggle="modal"
+                    data-target="#notecardModal">
                 Create a Notecard
             </button>
         </div>
@@ -163,7 +161,8 @@
             <li ng-repeat="deck in decks track by $index" id="{{ 'deck-button'+deck.id }}"
                 role="presentation" class="deck-button">
                 <a style="color: white; background-color: #6D4C41;"
-                   ng-click="view(deck.id)" ng-mouseover="indicateCards($event,deck)" onmouseleave="removeCardDisplay(this)">{{ deck.name }}</a>
+                   ng-click="view(deck.id)" ng-mouseover="indicateCards($event,deck)"
+                   onmouseleave="removeCardDisplay(this)">{{ deck.name }}</a>
             </li>
         </ul>
         <div class="deck-card-container" ng-repeat="deck in decks track by $index"
@@ -213,17 +212,10 @@
 
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!-- Plugin JavaScript -->
 <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-<!-- Theme JavaScript -->
 <script src="js/creative.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"-->
-        <!--integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"-->
-        <!--crossorigin="anonymous"></script>-->
 <script src="./vendor/angular/angular.min.js"></script>
 <script src="./js/studyshare.js"></script>
 </body>
