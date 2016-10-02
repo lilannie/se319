@@ -16,7 +16,7 @@ var BinCalc = {
         not: {id: "binary-not", tag: "button", value: "~", row: 1, onclick: ""},
 
         add: {id: "binary-add", tag: "button", value: "+", row: 2, onclick: ""},
-        mod: {id: "binary-mod", tag: "button", value: "%", row: 2, onclick: ""},
+        mod: {id: "binary-mod\" disabled=\"disabled", tag: "button", value: "%", row: 2, onclick: ""},
         shiftLeft: {id: "binary-shiftLeft", tag: "button", value: "<<", row: 2, onclick: ""},
 
         shiftRight: {id: "binary-shiftRight", tag: "button", value: ">>", row: 3, onclick: ""},
