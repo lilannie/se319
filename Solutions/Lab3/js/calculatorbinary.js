@@ -4,8 +4,9 @@ var BinCalc = {
         lastOperation: "",
         lastValue: "",
         lastResult: "",
-        justEvaluated: false,
-        wasRead: false
+        justEvaluated: true,
+        wasRead: false,
+        isFirstNum: true
     },
 
     View: {
@@ -78,7 +79,7 @@ var BinCalc = {
 
         BinCalc.View.not.onclick = "BinCalc.input(BinCalc.View.not.value, false)";
         BinCalc.View.add.onclick = "BinCalc.input(BinCalc.View.add.value, false)";
-        BinCalc.View.mod.onclick = "BinCalc.input(BinCalc.View.mod.value, false)";
+        // BinCalc.View.mod.onclick = "BinCalc.input(BinCalc.View.mod.value, false)";
         BinCalc.View.shiftLeft.onclick = "BinCalc.input(BinCalc.View.shiftLeft.value, false)";
         BinCalc.View.shiftRight.onclick = "BinCalc.input(BinCalc.View.shiftRight.value, false)";
         BinCalc.View.subtract.onclick = "BinCalc.input(BinCalc.View.subtract.value, false)";
@@ -101,26 +102,36 @@ var BinCalc = {
             document.getElementById(BinCalc.View.screen.id).innerHTML = '';
             BinCalc.Model.lastOperation = value;
             BinCalc.Model.lastValue = '';
+            BinCalc.Model.isFirstNum = true;
         } else if(BinCalc.Model.justEvaluated){
             BinCalc.Model.justEvaluated = false;
             document.getElementById(BinCalc.View.screen.id).innerHTML = value;
             BinCalc.Model.lastValue = '' + value;
+            if(isNum && BinCalc.Model.isFirstNum){
+                value = '0b' + value;
+                BinCalc.Model.isFirstNum = false;
+            }
         }else {
             document.getElementById(BinCalc.View.screen.id).innerHTML += value;
             BinCalc.Model.lastValue += value;
+            if(isNum && BinCalc.Model.isFirstNum){
+                value = '0b' + value;
+                BinCalc.Model.isFirstNum = false;
+            }
         }
         BinCalc.Model.currentInput += value;
     },
 
     evaluateInput: function(){
-        //TODO: Binary Evaluation
+        console.log(BinCalc.Model.currentInput);
         if(BinCalc.Model.justEvaluated) {
             BinCalc.Model.currentInput = BinCalc.Model.lastResult + BinCalc.Model.lastOperation + BinCalc.Model.lastValue;
         }
-        BinCalc.Model.lastResult = eval(BinCalc.Model.currentInput);
+        BinCalc.Model.lastResult = (eval(BinCalc.Model.currentInput) >>> 0).toString(2);
         document.getElementById(BinCalc.View.screen.id).innerHTML = BinCalc.Model.lastResult;
         BinCalc.Model.justEvaluated = true;
         BinCalc.Model.currentInput = '';
+        BinCalc.Model.isFirstNum = true;
     },
 
     clearScreenOp: function(){
