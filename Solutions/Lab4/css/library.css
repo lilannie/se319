@@ -8,12 +8,26 @@ input,label,button {
 
 table{
     border-collapse: collapse;
+    display: inline-block;
 }
 .shelf td, th{
-    border-bottom: 3px solid #876121;
     padding: 10px 5px 5px 5px;
+    border-right: 1px solid #888;
 }
 .shelf th {
     color: #328721;
     font-size: larger;
+    text-align: left;
+}
+.shelf td:hover{
+    background-color: #5555cc;
+    color: #fff;
+    transition: all 0.3s;
+}
+.shelf{
+    border-bottom: 3px solid #876121;
+}
+
+.borrowed {
+    background-color: #cc5555;
 }

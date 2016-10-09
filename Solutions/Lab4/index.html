@@ -18,5 +18,15 @@
 <div id="view">
 
 </div>
+<div id="info" hidden>
+    <div id="info-content"></div>
+    <button id=closeInfo" onclick="closeInfo()"> Close</button>
+</div>
+<script>
+    function closeInfo(){
+        $('#info').hide();
+        $('#info-content').html('');
+    }
+</script>
 </body>
 </html>
