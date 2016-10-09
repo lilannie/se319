@@ -74,12 +74,13 @@ Library.prototype.render = function(){
         table.appendChild(row);
     }
     document.getElementById('view').appendChild(table);
+    $('#view').slideDown();
 };
 Library.prototype.begin = function(){
     this.attemptLogin();
     if(this.currentAuthorization != 'none')
     {
-        $('#login').hide();
+        $('#login').slideUp();
         this.render();
     }
 };
@@ -98,7 +99,7 @@ Book.prototype.borrow = function(borrower){
             document.getElementById(that.type + '_' + that.id).classList.add('borrowed');
             that.borrowedBy = borrower;
             that.presence = 0;
-            $('#info').hide();
+            $('#info').slideUp();
             $('#info-content').html('');
         }
     }
@@ -110,7 +111,7 @@ Book.prototype.return = function(){
         document.getElementById(that.type + '_' + that.id).classList.remove('borrowed');
         that.borrowedBy = '';
         that.presence = 1;
-        $('#info').hide();
+        $('#info').slideUp();
         $('#info-content').html('');
     }
 };
@@ -129,7 +130,7 @@ Book.prototype.clickFunction = function(auth, user){
                 '<br>'
             ];
             $('#info-content').html(bookInfo.join(''));
-            $('#info').show();
+            $('#info').slideDown();
         }
         else if (auth == 'student' && that.type != 'R')
         {
@@ -141,7 +142,7 @@ Book.prototype.clickFunction = function(auth, user){
                 borrowButton.innerHTML = 'Borrow '+that.type+that.id;
                 // var borrowHtml = '<button '+(that.presence ? '' : 'disabled')+' onclick="'+that.borrow(user)+'">Borrow'+that.type+that.id+'</button>';
                 $('#info-content').append(borrowButton);
-                $('#info').show();
+                $('#info').slideDown();
             }
             else
             {
@@ -151,7 +152,7 @@ Book.prototype.clickFunction = function(auth, user){
                 returnButton.innerHTML = 'Return '+that.type+that.id;
                 // var returnHtml = '<button disabled="'+((!that.presence && that.borrowedBy == user) ? 'false' : 'true')+'" onclick="'+that.return()+'">Return</button>';
                 $('#info-content').append(returnButton);
-                $('#info').show();
+                $('#info').slideDown();
             }
         }
     }
@@ -177,7 +178,7 @@ Shelf.prototype.addBookFormShow = function(){
         $('#bookAdd').append(submit);
         $('#typeInput').val('B');
         $('#idInput').val('');
-        $('#addBookForm').show();
+        $('#addBookForm').slideDown();
     }
 };
 Shelf.prototype.addBookFromForm = function(){
@@ -196,6 +197,6 @@ Shelf.prototype.addBookFromForm = function(){
             cell.innerHTML = book.type + book.id;
             $(cell).insertBefore('#' + that.name + 'Add');
         }
-        $('#addBookForm').hide();
+        $('#addBookForm').slideUp();
     }
 };
