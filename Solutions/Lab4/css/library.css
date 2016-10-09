@@ -23,6 +23,7 @@ table{
     background-color: #5555cc;
     color: #fff;
     transition: all 0.3s;
+    cursor: pointer;
 }
 .shelf{
     border-bottom: 3px solid #876121;
@@ -30,4 +31,7 @@ table{
 
 .borrowed {
     background-color: #cc5555;
+}
+.add {
+    background-color: #55cc55;
 }

@@ -62,6 +62,15 @@ Library.prototype.render = function(){
             cell.innerHTML = book.type + book.id;
             row.appendChild(cell);
         }
+        if (this.currentAuthorization == 'librarian')
+        {
+            var add = document.createElement('td');
+            add.className = 'add';
+            add.id = shelf.name + 'Add';
+            add.onclick = shelf.addBookFormShow();
+            add.innerHTML = '+ Add Book';
+            row.appendChild(add);
+        }
         table.appendChild(row);
     }
     document.getElementById('view').appendChild(table);
@@ -108,6 +117,7 @@ Book.prototype.return = function(){
 Book.prototype.clickFunction = function(auth, user){
     var that = this;
     return function(){
+        $('#info-content').html('');
         if(auth == 'librarian')
         {
             var bookInfo = [
@@ -115,10 +125,11 @@ Book.prototype.clickFunction = function(auth, user){
                 '<br>',
                 'ID: ' + that.id,
                 '<br>',
-                'Borrowed By: ' + (!that.presence ? 'No One' : that.borrowedBy),
+                'Borrowed By: ' + (that.presence ? 'No One' : that.borrowedBy),
                 '<br>'
             ];
-            $('info-content').html(bookInfo.join(''));
+            $('#info-content').html(bookInfo.join(''));
+            $('#info').show();
         }
         else if (auth == 'student' && that.type != 'R')
         {
@@ -154,5 +165,37 @@ function Shelf(name, category){
 Shelf.prototype.addBook = function(book){
     if(book.id % 4 == this.category){
         this.books.push(book);
+    }
+};
+Shelf.prototype.addBookFormShow = function(){
+    var that = this;
+    return function() {
+        var submit = document.createElement('button');
+        submit.onclick = that.addBookFromForm();
+        submit.innerHTML = 'Add Book';
+        $('#bookAdd').html('');
+        $('#bookAdd').append(submit);
+        $('#typeInput').val('B');
+        $('#idInput').val('');
+        $('#addBookForm').show();
+    }
+};
+Shelf.prototype.addBookFromForm = function(){
+    var that = this;
+    return function(){
+        var type = $('#typeInput').val();
+        var id = $('#idInput').val();
+        console.log(type+id);
+        if(type != '' && id != '') {
+            var book = new Book(type, id);
+            that.books.push(book);
+            var cell = document.createElement('td');
+            cell.className = 'book ' + (book.presence ? '' : 'borrowed');
+            cell.id = book.type + '_' + book.id;
+            cell.onclick = book.clickFunction('librarian', 'admin');
+            cell.innerHTML = book.type + book.id;
+            $(cell).insertBefore('#' + that.name + 'Add');
+        }
+        $('#addBookForm').hide();
     }
 };
