@@ -11,10 +11,10 @@ $(document).ready(function(){
             data: data,
             dataType: 'json',
             success: function (response, status, xhr) {
-
+                console.log(response);
             },
             error: function (xhr, status, error) {
-
+                console.log(error);
             }
         });
     });
