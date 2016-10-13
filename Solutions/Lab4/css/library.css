@@ -1,0 +1,37 @@
+body {
+    font-family: sans-serif;
+}
+
+input,label,button {
+    display: block;
+}
+
+table{
+    border-collapse: collapse;
+    display: inline-block;
+}
+.shelf td, th{
+    padding: 10px 5px 5px 5px;
+    border-right: 1px solid #888;
+}
+.shelf th {
+    color: #328721;
+    font-size: larger;
+    text-align: left;
+}
+.shelf td:hover{
+    background-color: #5555cc;
+    color: #fff;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.shelf{
+    border-bottom: 3px solid #876121;
+}
+
+.borrowed {
+    background-color: #cc5555;
+}
+.add {
+    background-color: #55cc55;
+}

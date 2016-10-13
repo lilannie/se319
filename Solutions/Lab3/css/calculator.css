@@ -37,6 +37,10 @@
     background-color: #aaa;
     transition: all 0.2s;
 }
+.calc-row button[disabled]:hover{
+    cursor: not-allowed;
+    background-color: #ddd;
+}
 
 body > div {
     display: inline-block;

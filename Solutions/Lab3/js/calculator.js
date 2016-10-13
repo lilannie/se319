@@ -1,4 +1,4 @@
-var Calculator = {
+var Calc = {
     Model: {
         currentInput: "",
         lastOperation: "",
@@ -44,8 +44,8 @@ var Calculator = {
     },
 
     run: function(){
-        Calculator.attachHandlers();
-        return Calculator.buildView();
+        Calc.attachHandlers();
+        return Calc.buildView();
     },
 
     buildView: function(){
@@ -53,11 +53,11 @@ var Calculator = {
         v += '<div class="calc-body">';
         for (var r = 0; r < 7; r++){
             v += '<div class="calc-row">';
-                for(element in Calculator.View){
-                    if(Calculator.View.hasOwnProperty(element)
-                        && Calculator.View[element].hasOwnProperty('row')
-                        && Calculator.View[element].row == r) {
-                        v += Calculator.buildElement(Calculator.View[element]);
+                for(element in Calc.View){
+                    if(Calc.View.hasOwnProperty(element)
+                        && Calc.View[element].hasOwnProperty('row')
+                        && Calc.View[element].row == r) {
+                        v += Calc.buildElement(Calc.View[element]);
                     }
                 }
             v += '</div>';
@@ -76,88 +76,88 @@ var Calculator = {
     },
 
     attachHandlers: function() {
-        Calculator.View.one.onclick = "Calculator.input(Calculator.View.one.value, true)";
-        Calculator.View.two.onclick = "Calculator.input(Calculator.View.two.value, true)";
-        Calculator.View.three.onclick = "Calculator.input(Calculator.View.three.value, true)";
-        Calculator.View.four.onclick = "Calculator.input(Calculator.View.four.value, true)";
-        Calculator.View.five.onclick = "Calculator.input(Calculator.View.five.value, true)";
-        Calculator.View.six.onclick = "Calculator.input(Calculator.View.six.value, true)";
-        Calculator.View.seven.onclick = "Calculator.input(Calculator.View.seven.value, true)";
-        Calculator.View.eight.onclick = "Calculator.input(Calculator.View.eight.value, true)";
-        Calculator.View.nine.onclick = "Calculator.input(Calculator.View.nine.value, true)";
-        Calculator.View.zero.onclick = "Calculator.input(Calculator.View.zero.value, true)";
-        Calculator.View.decimal.onclick = "Calculator.input(Calculator.View.decimal.value, true)";
+        Calc.View.one.onclick = "Calc.input(Calc.View.one.value, true)";
+        Calc.View.two.onclick = "Calc.input(Calc.View.two.value, true)";
+        Calc.View.three.onclick = "Calc.input(Calc.View.three.value, true)";
+        Calc.View.four.onclick = "Calc.input(Calc.View.four.value, true)";
+        Calc.View.five.onclick = "Calc.input(Calc.View.five.value, true)";
+        Calc.View.six.onclick = "Calc.input(Calc.View.six.value, true)";
+        Calc.View.seven.onclick = "Calc.input(Calc.View.seven.value, true)";
+        Calc.View.eight.onclick = "Calc.input(Calc.View.eight.value, true)";
+        Calc.View.nine.onclick = "Calc.input(Calc.View.nine.value, true)";
+        Calc.View.zero.onclick = "Calc.input(Calc.View.zero.value, true)";
+        Calc.View.decimal.onclick = "Calc.input(Calc.View.decimal.value, true)";
 
-        Calculator.View.add.onclick = "Calculator.input(Calculator.View.add.value, false)";
-        Calculator.View.subtract.onclick = "Calculator.input(Calculator.View.subtract.value, false)";
-        Calculator.View.multiply.onclick = "Calculator.input(Calculator.View.multiply.value, false)";
-        Calculator.View.divide.onclick = "Calculator.input(Calculator.View.divide.value, false)";
+        Calc.View.add.onclick = "Calc.input(Calc.View.add.value, false)";
+        Calc.View.subtract.onclick = "Calc.input(Calc.View.subtract.value, false)";
+        Calc.View.multiply.onclick = "Calc.input(Calc.View.multiply.value, false)";
+        Calc.View.divide.onclick = "Calc.input(Calc.View.divide.value, false)";
 
-        Calculator.View.equal.onclick = "Calculator.evaluateInput()";
-        Calculator.View.clearScreen.onclick = "Calculator.clearScreenOp()";
-        Calculator.View.clearMem.onclick = "Calculator.clearMemory()";
-        Calculator.View.readMem.onclick = "Calculator.readMemory()";
-        Calculator.View.addToMem.onclick = "Calculator.addToMemory()";
-        Calculator.View.subFromMem.onclick = "Calculator.subtractFromMemory()";
+        Calc.View.equal.onclick = "Calc.evaluateInput()";
+        Calc.View.clearScreen.onclick = "Calc.clearScreenOp()";
+        Calc.View.clearMem.onclick = "Calc.clearMemory()";
+        Calc.View.readMem.onclick = "Calc.readMemory()";
+        Calc.View.addToMem.onclick = "Calc.addToMemory()";
+        Calc.View.subFromMem.onclick = "Calc.subtractFromMemory()";
     },
 
     input: function(value, isNum) {
         isNum = (typeof isNum !== 'undefined') ? isNum : false;
         if (!isNum) {
-            document.getElementById(Calculator.View.screen.id).innerHTML = '';
-            Calculator.Model.lastOperation = value;
-            Calculator.Model.lastValue = '';
-        } else if(Calculator.Model.justEvaluated){
-            Calculator.Model.justEvaluated = false;
-            document.getElementById(Calculator.View.screen.id).innerHTML = value;
-            Calculator.Model.lastValue = '' + value;
+            document.getElementById(Calc.View.screen.id).innerHTML = '';
+            Calc.Model.lastOperation = value;
+            Calc.Model.lastValue = '';
+        } else if(Calc.Model.justEvaluated){
+            Calc.Model.justEvaluated = false;
+            document.getElementById(Calc.View.screen.id).innerHTML = value;
+            Calc.Model.lastValue = '' + value;
         }else {
-            document.getElementById(Calculator.View.screen.id).innerHTML += value;
-            Calculator.Model.lastValue += value;
+            document.getElementById(Calc.View.screen.id).innerHTML += value;
+            Calc.Model.lastValue += value;
         }
-        Calculator.Model.currentInput += value;
+        Calc.Model.currentInput += value;
     },
 
     evaluateInput: function(){
-        if(Calculator.Model.justEvaluated) {
-            Calculator.Model.currentInput = Calculator.Model.lastResult + Calculator.Model.lastOperation + Calculator.Model.lastValue;
+        if(Calc.Model.justEvaluated) {
+            Calc.Model.currentInput = Calc.Model.lastResult + Calc.Model.lastOperation + Calc.Model.lastValue;
         }
-        Calculator.Model.lastResult = eval(Calculator.Model.currentInput);
-        document.getElementById(Calculator.View.screen.id).innerHTML = Calculator.Model.lastResult;
-        Calculator.Model.justEvaluated = true;
-        Calculator.Model.currentInput = '';
+        Calc.Model.lastResult = eval(Calc.Model.currentInput);
+        document.getElementById(Calc.View.screen.id).innerHTML = Calc.Model.lastResult;
+        Calc.Model.justEvaluated = true;
+        Calc.Model.currentInput = '';
     },
 
     clearScreenOp: function(){
-        document.getElementById(Calculator.View.screen.id).innerHTML = '';
-        if (!Calculator.Model.wasRead) {
-            Calculator.Model.currentInput = Calculator.Model.currentInput.substring(0, Calculator.Model.currentInput.length - Calculator.Model.lastValue.length);
-            Calculator.Model.lastValue = '';
-            Calculator.Model.justEvaluated = false;
+        document.getElementById(Calc.View.screen.id).innerHTML = '';
+        if (!Calc.Model.wasRead) {
+            Calc.Model.currentInput = Calc.Model.currentInput.substring(0, Calc.Model.currentInput.length - Calc.Model.lastValue.length);
+            Calc.Model.lastValue = '';
+            Calc.Model.justEvaluated = false;
         }
     },
 
     clearMemory: function(){
-        Calculator.Model.currentInput = '';
-        Calculator.Model.lastValue = '';
-        Calculator.Model.lastOperation = '';
-        Calculator.Model.lastResult = '';
-        Calculator.Model.justEvaluated = false;
+        Calc.Model.currentInput = '';
+        Calc.Model.lastValue = '';
+        Calc.Model.lastOperation = '';
+        Calc.Model.lastResult = '';
+        Calc.Model.justEvaluated = false;
     },
 
     readMemory: function(){
-        document.getElementById(Calculator.View.screen.id).innerHTML = Calculator.Model.currentInput;
-        Calculator.Model.wasRead = true;
+        document.getElementById(Calc.View.screen.id).innerHTML = Calc.Model.currentInput;
+        Calc.Model.wasRead = true;
     },
 
     addToMemory: function(){
-        Calculator.Model.currentInput += document.getElementById(Calculator.View.screen.id).innerHTML;
-        Calculator.Model.justEvaluated = false;
+        Calc.Model.currentInput += document.getElementById(Calc.View.screen.id).innerHTML;
+        Calc.Model.justEvaluated = false;
     },
 
     subtractFromMemory: function(){
-        Calculator.Model.currentInput.replace(document.getElementById(Calculator.View.screen.id).innerHTML, '');
-        Calculator.Model.justEvaluated = false;
+        Calc.Model.currentInput.replace(document.getElementById(Calc.View.screen.id).innerHTML, '');
+        Calc.Model.justEvaluated = false;
     }
 
 };

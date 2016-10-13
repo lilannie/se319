@@ -1,0 +1,33 @@
+<html>
+<head>
+<script>
+
+// WAYS OF CREATING OBJECTS ---
+// Here is another way. One problem of this method is that the
+// instanceof operator does not work.
+// TODO: Understand why this pattern for creating objects does not work.
+// wait but you can though....
+
+// -----------------
+// Factory pattern
+// -----------------
+function createStudent(name) {
+  var o = new Object();
+  o.name = name;
+  o.foo = function() { console.log("hi");};
+  return o;
+}
+
+var obj3 = createStudent('Tom');
+var obj31 = createStudent('Bob');
+console.log(JSON.stringify(obj3));
+    obj3.foo();
+console.log(JSON.stringify(obj31));
+    obj31.foo();
+    console.log(obj31 instanceof Object);
+
+</script>
+</head>
+<body>
+</body>
+</html>

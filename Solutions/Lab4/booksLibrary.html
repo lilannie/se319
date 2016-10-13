@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="css/library.css">
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="js/booksLibrary.js"></script>
+</head>
+<body>
+<div id="login">
+    <label for="usernameInput">User Name:</label>
+    <input id="usernameInput" type="text" name="username" value="">
+    <label for="passwordInput">Password:</label>
+    <input id="passwordInput" type="password" name="password" value="">
+    <button id="loginButton" onclick="new Library()">Login</button>
+</div>
+<div id="view" hidden>
+
+</div>
+<div id="info" hidden>
+    <div id="info-content"></div>
+    <button id=closeInfo" onclick="closeInfo()"> Close</button>
+</div>
+<div id="addBookForm" hidden>
+    <label for="typeInput">Type: </label>
+    <select id="typeInput" name="type">
+        <option value="B" selected>Book</option>
+        <option value="R">Reference</option>
+    </select>
+    <label for="idInput">ID: </label>
+    <input id="idInput" type="text" name="id">
+    <div id="bookAdd"></div>
+</div>
+<script>
+    function closeInfo(){
+        $('#info').slideUp();
+        $('#info-content').html('');
+    }
+</script>
+</body>
+</html>
