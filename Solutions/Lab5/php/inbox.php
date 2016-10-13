@@ -9,7 +9,7 @@ $renderHelper = new renderHelper();
 <script type="text/javascript" src="/js/message.js"></script>
 
 <?php
-$file = fopen("../database/test.txt","r");
+$file = fopen("../database/users.txt","r");
 $users=[];
 while (! feof($file))
 {

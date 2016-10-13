@@ -14,7 +14,7 @@ if (isset($_POST['isSignUp']) && isset($_POST['username']) && isset($_POST['pass
     {
 
         //create new user (format-- username:password:public_key:private_key)
-        file_put_contents('../database/test.txt', $username.':'.$password."\r\n", FILE_APPEND);
+        file_put_contents('../database/users.txt', $username.':'.$password."\r\n", FILE_APPEND);
         //"Login" by setting session username and password
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
@@ -24,7 +24,7 @@ if (isset($_POST['isSignUp']) && isset($_POST['username']) && isset($_POST['pass
     else
     {
         //loop through users in ../database/users.txt
-        $file = fopen("../database/test.txt","r");
+        $file = fopen("../database/users.txt","r");
         while (! feof($file))
         {
             $line = explode(":",trim(fgets($file)));
