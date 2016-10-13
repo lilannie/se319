@@ -1,1 +1,1 @@
-[{"id":1,"to":"zach","content":"hi","from":"user","date":"10\/13\/2016"}]
+[{"id":1,"to":"zach","content":"hi","from":"user","date":"10\/13\/2016"},{"id":2,"to":"zach","content":"i love you","from":"tommy","date":"10\/13\/2016"}]

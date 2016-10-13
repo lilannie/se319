@@ -44,7 +44,7 @@ HTML;
     public function renderNav($loggedIn,$user){
         $loginSignUp = "
                 <li><a href=\"/signup.php\">Sign up</a></li>
-                <li><button class=\"btn btn-primary navbar-btn\" onclick=\""."window.location='/php/login.php'\""."><i class=\"fa fa-sign-in\"></i> Log in</button></li>"
+                <li><button class=\"btn btn-primary navbar-btn\" onclick=\""."window.location='/login.php'\""."><i class=\"fa fa-sign-in\"></i> Log in</button></li>"
                 ;
         $logout = "
                 <li><p class=\"navbar-text\">Hello, ".$user."</p></li>

@@ -83,6 +83,13 @@ function getPosts(){
                         deleteButton.onclick = deletePost(response.data.posts[i]);
                         title.appendChild(deleteButton);
                     }
+                    var likeButton = document.createElement('button');
+                    likeButton.className = 'btn btn-primary btn-xs editPostButton';
+                    likeButton.innerHTML = '<i class="fa fa-thumbs-up"></i> '+'<span id="'+response.data.posts[i].id+'likes">'+response.data.posts[i].likes.length+'</span>';
+                    likeButton.style.marginLeft = '10px';
+                    likeButton.style.float = 'right';
+                    likeButton.onclick = likePost(response.data.posts[i]);
+                    title.appendChild(likeButton);
                     heading.appendChild(title);
                     post.appendChild(heading);
 
@@ -127,7 +134,24 @@ function deletePost(post){
             dataType: 'json',
             success: function (response, status, xhr) {
                 console.log(response);
-                getPosts();
+                $('#'+post.id).remove();
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+            }
+        });
+    }
+}
+function likePost(post){
+    return function(){
+        $.ajax({
+            url: '/php/updatePosts.php',
+            method: 'POST',
+            data: {id: post.id, like:true},
+            dataType: 'json',
+            success: function (response, status, xhr) {
+                console.log(response);
+                $('#'+post.id+'likes').html(response.data.likes);
             },
             error: function (xhr, status, error) {
                 console.log(xhr);
@@ -176,6 +200,22 @@ function saveEdit(id){
                     editButton.style.marginLeft = '10px';
                     editButton.onclick = editHandler(response.data.post);
                     title.appendChild(editButton);
+                    if (response.data.user == 'admin')
+                    {
+                        var deleteButton = document.createElement('button');
+                        deleteButton.className = 'btn btn-danger btn-xs editPostButton';
+                        deleteButton.innerHTML = '<i class="fa fa-times"></i> Delete';
+                        deleteButton.style.marginLeft = '10px';
+                        deleteButton.onclick = deletePost(response.data.post);
+                        title.appendChild(deleteButton);
+                    }
+                    var likeButton = document.createElement('button');
+                    likeButton.className = 'btn btn-danger btn-xs editPostButton';
+                    likeButton.innerHTML = '<i class="fa fa-thumbs-up"></i> '+'<span id="'+response.data.posts[i].id+'likes">'+response.data.posts[i].likes.length+'</span>';
+                    likeButton.style.marginLeft = '10px';
+                    likeButton.style.float = 'right';
+                    likeButton.onclick = likePost(response.data.post);
+                    title.appendChild(likeButton);
                     heading.appendChild(title);
                     post.appendChild(heading);
 
