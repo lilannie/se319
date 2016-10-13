@@ -7,6 +7,7 @@ $renderHelper = new renderHelper();
 <?= $renderHelper->renderPageStart() ?>
 <?= $renderHelper->renderNav(isset($_SESSION['logged_in']) ? $_SESSION['logged_in']:false, isset($_SESSION['username']) ? $_SESSION['username']:'Anon') ?>
 <?= $renderHelper->renderContentStart() ?>
+<script type="text/javascript" src="/js/posts.js"></script>
 <div>
     <div class="form-group">
 <!--        <label for="postTitle">Title</label>-->

@@ -19,9 +19,6 @@ class renderHelper {
     <link rel="stylesheet" href="/lib/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/stylesheet.css">
     <link rel="icon" href="/lib/favicon-html5.ico">
-    <script type="text/javascript" src="/js/signup.js"></script>
-    <script type="text/javascript" src="/js/login.js"></script>
-    <script type="text/javascript" src="/js/posts.js"></script>
 </head>
 <body>
 HTML;
@@ -54,6 +51,8 @@ HTML;
                 <li><button class=\"btn btn-danger navbar-btn\" onclick=\""."window.location='/php/logout.php'\""."><i class=\"fa fa-sign-out\"></i> Log out</button></li>";
         $actions = $loggedIn ? $logout : $loginSignUp;
 
+        $inbox = $loggedIn ? "<li><a href=\"/php/inbox.php\"><i class=\"fa fa-inbox\"></i> Inbox</a></li>":'';
+
         return <<<HTML
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -66,6 +65,9 @@ HTML;
             <a class="navbar-brand" href="/index.php">Dat App</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                {$inbox}
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 {$actions}
             </ul>
@@ -77,10 +79,10 @@ HTML;
     }
 
 
-    public function renderPost($author, $content, $date){
+    public function renderMessage($sender, $content, $date){
         return <<<HTML
 <div class="panel panel-default">
-    <div class="panel-heading"><h3 class="panel-title">{$author}</h3> said</div>
+    <div class="panel-heading"><h3 class="panel-title">{$sender} said</h3></div>
     <div class="panel-body">
         {$content}
     </div>

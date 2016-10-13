@@ -7,6 +7,7 @@ $renderHelper = new renderHelper();
 <?= $renderHelper->renderPageStart() ?>
 <?= $renderHelper->renderNav(isset($_SESSION['logged_in']) ? $_SESSION['logged_in']:false, isset($_SESSION['username']) ? $_SESSION['username']:'Anon') ?>
 <?= $renderHelper->renderContentStart() ?>
+<script type="text/javascript" src="/js/signup.js"></script>
 
 <h2>Create Account</h2>
 <div id="signupError" class="alert alert-danger" hidden="hidden">
