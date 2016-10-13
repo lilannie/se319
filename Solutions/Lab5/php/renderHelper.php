@@ -2,13 +2,17 @@
 
 class renderHelper {
 
+    public function __construct()
+    {
+    }
+
     public function renderPageStart(){
         return <<<HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Dat App</title>
     <script type="text/javascript" src="/lib/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/lib/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
@@ -18,26 +22,37 @@ class renderHelper {
     <script type="text/javascript" src="/js/signup.js"></script>
     <script type="text/javascript" src="/js/login.js"></script>
 </head>
-HTML;
-    }
-
-    public function renderBodyStart(){
-        return <<<HTML
 <body>
 HTML;
     }
-    public function renderBodyEnd(){
+
+    public function renderContentStart(){
         return <<<HTML
-</body>
+<div class="container">
+HTML;
+    }
+    public function renderContentEnd(){
+        return <<<HTML
+</div>
 HTML;
     }
     public function renderPageEnd(){
         return <<<HTML
+</body>
 </html>
 HTML;
     }
 
-    public function renderNav(){
+    public function renderNav($loggedIn,$user){
+        $loginSignUp = '
+                <li><a href="/login.php">Log in</a></li>
+                <li><a href="/signup.php">Sign up</a></li>
+         ';
+        $logout = "
+                <li><p class=\"navbar-text\">Hello, ".$user."</p></li>
+                <li><button class=\"btn btn-danger navbar-btn\" onclick=\""."window.location='/php/logout.php'\"".">Log out</button></li>";
+        $actions = $loggedIn ? $logout : $loginSignUp;
+
         return <<<HTML
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -51,9 +66,7 @@ HTML;
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login.php">Log in</a></li>
-                <li><a href="/signup.php">Sign up</a></li>
-                <li><a href="/login.php">Log out</a></li>
+                {$actions}
             </ul>
         </div>
     </div>

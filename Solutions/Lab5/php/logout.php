@@ -1,5 +1,6 @@
 <?php
+session_start();
 
 session_destroy();
 
-//redirect to ../login.html
+header('Location: /login.php');

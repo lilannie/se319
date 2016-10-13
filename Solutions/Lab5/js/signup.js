@@ -3,7 +3,7 @@ $(document).ready(function(){
         var data = {
             username: $('#username').val(),
             password: $('#password').val(),
-            signnup: true
+            isSignUp: true
         };
         $.ajax({
             url: '/php/checkLogin.php',
@@ -12,6 +12,11 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (response, status, xhr) {
                 console.log(response);
+                var form = document.createElement('form');
+                document.body.appendChild(form);
+                form.method='POST';
+                form.action='/php/checkLogin.php';
+                form.submit();
             },
             error: function (xhr, status, error) {
                 console.log(error);
