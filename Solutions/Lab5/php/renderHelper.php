@@ -21,6 +21,7 @@ class renderHelper {
     <link rel="icon" href="/lib/favicon-html5.ico">
     <script type="text/javascript" src="/js/signup.js"></script>
     <script type="text/javascript" src="/js/login.js"></script>
+    <script type="text/javascript" src="/js/posts.js"></script>
 </head>
 <body>
 HTML;
@@ -44,13 +45,13 @@ HTML;
     }
 
     public function renderNav($loggedIn,$user){
-        $loginSignUp = '
-                <li><a href="/login.php">Log in</a></li>
-                <li><a href="/signup.php">Sign up</a></li>
-         ';
+        $loginSignUp = "
+                <li><a href=\"/signup.php\">Sign up</a></li>
+                <li><button class=\"btn btn-primary navbar-btn\" onclick=\""."window.location='/php/login.php'\""."><i class=\"fa fa-sign-in\"></i> Log in</button></li>"
+                ;
         $logout = "
                 <li><p class=\"navbar-text\">Hello, ".$user."</p></li>
-                <li><button class=\"btn btn-danger navbar-btn\" onclick=\""."window.location='/php/logout.php'\"".">Log out</button></li>";
+                <li><button class=\"btn btn-danger navbar-btn\" onclick=\""."window.location='/php/logout.php'\""."><i class=\"fa fa-sign-out\"></i> Log out</button></li>";
         $actions = $loggedIn ? $logout : $loginSignUp;
 
         return <<<HTML
