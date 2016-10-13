@@ -1,1 +1,1 @@
-[{"id":0,"title":"Initial Commit","content":"This is the first post of the new database","author":"zach","date":"10\/13\/2016"}]
+[{"id":1,"title":"test","content":"test","author":"zach","date":"10\/13\/2016"},{"id":"2","title":"test","content":"test1=1","author":"zach","date":"10\/13\/2016"}]

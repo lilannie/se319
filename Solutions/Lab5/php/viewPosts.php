@@ -24,5 +24,30 @@ $renderHelper = new renderHelper();
     <strong>Error:</strong> Posts did not load properly. <a href="#" onclick="getPosts()">Try again?</a>
 </div>
 
+<div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Post</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editPostTitle">Title</label>
+                    <input id="editPostTitle" name="editPostTitle" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editPostContent">Post</label>
+                    <input id="editPostContent" name="editPostContent" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="editPostSubmit" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?= $renderHelper->renderContentEnd() ?>
 <?= $renderHelper->renderPageEnd() ?>
