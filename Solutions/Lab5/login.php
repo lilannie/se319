@@ -9,10 +9,13 @@ $renderHelper = new renderHelper();
 <?= $renderHelper->renderContentStart() ?>
 
 <h2>Log In</h2>
+<div id="loginError" class="alert alert-danger" hidden="hidden">
+    <strong>Login failed:</strong> Incorrect username or password. <a href="/signup.php">Create new account?</a>
+</div>
 <div>
     <div class="form-group">
         <label for="username">Username:</label>
-        <input id="username" name="username" type="text" class="form-control">
+        <input id="username" name="username" type="text" class="form-control" autofocus>
     </div>
     <div class="form-group">
         <label for="password">Password:</label>

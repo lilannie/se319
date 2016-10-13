@@ -9,10 +9,13 @@ $renderHelper = new renderHelper();
 <?= $renderHelper->renderContentStart() ?>
 
 <h2>Create Account</h2>
+<div id="signupError" class="alert alert-danger" hidden="hidden">
+    <strong>Sorry:</strong> That username is already taken. <a href="login.php">Log in?</a>
+</div>
 <div>
     <div class="form-group">
         <label for="username">Username:</label>
-        <input id="username" name="username" type="text" class="form-control">
+        <input id="username" name="username" type="text" class="form-control" autofocus>
     </div>
     <div class="form-group">
         <label for="password">Password:</label>
