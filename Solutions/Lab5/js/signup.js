@@ -17,7 +17,7 @@ $(document).ready(function(){
                         var form = document.createElement('form');
                         document.body.appendChild(form);
                         form.method = 'POST';
-                        form.action = '/php/checkLogin.php';
+                        form.action = '/php/viewPosts.php';
                         form.submit();
                     }
                     else
