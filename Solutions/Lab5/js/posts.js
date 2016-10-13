@@ -63,7 +63,7 @@ function getPosts(){
                     var title = document.createElement('h3');
                     title.className = 'panel-title';
                     title.innerHTML = '<span>'+response.data.posts[i].title+'</span>';
-                    if (response.data.user == response.data.posts[i].author)
+                    if (response.data.user == response.data.posts[i].author || response.data.user == 'admin')
                     {
                         var editButton = document.createElement('button');
                         editButton.className = 'btn btn-default btn-xs editPostButton';
@@ -73,6 +73,15 @@ function getPosts(){
                         editButton.style.marginLeft = '10px';
                         editButton.onclick = editHandler(response.data.posts[i]);
                         title.appendChild(editButton);
+                    }
+                    if (response.data.user == 'admin')
+                    {
+                        var deleteButton = document.createElement('button');
+                        deleteButton.className = 'btn btn-danger btn-xs editPostButton';
+                        deleteButton.innerHTML = '<i class="fa fa-times"></i> Delete';
+                        deleteButton.style.marginLeft = '10px';
+                        deleteButton.onclick = deletePost(response.data.posts[i]);
+                        title.appendChild(deleteButton);
                     }
                     heading.appendChild(title);
                     post.appendChild(heading);
@@ -107,6 +116,23 @@ function editHandler(post){
         $('#editPostTitle').val(post.title);
         $('#editPostContent').val(post.content);
         $('#editPostSubmit').click(saveEdit(post.id));
+    }
+}
+function deletePost(post){
+    return function(){
+        $.ajax({
+            url: '/php/updatePosts.php',
+            method: 'POST',
+            data: {id: post.id, delete:true},
+            dataType: 'json',
+            success: function (response, status, xhr) {
+                console.log(response);
+                getPosts();
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+            }
+        });
     }
 }
 

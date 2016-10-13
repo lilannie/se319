@@ -68,6 +68,27 @@ function updatePost()
         ]
     ]);
 }
+function deletePost()
+{
+    $file = file_get_contents('../database/posts.txt');
+    $posts = json_decode($file, true);
+    $returnPosts = [];
+    foreach ($posts as $post){
+        if ($post['id'] != $_POST['id'])
+        {
+            $returnPosts[] = $post;
+        }
+    }
+    file_put_contents('../database/posts.txt',json_encode($returnPosts));
+
+    header('Content-Type: application/json');
+    echo json_encode([
+        'data' => [
+            'error' => 'success',
+            'posts' => $returnPosts,
+        ]
+    ]);
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'GET')
 {
@@ -77,9 +98,13 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['id']))
 {
     createPost();
 }
-elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']))
+elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']) && isset($_POST['title']) && isset($_POST['content']))
 {
     updatePost();
+}
+elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']) && isset($_POST['delete']))
+{
+    deletePost();
 }
 else
 {
