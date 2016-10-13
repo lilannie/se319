@@ -1,14 +1,1 @@
-[
-{
-"title":"Test",
-"author":"testauth",
-"content":"Test post. Pls ignore.",
-"date":"10/12/2016"
-},
-{
-"title":"Test",
-"author":"testauth",
-"content":"Another test post. Pls keep ignoring.",
-"date":"10/12/2016"
-}
-]
+[{"id":0,"title":"Initial Commit","content":"This is the first post of the new database","author":"zach","date":"10\/13\/2016"}]
