@@ -1,1 +1,1 @@
-[{"id":1,"title":"Hello","content":"Hello World","author":"zach","likes":["user"],"date":"10\/14\/2016"}]
+[{"id":1,"title":"Hello","content":"Hello World","author":"zach","likes":["user","zach","morgan"],"date":"10\/14\/2016"},{"id":2,"title":"schwattup","content":"what up mah dudes","author":"zach","likes":["zach","morgan"],"date":"10\/14\/2016"}]
