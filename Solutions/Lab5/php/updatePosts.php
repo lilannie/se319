@@ -5,6 +5,7 @@ function getPosts()
 {
     $file = file_get_contents('../database/posts.txt');
     $posts = json_decode($file,true);
+    $posts = $posts ? $posts : [];
 
     header('Content-Type: application/json');
     echo json_encode([
@@ -19,6 +20,7 @@ function createPost()
 {
     $file = file_get_contents('../database/posts.txt');
     $posts = json_decode($file, true);
+    $posts = $posts ? $posts : [];
     $id = 0;
     foreach ($posts as $post){
         $id = $post['id'];
@@ -28,6 +30,7 @@ function createPost()
         'title' => $_POST['title'],
         'content' => $_POST['content'],
         'author' => $_SESSION['username'],
+        'likes' => [],
         'date' => date('n/d/Y'),
     ];
     file_put_contents('../database/posts.txt',json_encode($posts));
@@ -44,6 +47,7 @@ function updatePost()
 {
     $file = file_get_contents('../database/posts.txt');
     $posts = json_decode($file, true);
+    $posts = $posts ? $posts : [];
     $returnPost = null;
     foreach ($posts as $key => $post){
         if ($post['id'] == $_POST['id'])
@@ -53,6 +57,7 @@ function updatePost()
                 'title' => $_POST['title'],
                 'content' => $_POST['content'],
                 'author' => $_SESSION['username'],
+                'likes' => $post['likes'],
                 'date' => date('n/d/Y'),
             ];
             $posts[$key] = $returnPost;
@@ -72,6 +77,7 @@ function deletePost()
 {
     $file = file_get_contents('../database/posts.txt');
     $posts = json_decode($file, true);
+    $posts = $posts ? $posts : [];
     $returnPosts = [];
     foreach ($posts as $post){
         if ($post['id'] != $_POST['id'])
@@ -86,6 +92,37 @@ function deletePost()
         'data' => [
             'error' => 'success',
             'posts' => $returnPosts,
+        ]
+    ]);
+}
+function likePost()
+{
+    $file = file_get_contents('../database/posts.txt');
+    $posts = json_decode($file, true);
+    $posts = $posts ? $posts : [];
+    $returnPosts = [];
+    $likes = 0;
+    foreach ($posts as $post){
+        if ($post['id'] == $_POST['id']) {
+            if (!in_array($_SESSION['username'], $post['likes']))
+            {
+                $post['likes'][] = $_SESSION['username'];
+            }
+            else
+            {
+                array_splice($post['likes'], array_search($_SESSION['username'], $post['likes']));
+            }
+            $likes = count($post['likes']);
+        }
+        $returnPosts[] = $post;
+    }
+    file_put_contents('../database/posts.txt',json_encode($returnPosts));
+
+    header('Content-Type: application/json');
+    echo json_encode([
+        'data' => [
+            'error' => 'success',
+            'likes' => $likes,
         ]
     ]);
 }
@@ -105,6 +142,10 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']) && isset($_P
 elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']) && isset($_POST['delete']))
 {
     deletePost();
+}
+elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']) && isset($_POST['like']))
+{
+    likePost();
 }
 else
 {

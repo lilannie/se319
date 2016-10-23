@@ -23,7 +23,7 @@ fclose($file);
     <div class="form-group">
         <label for="messageTo">To:</label>
         <select id="messageTo" name="messageTo" class="form-control">
-            <option value="" selected></option>
+            <option value="" selected>Select a user</option>
             <?php foreach ($users as $user): ?>
                 <option value="<?= $user ?>"><?= $user ?></option>
             <?php endforeach; ?>
