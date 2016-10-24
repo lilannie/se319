@@ -12,18 +12,35 @@ class renderHelper {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dat App</title>
-    <script type="text/javascript" src="/lib/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="/lib/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/lib/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/stylesheet.css">
-    <link rel="icon" href="/lib/favicon-html5.ico">
+    <title>Lab 6</title>
+    <script type="text/javascript" src="../lib/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="icon" href="../lib/favicon-html5.ico">
 </head>
 <body>
 HTML;
     }
 
+    public function renderIndexPageStart() {
+        return <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6</title>
+    <script type="text/javascript" src="./lib/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./lib/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="icon" href="./lib/favicon-html5.ico">
+</head>
+<body>
+HTML;
+    }
     public function renderContentStart(){
         return <<<HTML
 <div class="container">
@@ -62,7 +79,7 @@ HTML;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="/index.php">Dat App</a>
+            <a class="navbar-brand" href="/index.php">Lab 6</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
@@ -76,18 +93,5 @@ HTML;
 </nav>
 HTML;
 
-    }
-
-
-    public function renderMessage($sender, $content, $date){
-        return <<<HTML
-<div class="panel panel-default">
-    <div class="panel-heading"><h3 class="panel-title">{$sender} said</h3></div>
-    <div class="panel-body">
-        {$content}
-    </div>
-    <div class="panel-footer">{$date}</div>
-</div>
-HTML;
     }
 }
