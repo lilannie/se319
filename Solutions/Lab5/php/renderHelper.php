@@ -80,6 +80,8 @@ HTML;
 
 
     public function renderMessage($sender, $content, $date){
+        $content = rsa_decrypt($content, $private_key);
+
         return <<<HTML
 <div class="panel panel-default">
     <div class="panel-heading"><h3 class="panel-title">{$sender} said</h3></div>
@@ -90,4 +92,30 @@ HTML;
 </div>
 HTML;
     }
+
+$path = 'phpseclib';
+    set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+    include_once('Crypt/RSA.php');
+
+//Function for decrypting with RSA 
+function rsa_decrypt($string, $private_key)
+{
+    //Create an instance of the RSA cypher and load the key into it
+    $cipher = new Crypt_RSA();
+    $cipher->loadKey($private_key);
+    //Set the encryption mode
+    $cipher->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
+    //Return the decrypted version
+    return $cipher->decrypt($string);
+}
+
+$rsa = new Crypt_RSA();
+    $rsa->setPrivateKeyFormat(CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
+    $rsa->setPublicKeyFormat(CRYPT_RSA_PUBLIC_FORMAT_PKCS1);
+    extract($rsa->createKey(1024)); /// makes $publickey and $privatekey available
+
+//Private key
+private $private_key = $privatekey;
+// Public key
+public $public_key = $publickey;
 }
