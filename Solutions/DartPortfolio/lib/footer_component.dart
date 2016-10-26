@@ -1,9 +1,8 @@
 import 'package:angular2/core.dart';
 @Component(
-    selector: 'custom-footer',
+    selector: 'app-footer',
     template:
     '''
-<footer class="android-footer mdl-mega-footer">
 		  <div class="mdl-mega-footer--top-section">
         <div class="mdl-mega-footer--left-section">
           <button class="mdl-mega-footer--social-btn"></button>
@@ -49,7 +48,5 @@ import 'package:angular2/core.dart';
         <a class="android-link mdl-typography--font-light" href="">Blog</a>
         <a class="android-link mdl-typography--font-light" href="">Privacy Policy</a>
 		  </div>
-
-</footer>
 ''')
 class FooterComponent {}

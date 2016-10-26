@@ -1,9 +1,8 @@
 import 'package:angular2/core.dart';
 @Component(
-    selector: 'content',
+    selector: 'app-content',
     template:
     '''
-<div class="android-content mdl-layout__content">
 		<a name="top"></a>
 		<div class="android-be-together-section mdl-typography--text-center">
 
@@ -159,6 +158,5 @@ import 'package:angular2/core.dart';
 			</div>
 		  </div>
     </div>
-</div>
 ''')
 class ContentComponent {}

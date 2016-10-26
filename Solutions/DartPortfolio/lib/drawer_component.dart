@@ -1,9 +1,8 @@
 import 'package:angular2/core.dart';
 @Component(
-selector: 'drawer',
+selector: 'app-drawer',
 template:
 '''
-<div class="android-drawer mdl-layout__drawer">
 		<span class="mdl-layout-title">
 		  <img class="android-logo-image" src="images/android-logo-white.png">
 		</span>
@@ -32,6 +31,5 @@ template:
 		  <a class="mdl-navigation__link" href="">Android Open Source Project</a>
 		  <a class="mdl-navigation__link" href="">Android SDK</a>
 		</nav>
-</div>
 ''')
 class DrawerComponent {}

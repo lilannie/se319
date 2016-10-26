@@ -1,8 +1,7 @@
 import 'package:angular2/core.dart';
 @Component(
-    selector: 'navbar',
+    selector: 'app-navbar',
     template: '''
-<div class="android-header mdl-layout__header mdl-layout__header--waterfall">
 		<div class="mdl-layout__header-row">
 		  <span class="android-title mdl-layout-title">
 			  <img class="android-logo-image" src="images/android-logo.png">
@@ -42,6 +41,5 @@ import 'package:angular2/core.dart';
 			<li class="mdl-menu__item">Android History</li>
 		  </ul>
 		</div>
-</div>
     ''')
 class NavbarComponent {}

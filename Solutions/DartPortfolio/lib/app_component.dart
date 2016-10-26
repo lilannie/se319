@@ -6,13 +6,15 @@ import 'package:angular2_quickstart/footer_component.dart';
 @Component(
     selector: 'my-app',
     template: '''
-    <navbar></navbar>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <app-navbar class="android-header mdl-layout__header mdl-layout__header--waterfall"></app-navbar>
 
-    <drawer></drawer>
+    <app-drawer class="android-drawer mdl-layout__drawer"></app-drawer>
 
-    <content></content>
+    <app-content class="android-content mdl-layout__content"></app-content>
 
-    <custom-footer></custom-footer>
+    <app-footer class="android-footer mdl-mega-footer"></app-footer>
+  </div>
     ''',
     directives: const [NavbarComponent,DrawerComponent,ContentComponent,FooterComponent])
 class AppComponent {}
