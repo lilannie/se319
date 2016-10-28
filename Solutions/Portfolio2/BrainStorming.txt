@@ -1,0 +1,28 @@
+Form - Active
+- interests
+- hobbies
+- major
+- hometown
+
+Form - PNM
+- GPA
+- activities
+- service
+- honors
+
+4-7 matched loosely
+
+2 bumps
+
+4 locations
+
+basically speed dating
+
+
+
+TECHNOLOGIES
+- Angular
+- JQuery
+- PHP
+- ZF2? Laravel? That one other one?
+- Bootstrap, duh.

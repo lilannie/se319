@@ -1,5 +1,5 @@
-name: angular2_quickstart
-description: QuickStart
+name: dart_portfolio
+description: Portfolio
 version: 0.0.1
 environment:
   sdk: '>=1.19.0 <2.0.0'
