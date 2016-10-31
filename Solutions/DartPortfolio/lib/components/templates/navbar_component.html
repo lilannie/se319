@@ -15,7 +15,7 @@
     <!-- Navigation -->
     <div class="android-navigation-container">
         <nav class="android-navigation mdl-navigation">
-            <a class="mdl-navigation__link mdl-typography--text-uppercase"  *ngFor="let link of navLinks" href="">{{link}}</a>
+            <a class="mdl-navigation__link mdl-typography--text-uppercase"  *ngFor="let link of navLinks" href="{{link.href}}">{{link.label}}</a>
         </nav>
     </div>
     <span class="android-mobile-title mdl-layout-title">

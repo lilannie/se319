@@ -1,6 +1,7 @@
 
 import 'package:angular2/core.dart';
 
+import 'package:dart_portfolio/Link.dart';
 import 'package:dart_portfolio/services/menu_service.dart';
 @Component(
     selector: 'app-navbar',
@@ -12,8 +13,8 @@ class NavbarComponent implements OnInit{
   NavbarComponent(this._menuService);
 
 
-  List<String> navLinks = [];
-  List<String> menuItems = [];
+  List<Link> navLinks = [];
+  List<Link> menuItems = [];
 
 
   void ngOnInit(){
