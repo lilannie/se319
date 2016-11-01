@@ -2,13 +2,20 @@ import 'package:angular2/core.dart';
 
 import 'package:dart_portfolio/entities/ActiveMember.dart';
 
+import 'package:dart_portfolio/services/active_service.dart';
+
 @Component(
     selector: 'app-active-form',
-    templateUrl: 'templates/active_form_component.html')
-class ActiveFormComponent {
+    templateUrl: 'templates/active_form_component.html',
+    providers: const [ActiveService])
+class ActiveFormComponent implements OnInit{
+
+  final ActiveService _activeService;
+  ActiveFormComponent(this._activeService);
+
   List<ActiveMember> activeList = [];
 
-  ActiveMember form_active = new ActiveMember();
+  ActiveMember form_active = new ActiveMember(0, '', '', '', 0, '', '', '', false, [], [], [], [], []);
   String form_major = '';
   String form_minor = '';
   String form_hs_activity = '';
@@ -48,5 +55,9 @@ class ActiveFormComponent {
 
   void submitActiveMember(){
 
+  }
+
+  void ngOnInit(){
+    activeList = _activeService.getActives();
   }
 }

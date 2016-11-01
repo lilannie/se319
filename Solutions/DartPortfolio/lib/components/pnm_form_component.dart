@@ -2,14 +2,20 @@ import 'package:angular2/core.dart';
 
 import 'package:dart_portfolio/entities/PNM.dart';
 
+import 'package:dart_portfolio/services/pnm_service.dart';
+
 @Component(
     selector: 'app-pnm-form',
-    templateUrl: 'templates/pnm_form_component.html')
-class PnmFormComponent {
+    templateUrl: 'templates/pnm_form_component.html',
+    providers: const [PnmService])
+class PnmFormComponent implements OnInit {
 
-  List<PNM> activeList = [];
+  final PnmService _pnmService;
+  PnmFormComponent(this._pnmService);
 
-  PNM form_pnm = new PNM();
+  List<PNM> pnmList = [];
+
+  PNM form_pnm = new PNM(0, '', '', '', 0, '', '', '', 0.0, false, false, [], [], [], [], []);
   String form_major = '';
   String form_minor = '';
   String form_hs_activity = '';
@@ -49,5 +55,9 @@ class PnmFormComponent {
 
   void submitActiveMember(){
 
+  }
+
+  void ngOnInit(){
+    pnmList = _pnmService.getPnms();
   }
 }
