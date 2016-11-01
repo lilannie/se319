@@ -1,0 +1,75 @@
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__title">
+            <h4 class="mdl-card__title-text">Active Members</h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <ul class="mdl-list">
+                <li *ngFor="let member of activeList">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    {{member.firstName}} {{member.lastName}}
+                </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__title">
+            <h4 class="mdl-card__title-text">Create Active Member</h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form action="#">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="firstName" type="text" [(ngModel)]="form_active.firstName">
+                    <label class="mdl-textfield__label" for="firstName">First Name</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="lastName" type="text" [(ngModel)]="form_active.lastName">
+                    <label class="mdl-textfield__label" for="lastName">Last Name</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="phoneNumber" type="text" [(ngModel)]="form_active.phoneNumber">
+                    <label class="mdl-textfield__label" for="phoneNumber">Phone Number</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" [(ngModel)]="form_active.year">
+                    <label class="mdl-textfield__label" for="sample2">Year</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="hometownCity" type="text" [(ngModel)]="form_active.hometownCity">
+                    <label class="mdl-textfield__label" for="hometownCity">Hometown City</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="hometownState" type="text" [(ngModel)]="form_active.hometownState">
+                    <label class="mdl-textfield__label" for="hometownState">Hometown State</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="hometownHs" type="text" [(ngModel)]="form_active.hometownHs">
+                    <label class="mdl-textfield__label" for="hometownHs">Hometown High School</label>
+                </div>
+                <br>
+                <div>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="admin">
+                        <input type="checkbox" id="admin" class="mdl-checkbox__input" [(ngModel)]="form_active.admin">
+                        <span class="mdl-checkbox__label">Admin?</span>
+                    </label>
+                </div>
+            </form>
+        </div>
+
+        <div class="mdl-card__actions">
+            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                Create Active Member
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </div>
+    </div>
+</div>
