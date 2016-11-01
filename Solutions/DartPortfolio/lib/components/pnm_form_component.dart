@@ -53,8 +53,15 @@ class PnmFormComponent implements OnInit {
     this.form_interest = '';
   }
 
-  void submitActiveMember(){
-
+  void submitFormMember(){
+    _pnmService.addPnm(this.form_pnm);
+    //reset
+    form_pnm = new PNM(0, '', '', '', 0, '', '', '', 0.0, false, false, [], [], [], [], []);
+    form_major = '';
+    form_minor = '';
+    form_hs_activity = '';
+    form_univ_activity = '';
+    form_interest = '';
   }
 
   void ngOnInit(){

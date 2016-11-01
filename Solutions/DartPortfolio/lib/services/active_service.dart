@@ -19,4 +19,11 @@ class ActiveService {
   ];
 
   List<ActiveMember> getActives() => actives;
+
+  void addActive(ActiveMember newActive){
+    this.actives.add(newActive);
+  }
+  void removeActive(ActiveMember oldActive){
+    this.actives.remove(oldActive);
+  }
 }

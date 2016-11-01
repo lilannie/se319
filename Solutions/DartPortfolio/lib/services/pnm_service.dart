@@ -16,4 +16,11 @@ class PnmService {
   ];
 
   List<PNM> getPnms() => pnms;
+
+  void addPnm(PNM newPnm){
+    this.pnms.add(newPnm);
+  }
+  void removePnm(PNM oldPnm){
+    this.pnms.remove(oldPnm);
+  }
 }

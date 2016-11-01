@@ -53,8 +53,15 @@ class ActiveFormComponent implements OnInit{
     this.form_interest = '';
   }
 
-  void submitActiveMember(){
-
+  void submitFormMember(){
+    _activeService.addActive(this.form_active);
+    //reset
+    form_active = new ActiveMember(0, '', '', '', 0, '', '', '', false, [], [], [], [], []);
+    form_major = '';
+    form_minor = '';
+    form_hs_activity = '';
+    form_univ_activity = '';
+    form_interest = '';
   }
 
   void ngOnInit(){
