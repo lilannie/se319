@@ -65,6 +65,6 @@ class ActiveFormComponent implements OnInit{
   }
 
   void ngOnInit(){
-    activeList = _activeService.getActives();
+    //activeList = _activeService.getActives();
   }
 }

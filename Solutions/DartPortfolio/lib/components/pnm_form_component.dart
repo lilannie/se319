@@ -65,6 +65,6 @@ class PnmFormComponent implements OnInit {
   }
 
   void ngOnInit(){
-    pnmList = _pnmService.getPnms();
+    //pnmList = _pnmService.getPnms();
   }
 }
