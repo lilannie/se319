@@ -1,0 +1,68 @@
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__title">
+            <h4 class="mdl-card__title-text">Potential New Members</h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <ul class="mdl-list">
+                <li *ngFor="let member of pnmList">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">person</i>
+                        {{member.firstName}} {{member.lastName}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__title">
+            <h4 class="mdl-card__title-text">Create Potential New Member</h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form action="#">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="firstName" type="text" [(ngModel)]="form_pnm.firstName">
+                    <label class="mdl-textfield__label" for="firstName">First Name</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="lastName" type="text" [(ngModel)]="form_pnm.lastName">
+                    <label class="mdl-textfield__label" for="lastName">Last Name</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="phoneNumber" type="text" [(ngModel)]="form_pnm.phoneNumber">
+                    <label class="mdl-textfield__label" for="phoneNumber">Phone Number</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="number" id="sample2" [(ngModel)]="form_pnm.year">
+                    <label class="mdl-textfield__label" for="sample2">Year</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="hometownCity" type="text" [(ngModel)]="form_pnm.hometownCity">
+                    <label class="mdl-textfield__label" for="hometownCity">Hometown City</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="hometownState" type="text" [(ngModel)]="form_pnm.hometownState">
+                    <label class="mdl-textfield__label" for="hometownState">Hometown State</label>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" id="hometownHs" type="text" [(ngModel)]="form_pnm.hometownHs">
+                    <label class="mdl-textfield__label" for="hometownHs">Hometown High School</label>
+                </div>
+                <br>
+            </form>
+        </div>
+
+        <div class="mdl-card__actions">
+            <button class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" (click)="submitFormMember()">
+                Create Potential New Member
+                <i class="material-icons">chevron_right</i>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 <?php
 include_once('php/renderHelper.php');
+
 include_once('php/database.php');
 $database = new database();
 $database::init();
@@ -20,3 +21,4 @@ session_start();
 <?php endif; ?>
 <?= $renderHelper->renderContentEnd() ?>
 <?= $renderHelper->renderPageEnd() ?>
+
