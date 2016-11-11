@@ -15,7 +15,7 @@ class LoginFormComponent implements OnInit{
   bool authorized = false;
 
   void login(){
-    _authService.authorize(this.username, this.password);
+    this.authorized = _authService.authorize(this.username, this.password);
   }
 
   void ngOnInit(){

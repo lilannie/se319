@@ -26,6 +26,8 @@ window.onload =  function(event) {
 
     var formTextElements = document.getElementsByClassName('form-element-text');
     for(var i = 0; i < formTextElements.length; i++){
+        inputTextContentCheck(formTextElements[i].getElementsByTagName('input')[0]);
+        inputTextValidityCheck(formTextElements[i].getElementsByTagName('input')[0]);
         formTextElements[i].addEventListener('keyup',function(e){
             inputTextContentCheck(e.target);
             inputTextValidityCheck(e.target);
