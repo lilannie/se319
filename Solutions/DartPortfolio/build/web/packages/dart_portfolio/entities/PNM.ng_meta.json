@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "PNM": {
+      "class": "Identifier",
+      "name": "PNM",
+      "moduleUrl": "asset:dart_portfolio/lib/entities/PNM.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

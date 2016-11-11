@@ -1,0 +1,54 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "TestComponent"
+      }
+    ],
+    "6": "test_component.dart"
+  },
+  "type": {
+    "TestComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "app-test",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "TestComponent",
+        "moduleUrl": "asset:dart_portfolio/lib/components/test_component.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 2,
+        "template": "<a name=\"top\"></a>\r\n<div class=\"android-be-together-section mdl-typography--text-center\">\r\n\r\n    <div class=\"logo-font android-slogan\">be together. not the same.</div>\r\n    <div class=\"logo-font android-sub-slogan\">welcome to android... be yourself. do your thing. see what's going on.</div>\r\n    <div class=\"logo-font android-create-character\">\r\n        <a href=\"\"><img src=\"images/andy.png\"> create your android character</a>\r\n    </div>\r\n\r\n    <a href=\"#screens\">\r\n        <button class=\"android-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect\">\r\n            <i class=\"material-icons\">expand_more</i>\r\n        </button>\r\n    </a>\r\n</div>\r\n<div class=\"android-screen-section mdl-typography--text-center\">\r\n    <a name=\"screens\"></a>\r\n    <div class=\"mdl-typography--display-1-color-contrast\">Powering screens of all sizes</div>\r\n    <div class=\"android-screens\">\r\n        <div class=\"android-wear android-screen\">\r\n            <a class=\"android-image-link\" href=\"\">\r\n                <img class=\"android-screen-image\" src=\"images/wear-silver-on.png\">\r\n                <img class=\"android-screen-image\" src=\"images/wear-black-on.png\">\r\n            </a>\r\n            <a class=\"android-link mdl-typography--font-regular mdl-typography--text-uppercase\" href=\"\">Android Wear</a>\r\n        </div>\r\n        <div class=\"android-phone android-screen\">\r\n            <a class=\"android-image-link\" href=\"\">\r\n                <img class=\"android-screen-image\" src=\"images/nexus6-on.jpg\">\r\n            </a>\r\n            <a class=\"android-link mdl-typography--font-regular mdl-typography--text-uppercase\" href=\"\">Phones</a>\r\n        </div>\r\n        <div class=\"android-tablet android-screen\">\r\n            <a class=\"android-image-link\" href=\"\">\r\n                <img class=\"android-screen-image\" src=\"images/nexus9-on.jpg\">\r\n            </a>\r\n            <a class=\"android-link mdl-typography--font-regular mdl-typography--text-uppercase\" href=\"\">Tablets</a>\r\n        </div>\r\n        <div class=\"android-tv android-screen\">\r\n            <a class=\"android-image-link\" href=\"\">\r\n                <img class=\"android-screen-image\" src=\"images/tv-on.jpg\">\r\n            </a>\r\n            <a class=\"android-link mdl-typography--font-regular mdl-typography--text-uppercase\" href=\"\">Android TV</a>\r\n        </div>\r\n        <div class=\"android-auto android-screen\">\r\n            <a class=\"android-image-link\" href=\"\">\r\n                <img class=\"android-screen-image\" src=\"images/auto-on.jpg\">\r\n            </a>\r\n            <a class=\"android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left\" href=\"\">Coming Soon: Android Auto</a>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"android-wear-section\">\r\n    <div class=\"android-wear-band\">\r\n        <div class=\"android-wear-band-text\">\r\n            <div class=\"mdl-typography--display-2 mdl-typography--font-thin\">The best of Google built in</div>\r\n            <p class=\"mdl-typography--headline mdl-typography--font-thin\">\r\n                Android works perfectly with your favourite apps like Google Maps,\r\n                Calendar and YouTube.\r\n            </p>\r\n            <p>\r\n                <a class=\"mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link\" href=\"\">\r\n                    See what's new in the Play Store&nbsp;<i class=\"material-icons\">chevron_right</i>\r\n                </a>\r\n            </p>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"android-customized-section\">\r\n    <div class=\"android-customized-section-text\">\r\n        <div class=\"mdl-typography--font-light mdl-typography--display-1-color-contrast\">Customised by you, for you</div>\r\n        <p class=\"mdl-typography--font-light\">\r\n            Put the stuff that you care about right on your home screen: the latest news, the weather or a stream of your recent photos.\r\n            <br>\r\n            <a href=\"\" class=\"android-link mdl-typography--font-light\">Customise your phone</a>\r\n        </p>\r\n    </div>\r\n    <div class=\"android-customized-section-image\"></div>\r\n</div>\r\n<div class=\"android-more-section\">\r\n    <div class=\"android-section-title mdl-typography--display-1-color-contrast\">More from Android</div>\r\n    <div class=\"android-card-container mdl-grid\">\r\n        <div class=\"mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp\">\r\n            <div class=\"mdl-card__media\">\r\n                <img src=\"images/more-from-1.png\">\r\n            </div>\r\n            <div class=\"mdl-card__title\">\r\n                <h4 class=\"mdl-card__title-text\">Get going on Android</h4>\r\n            </div>\r\n            <div class=\"mdl-card__supporting-text\">\r\n                <span class=\"mdl-typography--font-light mdl-typography--subhead\">Four tips to make your switch to Android quick and easy</span>\r\n            </div>\r\n            <div class=\"mdl-card__actions\">\r\n                <a class=\"android-link mdl-button mdl-js-button mdl-typography--text-uppercase\" href=\"\">\r\n                    Make the switch\r\n                    <i class=\"material-icons\">chevron_right</i>\r\n                </a>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp\">\r\n            <div class=\"mdl-card__media\">\r\n                <img src=\"images/more-from-4.png\">\r\n            </div>\r\n            <div class=\"mdl-card__title\">\r\n                <h4 class=\"mdl-card__title-text\">Create your own Android character</h4>\r\n            </div>\r\n            <div class=\"mdl-card__supporting-text\">\r\n                <span class=\"mdl-typography--font-light mdl-typography--subhead\">Turn the little green Android mascot into you, your friends, anyone!</span>\r\n            </div>\r\n            <div class=\"mdl-card__actions\">\r\n                <a class=\"android-link mdl-button mdl-js-button mdl-typography--text-uppercase\" href=\"\">\r\n                    androidify.com\r\n                    <i class=\"material-icons\">chevron_right</i>\r\n                </a>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp\">\r\n            <div class=\"mdl-card__media\">\r\n                <img src=\"images/more-from-2.png\">\r\n            </div>\r\n            <div class=\"mdl-card__title\">\r\n                <h4 class=\"mdl-card__title-text\">Get a clean customisable home screen</h4>\r\n            </div>\r\n            <div class=\"mdl-card__supporting-text\">\r\n                <span class=\"mdl-typography--font-light mdl-typography--subhead\">A clean, simple, customisable home screen that comes with the power of Google Now: Traffic alerts, weather and much more, just a swipe away.</span>\r\n            </div>\r\n            <div class=\"mdl-card__actions\">\r\n                <a class=\"android-link mdl-button mdl-js-button mdl-typography--text-uppercase\" href=\"\">\r\n                    Download now\r\n                    <i class=\"material-icons\">chevron_right</i>\r\n                </a>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp\">\r\n            <div class=\"mdl-card__media\">\r\n                <img src=\"images/more-from-3.png\">\r\n            </div>\r\n            <div class=\"mdl-card__title\">\r\n                <h4 class=\"mdl-card__title-text\">Millions to choose from</h4>\r\n            </div>\r\n            <div class=\"mdl-card__supporting-text\">\r\n                <span class=\"mdl-typography--font-light mdl-typography--subhead\">Hail a taxi, find a recipe, run through a temple – Google Play has all the apps and games that let you make your Android device uniquely yours.</span>\r\n            </div>\r\n            <div class=\"mdl-card__actions\">\r\n                <a class=\"android-link mdl-button mdl-js-button mdl-typography--text-uppercase\" href=\"\">\r\n                    Find apps\r\n                    <i class=\"material-icons\">chevron_right</i>\r\n                </a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>",
+        "templateUrl": "asset:dart_portfolio/lib/components/templates/test_component.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

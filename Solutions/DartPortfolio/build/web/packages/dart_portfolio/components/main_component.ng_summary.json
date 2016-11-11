@@ -1,0 +1,70 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:dart_portfolio/components/pnm_form_component.dart",
+        "5": false
+      },
+      {
+        "1": "package:dart_portfolio/components/active_form_component.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "MainComponent",
+        "7": [
+          {
+            "2": "PnmFormComponent"
+          },
+          {
+            "2": "ActiveFormComponent"
+          }
+        ]
+      }
+    ],
+    "6": "main_component.dart"
+  },
+  "type": {
+    "MainComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "app-main",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "MainComponent",
+        "moduleUrl": "asset:dart_portfolio/lib/components/main_component.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 2,
+        "template": "\r\n<app-active-form></app-active-form>\r\n<hr>\r\n<app-pnm-form></app-pnm-form>",
+        "templateUrl": "asset:dart_portfolio/lib/components/templates/main_component.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

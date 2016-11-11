@@ -1,0 +1,39 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:dart_portfolio/Link.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "MenuService",
+        "4": [
+          {
+            "1": "Injectable",
+            "4": false
+          }
+        ]
+      }
+    ],
+    "6": "menu_service.dart"
+  },
+  "type": {
+    "MenuService": {
+      "class": "Type",
+      "name": "MenuService",
+      "moduleUrl": "asset:dart_portfolio/lib/services/menu_service.dart",
+      "prefix": null,
+      "isHost": false,
+      "value": null,
+      "diDeps": []
+    }
+  },
+  "alias": {}
+}

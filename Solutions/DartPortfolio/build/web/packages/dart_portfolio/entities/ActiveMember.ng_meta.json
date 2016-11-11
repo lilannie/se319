@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "ActiveMember": {
+      "class": "Identifier",
+      "name": "ActiveMember",
+      "moduleUrl": "asset:dart_portfolio/lib/entities/ActiveMember.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "Link": {
+      "class": "Identifier",
+      "name": "Link",
+      "moduleUrl": "asset:dart_portfolio/lib/Link.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}
