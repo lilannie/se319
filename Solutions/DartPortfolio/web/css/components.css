@@ -68,6 +68,7 @@ h3{
 .btn {
     display: inline-block;
     position: relative;
+    z-index: 2;
     line-height: 10vw;
     min-width: 10vw;
     vertical-align: middle;
@@ -189,7 +190,7 @@ h3{
     position: relative;
     display: block;
     line-height: 15vw;
-    margin: 3vw 0 0 0;
+    /*margin: 3vw 0 0 0;*/
 }
 .form-element-text input{
     position: relative;
@@ -312,4 +313,22 @@ span.password-toggle::before{
     12% { width: 5vw;}
     50% {left: 100%; width: 2vw; opacity: 1;}
     62% {opacity: 0.1;width: 1vw; }
+}
+
+/*-----Card------*/
+.card{
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #ddd;
+    width: 100%;
+    padding: 2vw;
+    margin-top: 3vw;
+    /*z-index: -5;*/
+    /*pointer-events: none;*/
+}
+@media (min-width: 992px){
+    .card{
+        width: 45%;
+    }
 }

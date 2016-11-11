@@ -29,6 +29,11 @@
                 </div>
                 <br>
                 <div class="form-element-text">
+                    <input id="email" type="text">
+                    <label for="email">Email</label>
+                </div>
+                <br>
+                <div class="form-element-text">
                     <input id="phoneNumber" type="text" [(ngModel)]="form_active.phoneNumber">
                     <label for="phoneNumber">Phone Number</label>
                 </div>
@@ -63,8 +68,8 @@
         </div>
 
         <div class="card-foot">
-            <button class="btn btn-primary btn-block" (click)="submitFormMember()">
-                Create Active Member
+            <button class="btn btn-success btn-block clickable" (click)="submitFormMember()">
+                <i class="fa fa-plus"></i> Create Active Member
             </button>
         </div>
     </div>
