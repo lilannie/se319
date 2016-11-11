@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+window.onload =  function(event) {
 
     document.getElementById('ham-menu').onclick = function(){
         var ham = document.getElementById('ham-menu');
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             passwordToggle(e.target);
         })
     }
-});
+};
 
 
 var oldMouseX = 0;

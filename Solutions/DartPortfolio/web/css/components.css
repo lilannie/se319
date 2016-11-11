@@ -225,6 +225,8 @@ h3{
     z-index: 2;
     border-bottom: 2px solid;
     transition: all 0.3s;
+
+    white-space: nowrap;
 }
 .form-element-text input:focus + label,
 .form-element-text.has-text input + label{
