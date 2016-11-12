@@ -9,11 +9,6 @@ window.onload =  function(event) {
             closeMenu(drawer, ham);
         }
     };
-    // window.addEventListener('mousemove', function(e){
-    //     if(e.which == 1){
-    //         swipeMenu(e.pageX);
-    //     }
-    // }, true);
     window.addEventListener('touchmove', function(e){
         swipeMenu(e.touches[0].clientX);
     }, true);
@@ -79,17 +74,11 @@ function openMenu(drawer, ham){
     ham.className = 'open';
     navbar =  document.getElementById('navbar');
     navbar.classList.remove('scrolled');
-    // setTimeout(function(){
-    //     document.getElementById('drawer-indicator').style.width = '0';
-    // }, 100);
 }
 function closeMenu(drawer, ham){
     drawer.className = 'close';
     ham.className = '';
     scrollNav();
-    // setTimeout(function(){
-    //     document.getElementById('drawer-indicator').style.width = '0';
-    // }, 100);
 }
 
 function toggleCollapse(elem){
