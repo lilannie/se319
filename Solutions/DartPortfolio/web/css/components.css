@@ -273,6 +273,124 @@ span.password-toggle::before{
 .form-element-text.has-text  input[type=text] + label + span.password-toggle::before{
     color: #333;
 }
+/*List*/
+.form-element-list {
+    position: relative;
+    display: block;
+    line-height: 10vw;
+    margin: 3vw 0 0 0;
+}
+.form-element-list ul{
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.form-element-list ul > li{
+    display: block;
+    position: relative;
+    height: 10vw;
+}
+.form-element-list ul > li::before{
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    content: '';
+    height: 6.5vw;
+    width: 6.5vw;
+    margin: 1.5vw;
+    box-shadow: 0 0 0 0.35vw #bbb;
+}
+.form-element-list ul > li > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    line-height: 10vw;
+    vertical-align: top;
+    padding-left: 11.4vw;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+.form-element-list ul > li > label:hover{
+    cursor: pointer;
+}
+.form-element-list ul > li > input + label::before {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    content: '';
+    top: 0;
+    left: 0;
+    margin: 4.75vw;
+    width: 0;
+    height: 0;
+    opacity: 0.15;
+    transition: all 0.17s ease;
+}
+.form-element-list ul > li > input + label:hover::before {
+    margin:2.5vw;
+    width: 4.5vw;
+    height: 4.5vw;
+    background-color: #1da1f2;
+}
+.form-element-list ul > li > input:checked + label::before {
+    margin: 4.75vw;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.form-element-list ul > li > input + label::after {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-color: #1da1f2;
+    content: '';
+    top: 0;
+    left: 0;
+    margin:4.75vw;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    transition: all 0.2s ease;
+}
+.form-element-list ul > li > input:checked + label::after {
+    margin:2.5vw;
+    width: 4.5vw;
+    height: 4.5vw;
+    animation: check-checkbox 0.25s ease;
+}
+@keyframes check-checkbox {
+    0%{
+        margin:4.75vw;
+        width: 0;
+        height: 0;
+    }
+    75%{
+        margin:1.5vw;
+        width: 6.5vw;
+        height: 6.5vw;
+    }
+    100%{
+        margin:2.5vw;
+        width: 4.5vw;
+        height: 4.5vw;
+    }
+}
+.form-element-list input{
+    display: none;
+}
+
+.form-element-list.form-list-radio ul > li::before,
+.form-element-list.form-list-radio input + label::before,
+.form-element-list.form-list-radio input + label::after {
+    border-radius: 100%;
+}
+
+.form-element-list .list-title {
+    color: #888;
+}
 
 /*------loading bar------*/
 .loading-bar{

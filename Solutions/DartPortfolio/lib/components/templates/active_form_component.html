@@ -50,11 +50,13 @@
                     <input id="hometownHs" type="text" [(ngModel)]="form_active.hometownHs">
                     <label for="hometownHs">Hometown High School</label>
                 </div>
-                <div class="form-element-checkbox">
-                    <label for="admin">
-                        <input type="checkbox" id="admin" [(ngModel)]="form_active.admin">
-                        <span class="mdl-checkbox__label">Admin?</span>
-                    </label>
+                <div class="form-element-list">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="admin" [(ngModel)]="form_active.admin">
+                            <label for="admin">Admin?</label>
+                        </li>
+                    </ul>
                 </div>
             </form>
         </div>

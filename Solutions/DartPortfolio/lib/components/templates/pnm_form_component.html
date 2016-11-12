@@ -54,17 +54,21 @@
                     <input id="hsGpa" type="number" [(ngModel)]="form_pnm.hsGpa">
                     <label for="hsGpa">High School GPA</label>
                 </div>
-                <div class="form-element-checkbox">
-                    <label for="legacy">
-                        <input type="checkbox" id="legacy" [(ngModel)]="form_pnm.legacy">
-                        <span class="mdl-checkbox__label">Legacy?</span>
-                    </label>
+                <div class="form-element-list">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="legacy" [(ngModel)]="form_pnm.legacy">
+                            <label for="legacy">Legacy?</label>
+                        </li>
+                    </ul>
                 </div>
-                <div class="form-element-checkbox">
-                    <label for="reference">
-                        <input type="checkbox" id="reference" [(ngModel)]="form_pnm.reference">
-                        <span class="mdl-checkbox__label">Reference?</span>
-                    </label>
+                <div class="form-element-list">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="reference" [(ngModel)]="form_pnm.reference">
+                            <label for="reference">Reference?</label>
+                        </li>
+                    </ul>
                 </div>
             </form>
         </div>
