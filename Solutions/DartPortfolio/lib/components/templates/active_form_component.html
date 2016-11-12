@@ -22,45 +22,37 @@
                     <input id="firstName" type="text" [(ngModel)]="form_active.firstName">
                     <label for="firstName">First Name</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="lastName" type="text" [(ngModel)]="form_active.lastName">
                     <label for="lastName">Last Name</label>
                 </div>
-                <br>
                 <div class="form-element-text">
-                    <input id="email" type="email">
+                    <input id="email" type="email" [(ngModel)]="form_active.email">
                     <label for="email">Email</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="phoneNumber" type="text" [(ngModel)]="form_active.phoneNumber">
                     <label for="phoneNumber">Phone Number</label>
                 </div>
-                <br>
                 <div class="form-element-text">
-                    <input type="text" id="sample2" [(ngModel)]="form_active.year">
+                    <input type="number" id="sample2" [(ngModel)]="form_active.year">
                     <label for="sample2">Year</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="hometownCity" type="text" [(ngModel)]="form_active.hometownCity">
                     <label for="hometownCity">Hometown City</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="hometownState" type="text" [(ngModel)]="form_active.hometownState">
                     <label for="hometownState">Hometown State</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="hometownHs" type="text" [(ngModel)]="form_active.hometownHs">
                     <label for="hometownHs">Hometown High School</label>
                 </div>
-                <br>
                 <div class="form-element-checkbox">
                     <label for="admin">
-                        <input type="checkbox" id="admin" class="mdl-checkbox__input" [(ngModel)]="form_active.admin">
+                        <input type="checkbox" id="admin" [(ngModel)]="form_active.admin">
                         <span class="mdl-checkbox__label">Admin?</span>
                     </label>
                 </div>

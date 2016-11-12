@@ -22,42 +22,50 @@
                     <input id="firstName" type="text" [(ngModel)]="form_pnm.firstName">
                     <label for="firstName">First Name</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="lastName" type="text" [(ngModel)]="form_pnm.lastName">
                     <label for="lastName">Last Name</label>
                 </div>
-                <br>
                 <div class="form-element-text">
-                    <input id="email" type="email">
+                    <input id="email" type="email" [(ngModel)]="form_pnm.email">
                     <label for="email">Email</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="phoneNumber" type="text" [(ngModel)]="form_pnm.phoneNumber">
                     <label for="phoneNumber">Phone Number</label>
                 </div>
-                <br>
                 <div class="form-element-text">
-                    <input type="text" id="sample2" [(ngModel)]="form_pnm.year">
+                    <input type="number" id="sample2" [(ngModel)]="form_pnm.year">
                     <label for="sample2">Year</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="hometownCity" type="text" [(ngModel)]="form_pnm.hometownCity">
                     <label for="hometownCity">Hometown City</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="hometownState" type="text" [(ngModel)]="form_pnm.hometownState">
                     <label for="hometownState">Hometown State</label>
                 </div>
-                <br>
                 <div class="form-element-text">
                     <input id="hometownHs" type="text" [(ngModel)]="form_pnm.hometownHs">
                     <label for="hometownHs">Hometown High School</label>
                 </div>
-                <br>
+                <div class="form-element-text">
+                    <input id="hsGpa" type="number" [(ngModel)]="form_pnm.hsGpa">
+                    <label for="hsGpa">High School GPA</label>
+                </div>
+                <div class="form-element-checkbox">
+                    <label for="legacy">
+                        <input type="checkbox" id="legacy" [(ngModel)]="form_pnm.legacy">
+                        <span class="mdl-checkbox__label">Legacy?</span>
+                    </label>
+                </div>
+                <div class="form-element-checkbox">
+                    <label for="reference">
+                        <input type="checkbox" id="reference" [(ngModel)]="form_pnm.reference">
+                        <span class="mdl-checkbox__label">Reference?</span>
+                    </label>
+                </div>
             </form>
         </div>
 
