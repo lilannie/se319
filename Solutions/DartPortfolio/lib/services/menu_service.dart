@@ -6,20 +6,13 @@ import 'package:dart_portfolio/Link.dart';
 @Injectable()
 class MenuService {
   List<Link> navLinks = [
-    new Link('Phone', '#',''),
-    new Link('Tablets', '#',''),
-    new Link('Wear', '#',''),
-    new Link('TV', '#',''),
-    new Link('Auto', '#',''),
-    new Link('One', '#',''),
-    new Link('Play', '#','')
+    new Link('Login', '#',''),
+    new Link('Actives', '#',''),
+    new Link('Potentials', '#',''),
   ];
 
   List<Link> menuItems = [
-    new Link('5.0 Lollipop', '',''),
-    new Link('4.4 KitKat', '',''),
-    new Link('4.3 Jelly Bean', '',''),
-    new Link('Android History', '','')
+    new Link('About', '',''),
   ];
 
   List<Link> getNavLinks() => navLinks;

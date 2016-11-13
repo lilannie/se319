@@ -101,13 +101,13 @@ angular.module('studyShare', []).controller('studyShareController',
             };
             $scope.decks.push($scope.active_deck);
             $scope.deck_counter++;
-            $('#deck-button'+ $scope.active_deck.id).hover(function () {
+            $('#deck-button' + $scope.active_deck.id).hover(function () {
                 $(this).css("background-color", "#A1887F");
             });
             $scope.closeDeckModal();
         };
 
-        $scope.openCardModal = function() {
+        $scope.openCardModal = function () {
             if ($scope.active_deck == null) {
                 $("#form_error").show();
                 console.log("null");
@@ -135,16 +135,16 @@ angular.module('studyShare', []).controller('studyShareController',
         };
 
         $scope.view = function (deck_id) {
-            console.log("deck_id: "+ deck_id);
+            console.log("deck_id: " + deck_id);
             var collapseid = null;
             if ($scope.active_deck != null) {
-                 collapseid = $('#collapse' + $scope.active_deck.id);
+                collapseid = $('#collapse' + $scope.active_deck.id);
                 collapseid.hide();
             }
             $scope.active_deck = $scope.findDeck(deck_id);
             collapseid = $('#collapse' + $scope.active_deck.id);
             collapseid.show();
-            console.log("active_deck: "+ $scope.active_deck.id);
+            console.log("active_deck: " + $scope.active_deck.id);
         };
 
         $scope.findDeck = function (deck_id) {
@@ -154,7 +154,7 @@ angular.module('studyShare', []).controller('studyShareController',
             var current_deck;
             while (min_index <= max_index) {
                 current_index = (min_index + max_index) / 2 | 0;
-                console.log("current_index: "+ current_index);
+                console.log("current_index: " + current_index);
                 current_deck = $scope.decks[current_index];
                 if (current_deck.id < deck_id) { //current_deck.id instead of just current.deck
                     min_index = current_index + 1;
@@ -180,16 +180,16 @@ angular.module('studyShare', []).controller('studyShareController',
             element.appendChild(cardList);
             var i = 0;
             var loop = function () {
-                setTimeout(function(){
+                setTimeout(function () {
                     card = document.createElement('div');
                     card.className = 'deck-hover-display';
                     card.style.zIndex = cards - i;
-                    card.style.backgroundColor = 'rgba(109,76,65,' + (0.6-i*(0.6/5)) + ')';
-                    card.style.width = (element.offsetWidth - i*2) + 'px';
-                    card.style.height = (30 - i*2) + 'px';
+                    card.style.backgroundColor = 'rgba(109,76,65,' + (0.6 - i * (0.6 / 5)) + ')';
+                    card.style.width = (element.offsetWidth - i * 2) + 'px';
+                    card.style.height = (30 - i * 2) + 'px';
                     cardList.appendChild(card);
                     i++;
-                    if (i < 5){
+                    if (i < 5) {
                         loop();
                     }
                 }, 20);
@@ -199,18 +199,18 @@ angular.module('studyShare', []).controller('studyShareController',
 
     });
 
-function removeCardDisplay(element){
+function removeCardDisplay(element) {
     cards = element.childNodes[1];
-    if (!cards){
+    if (!cards) {
         return;
     }
-    var i = cards.childNodes.length-1;
+    var i = cards.childNodes.length - 1;
     var loop = function () {
-        setTimeout(function(){
+        setTimeout(function () {
             // cards = element.childNodes[1];
             cards.removeChild(cards.childNodes[i]);
             i--;
-            if (i > 0){
+            if (i > 0) {
                 loop();
             } else {
                 element.removeChild(cards);

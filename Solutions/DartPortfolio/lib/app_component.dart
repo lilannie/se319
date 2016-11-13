@@ -12,16 +12,15 @@ import 'package:dart_portfolio/components/main_component.dart';
 @Component(
     selector: 'app',
     template: '''
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <app-navbar class="android-header mdl-layout__header mdl-layout__header--waterfall"></app-navbar>
+<div class="">
+  <app-navbar></app-navbar>
 
-  <app-drawer class="android-drawer mdl-layout__drawer"></app-drawer>
+  <app-drawer></app-drawer>
 
-  <div class="android-content mdl-layout__content">
+  <main>
     <router-outlet></router-outlet>
-
-    <app-footer class="android-footer mdl-mega-footer"></app-footer>
-  </div>
+  </main>
+  <app-footer></app-footer>
 </div>
       ''',
     directives: const [ROUTER_DIRECTIVES,DrawerComponent,FooterComponent,NavbarComponent],

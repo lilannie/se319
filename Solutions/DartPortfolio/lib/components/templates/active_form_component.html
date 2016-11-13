@@ -1,73 +1,134 @@
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp">
-        <div class="mdl-card__title">
-            <h4 class="mdl-card__title-text">Active Members</h4>
+<div>
+    <div class="card">
+        <div class="card-title">
+            <h3>Active Members</h3>
         </div>
-        <div class="mdl-card__supporting-text">
-            <ul class="mdl-list">
+        <div class="card-body">
+            <ul>
                 <li *ngFor="let member of activeList">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">person</i>
+                        <i class="fa fa-user"></i>
                         {{member.firstName}} {{member.lastName}}
-                    </span>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp">
-        <div class="mdl-card__title">
-            <h4 class="mdl-card__title-text">Create Active Member</h4>
+    <div class="card">
+        <div class="card-title">
+            <h3>Create Active Member</h3>
         </div>
-        <div class="mdl-card__supporting-text">
+        <div class="card-body">
             <form action="#">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" id="firstName" type="text" [(ngModel)]="form_active.firstName">
-                    <label class="mdl-textfield__label" for="firstName">First Name</label>
+                <div class="form-element-text">
+                    <input id="firstName" type="text" [(ngModel)]="form_active.firstName">
+                    <label for="firstName">First Name</label>
                 </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" id="lastName" type="text" [(ngModel)]="form_active.lastName">
-                    <label class="mdl-textfield__label" for="lastName">Last Name</label>
+                <div class="form-element-text">
+                    <input id="lastName" type="text" [(ngModel)]="form_active.lastName">
+                    <label for="lastName">Last Name</label>
                 </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" id="phoneNumber" type="text" [(ngModel)]="form_active.phoneNumber">
-                    <label class="mdl-textfield__label" for="phoneNumber">Phone Number</label>
+                <div class="form-element-text">
+                    <input id="email" type="email" [(ngModel)]="form_active.email">
+                    <label for="email">Email</label>
                 </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="number" id="sample2" [(ngModel)]="form_active.year">
-                    <label class="mdl-textfield__label" for="sample2">Year</label>
+                <div class="form-element-text">
+                    <input id="phoneNumber" type="text" [(ngModel)]="form_active.phoneNumber">
+                    <label for="phoneNumber">Phone Number</label>
                 </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" id="hometownCity" type="text" [(ngModel)]="form_active.hometownCity">
-                    <label class="mdl-textfield__label" for="hometownCity">Hometown City</label>
+                <div class="form-element-text">
+                    <input type="number" id="sample2" [(ngModel)]="form_active.year">
+                    <label for="sample2">Year</label>
                 </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" id="hometownState" type="text" [(ngModel)]="form_active.hometownState">
-                    <label class="mdl-textfield__label" for="hometownState">Hometown State</label>
+                <div class="form-element-text">
+                    <input id="hometownCity" type="text" [(ngModel)]="form_active.hometownCity">
+                    <label for="hometownCity">Hometown City</label>
                 </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" id="hometownHs" type="text" [(ngModel)]="form_active.hometownHs">
-                    <label class="mdl-textfield__label" for="hometownHs">Hometown High School</label>
+                <div class="form-element-text">
+                    <input id="hometownState" type="text" [(ngModel)]="form_active.hometownState">
+                    <label for="hometownState">Hometown State</label>
                 </div>
-                <br>
+                <div class="form-element-text">
+                    <input id="hometownHs" type="text" [(ngModel)]="form_active.hometownHs">
+                    <label for="hometownHs">Hometown High School</label>
+                </div>
+                <div class="form-element-list">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="admin" [(ngModel)]="form_active.admin">
+                            <label for="admin">Admin?</label>
+                        </li>
+                    </ul>
+                </div>
                 <div>
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="admin">
-                        <input type="checkbox" id="admin" class="mdl-checkbox__input" [(ngModel)]="form_active.admin">
-                        <span class="mdl-checkbox__label">Admin?</span>
-                    </label>
+                    <h3>Majors</h3>
+                    <ul>
+                        <li *ngFor="let major of form_active.majors">
+                            {{major}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="major" type="text" [(ngModel)]="form_major">
+                        <label for="major">Major Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addMajor()">Add Major</button>
+                </div>
+                <div>
+                    <h3>Minors</h3>
+                    <ul>
+                        <li *ngFor="let minor of form_active.minors">
+                            {{minor}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="minor" type="text" [(ngModel)]="form_minor">
+                        <label for="minor">Minor Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addMinor()">Add Minor</button>
+                </div>
+                <div>
+                    <h3>High School Activities</h3>
+                    <ul>
+                        <li *ngFor="let hsActivity of form_active.hsActivities">
+                            {{hsActivity}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="hsActivity" type="text" [(ngModel)]="form_hs_activity">
+                        <label for="hsActivity">HS Activity Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addHsActivity()">Add HS Activity</button>
+                </div>
+                <div>
+                    <h3>University Activities</h3>
+                    <ul>
+                        <li *ngFor="let uniActivity of form_active.univActivities">
+                            {{uniActivity}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="uniActivity" type="text" [(ngModel)]="form_univ_activity">
+                        <label for="uniActivity">University Activity Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addUnivActivity()">Add University Activity</button>
+                </div>
+                <div>
+                    <h3>Interests</h3>
+                    <ul>
+                        <li *ngFor="let interest of form_active.interests">
+                            {{interest}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="interest" type="text" [(ngModel)]="form_interest">
+                        <label for="interest">Interest Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addInterest()">Add Interest</button>
                 </div>
             </form>
         </div>
 
-        <div class="mdl-card__actions">
-            <button class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" (click)="submitFormMember()">
-                Create Active Member
-                <i class="material-icons">chevron_right</i>
+        <div class="card-foot">
+            <button class="btn btn-success btn-block clickable" (click)="submitFormMember()">
+                <i class="fa fa-plus"></i> Create Active Member
             </button>
         </div>
     </div>

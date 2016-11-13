@@ -1,0 +1,104 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:dart_portfolio/entities/ActiveMember.dart",
+        "5": false
+      },
+      {
+        "1": "package:dart_portfolio/services/active_service.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "ActiveFormComponent",
+        "5": [
+          {
+            "1": "ActiveService",
+            "4": "_activeService"
+          }
+        ],
+        "6": [
+          "OnInit"
+        ]
+      }
+    ],
+    "6": "active_form_component.dart"
+  },
+  "type": {
+    "ActiveFormComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "app-active-form",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "ActiveFormComponent",
+        "moduleUrl": "asset:dart_portfolio/lib/components/active_form_component.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ActiveService",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": {
+        "encapsulation": 2,
+        "template": "<div class=\"mdl-grid\">\r\n    <div class=\"mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp\">\r\n        <div class=\"mdl-card__title\">\r\n            <h4 class=\"mdl-card__title-text\">Active Members</h4>\r\n        </div>\r\n        <div class=\"mdl-card__supporting-text\">\r\n            <ul class=\"mdl-list\">\r\n                <li *ngFor=\"let member of activeList\">\r\n                    <span class=\"mdl-list__item-primary-content\">\r\n                        <i class=\"material-icons mdl-list__item-icon\">person</i>\r\n                        {{member.firstName}} {{member.lastName}}\r\n                    </span>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    <div class=\"mdl-cell mdl-cell--6-col mdl-card mdl-shadow--3dp\">\r\n        <div class=\"mdl-card__title\">\r\n            <h4 class=\"mdl-card__title-text\">Create Active Member</h4>\r\n        </div>\r\n        <div class=\"mdl-card__supporting-text\">\r\n            <form action=\"#\">\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" id=\"firstName\" type=\"text\" [(ngModel)]=\"form_active.firstName\">\r\n                    <label class=\"mdl-textfield__label\" for=\"firstName\">First Name</label>\r\n                </div>\r\n                <br>\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" id=\"lastName\" type=\"text\" [(ngModel)]=\"form_active.lastName\">\r\n                    <label class=\"mdl-textfield__label\" for=\"lastName\">Last Name</label>\r\n                </div>\r\n                <br>\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" id=\"phoneNumber\" type=\"text\" [(ngModel)]=\"form_active.phoneNumber\">\r\n                    <label class=\"mdl-textfield__label\" for=\"phoneNumber\">Phone Number</label>\r\n                </div>\r\n                <br>\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" type=\"number\" id=\"sample2\" [(ngModel)]=\"form_active.year\">\r\n                    <label class=\"mdl-textfield__label\" for=\"sample2\">Year</label>\r\n                </div>\r\n                <br>\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" id=\"hometownCity\" type=\"text\" [(ngModel)]=\"form_active.hometownCity\">\r\n                    <label class=\"mdl-textfield__label\" for=\"hometownCity\">Hometown City</label>\r\n                </div>\r\n                <br>\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" id=\"hometownState\" type=\"text\" [(ngModel)]=\"form_active.hometownState\">\r\n                    <label class=\"mdl-textfield__label\" for=\"hometownState\">Hometown State</label>\r\n                </div>\r\n                <br>\r\n                <div class=\"mdl-textfield mdl-js-textfield\">\r\n                    <input class=\"mdl-textfield__input\" id=\"hometownHs\" type=\"text\" [(ngModel)]=\"form_active.hometownHs\">\r\n                    <label class=\"mdl-textfield__label\" for=\"hometownHs\">Hometown High School</label>\r\n                </div>\r\n                <br>\r\n                <div>\r\n                    <label class=\"mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect\" for=\"admin\">\r\n                        <input type=\"checkbox\" id=\"admin\" class=\"mdl-checkbox__input\" [(ngModel)]=\"form_active.admin\">\r\n                        <span class=\"mdl-checkbox__label\">Admin?</span>\r\n                    </label>\r\n                </div>\r\n            </form>\r\n        </div>\r\n\r\n        <div class=\"mdl-card__actions\">\r\n            <button class=\"android-link mdl-button mdl-js-button mdl-typography--text-uppercase\" (click)=\"submitFormMember()\">\r\n                Create Active Member\r\n                <i class=\"material-icons\">chevron_right</i>\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n",
+        "templateUrl": "asset:dart_portfolio/lib/components/templates/active_form_component.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [
+        {
+          "class": "Identifier",
+          "name": "ActiveService",
+          "moduleUrl": null,
+          "prefix": null,
+          "value": null
+        }
+      ],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

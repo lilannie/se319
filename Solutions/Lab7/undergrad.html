@@ -1,0 +1,35 @@
+<div ng-show="authorization == 'undergrad'">
+<table border="1">
+	<tbody>
+	<tr>
+		<th>Art</th>
+		<td ng-repeat="book in books | filter : {category: 'Art'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+	</tr>
+	<tr>
+		<th>Science</th>
+		<td ng-repeat="book in books | filter : {category: 'Science'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+	</tr>
+	<tr>
+		<th>Sport</th>
+		<td ng-repeat="book in books | filter : {category: 'Sport'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+	</tr>
+	<tr>
+		<th>Literature</th>
+		<td ng-repeat="book in books | filter : {category: 'Literature'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+	</tr>
+	</tbody>
+</table>
+<hr>
+<div ng-show="inspecting != null">
+	<table>
+		<tr>
+			<td>BookName: </td>
+			<td>{{inspecting.name}}</td>
+		</tr>
+		<tr ng-show="inspecting.type != 'reference'">
+			<td><button ng-click="inspecting.checkout(username)" ng-show="checkUserCheckouts() && inspecting.presence == 1">Checkout</button></td>
+			<td><button ng-click="inspecting.return()" ng-show="inspecting.borrowedBy == user">Return</button></td>
+		</tr>
+	</table>
+</div>
+</div>

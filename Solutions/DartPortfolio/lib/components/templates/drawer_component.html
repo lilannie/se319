@@ -1,11 +1,8 @@
-<span class="mdl-layout-title">
-		  <img class="android-logo-image" src="images/android-logo-white.png">
-		</span>
-<nav class="mdl-navigation">
+<div id="ham-menu"><span></span><span></span><span></span></div>
+<div id="drawer-indicator"></div>
+<nav id="drawer">
     <a *ngFor="let link of navLinks" class="mdl-navigation__link" href="{{link.href}}">{{link.label}}</a>
 
-    <div class="android-drawer-separator"></div>
-    <span class="mdl-navigation__link" href="">Versions</span>
-
     <a *ngFor="let item of menuItems" class="mdl-navigation__link" href="{{item.href}}">{{item.label}}</a>\
+
 </nav>

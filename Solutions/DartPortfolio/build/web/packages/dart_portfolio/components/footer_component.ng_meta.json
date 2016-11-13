@@ -1,0 +1,60 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "FooterComponent"
+      }
+    ],
+    "6": "footer_component.dart",
+    "7": [
+      {
+        "1": "package:angular2/core.template.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "FooterComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "app-footer",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "FooterComponent",
+        "moduleUrl": "asset:dart_portfolio/lib/components/footer_component.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 2,
+        "template": "<div class=\"mdl-mega-footer--top-section\">\r\n    <div class=\"mdl-mega-footer--left-section\">\r\n        <button class=\"mdl-mega-footer--social-btn\"></button>\r\n        &nbsp;\r\n        <button class=\"mdl-mega-footer--social-btn\"></button>\r\n        &nbsp;\r\n        <button class=\"mdl-mega-footer--social-btn\"></button>\r\n    </div>\r\n    <div class=\"mdl-mega-footer--right-section\">\r\n        <a class=\"mdl-typography--font-light\" href=\"#top\">\r\n            Back to Top\r\n            <i class=\"material-icons\">expand_less</i>\r\n        </a>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"mdl-mega-footer--middle-section\">\r\n    <p class=\"mdl-typography--font-light\">Satellite imagery: © 2014 Astrium, DigitalGlobe</p>\r\n    <p class=\"mdl-typography--font-light\">Some features and devices may not be available in all areas</p>\r\n</div>\r\n\r\n<div class=\"mdl-mega-footer--bottom-section\">\r\n    <a class=\"android-link android-link-menu mdl-typography--font-light\" id=\"version-dropdown\">\r\n        Versions\r\n        <i class=\"material-icons\">arrow_drop_up</i>\r\n    </a>\r\n    <ul class=\"mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect\" for=\"version-dropdown\">\r\n        <li class=\"mdl-menu__item\">5.0 Lollipop</li>\r\n        <li class=\"mdl-menu__item\">4.4 KitKat</li>\r\n        <li class=\"mdl-menu__item\">4.3 Jelly Bean</li>\r\n        <li class=\"mdl-menu__item\">Android History</li>\r\n    </ul>\r\n    <a class=\"android-link android-link-menu mdl-typography--font-light\" id=\"developers-dropdown\">\r\n        For Developers\r\n        <i class=\"material-icons\">arrow_drop_up</i>\r\n    </a>\r\n    <ul class=\"mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect\" for=\"developers-dropdown\">\r\n        <li class=\"mdl-menu__item\">App developer resources</li>\r\n        <li class=\"mdl-menu__item\">Android Open Source Project</li>\r\n        <li class=\"mdl-menu__item\">Android SDK</li>\r\n        <li class=\"mdl-menu__item\">Android for Work</li>\r\n    </ul>\r\n    <a class=\"android-link mdl-typography--font-light\" href=\"\">Blog</a>\r\n    <a class=\"android-link mdl-typography--font-light\" href=\"\">Privacy Policy</a>\r\n</div>",
+        "templateUrl": "asset:dart_portfolio/lib/components/templates/footer_component.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

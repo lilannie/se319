@@ -2,6 +2,7 @@ class PNM {
   int id = 0;
   String firstName = '';
   String lastName = '';
+  String email = '';
   String phoneNumber = '';
   int year = 0;
   String hometownCity = '';

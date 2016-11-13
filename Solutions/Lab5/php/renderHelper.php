@@ -1,10 +1,46 @@
 <?php
+//include_once('phpseclib/Crypt/RSA.php');
 
 class renderHelper {
+    //Private key
+    static $private_key;
+    // Public key
+    static $public_key;
 
     public function __construct()
     {
+//        $rsa = new Crypt_RSA();
+//        $rsa->setPrivateKeyFormat(CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
+//        $rsa->setPublicKeyFormat(CRYPT_RSA_PUBLIC_FORMAT_PKCS1);
+//        extract($rsa->createKey(1024)); /// makes $publickey and $privatekey available
+//
+//        self::$private_key = $rsa->getPrivateKey(CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
+//        self::$public_key = $rsa->getPublicKey(CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
     }
+
+//    //Function for decrypting with RSA
+//    static function rsa_decrypt($string, $private_key)
+//    {
+//        //Create an instance of the RSA cypher and load the key into it
+//        $cipher = new Crypt_RSA();
+//        $cipher->loadKey($private_key);
+//        //Set the encryption mode
+//        $cipher->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
+//        //Return the decrypted version
+//        return $cipher->decrypt($string);
+//    }
+//
+//    //Function for encrypting with RSA
+//    static function rsa_encrypt($string, $public_key)
+//    {
+//        //Create an instance of the RSA cypher and load the key into it
+//        $cipher = new Crypt_RSA();
+//        $cipher->loadKey($public_key);
+//        //Set the encryption mode
+//        $cipher->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
+//        //Return the encrypted version
+//        return $cipher->encrypt($string);
+//    }
 
     public function renderPageStart(){
         return <<<HTML
@@ -80,7 +116,7 @@ HTML;
 
 
     public function renderMessage($sender, $content, $date){
-        $content = rsa_decrypt($content, $private_key);
+//        $content = $this->rsa_decrypt($content, self::$private_key);
 
         return <<<HTML
 <div class="panel panel-default">
@@ -92,30 +128,4 @@ HTML;
 </div>
 HTML;
     }
-
-$path = 'phpseclib';
-    set_include_path(get_include_path() . PATH_SEPARATOR . $path);
-    include_once('Crypt/RSA.php');
-
-//Function for decrypting with RSA 
-function rsa_decrypt($string, $private_key)
-{
-    //Create an instance of the RSA cypher and load the key into it
-    $cipher = new Crypt_RSA();
-    $cipher->loadKey($private_key);
-    //Set the encryption mode
-    $cipher->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
-    //Return the decrypted version
-    return $cipher->decrypt($string);
-}
-
-$rsa = new Crypt_RSA();
-    $rsa->setPrivateKeyFormat(CRYPT_RSA_PRIVATE_FORMAT_PKCS1);
-    $rsa->setPublicKeyFormat(CRYPT_RSA_PUBLIC_FORMAT_PKCS1);
-    extract($rsa->createKey(1024)); /// makes $publickey and $privatekey available
-
-//Private key
-private $private_key = $privatekey;
-// Public key
-public $public_key = $publickey;
 }
