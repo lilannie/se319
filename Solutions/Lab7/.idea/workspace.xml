@@ -73,11 +73,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="undergrad.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="undergrad.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/undergrad.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="participation.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/participation.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="94" selection-start-line="0" selection-start-column="94" selection-end-line="0" selection-end-column="94" />
               <folding />
             </state>
           </provider>
@@ -126,6 +136,7 @@
         <option value="$PROJECT_DIR$/js/libCtrl.js" />
         <option value="$PROJECT_DIR$/undergrad.html" />
         <option value="$PROJECT_DIR$/librarian.html" />
+        <option value="$PROJECT_DIR$/participation.txt" />
       </list>
     </option>
   </component>
@@ -180,20 +191,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Lab7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -283,12 +280,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1478993080371</updated>
-      <workItem from="1478993081549" duration="10278000" />
+      <workItem from="1478993081549" duration="10376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10278000" />
+    <option name="totallyTimeSpent" value="10376000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1152" height="1047" extended-state="0" />
@@ -420,6 +417,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/participation.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="94" selection-start-line="0" selection-start-column="94" selection-end-line="0" selection-end-column="94" />
           <folding />
         </state>
       </provider>
