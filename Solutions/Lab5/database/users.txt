@@ -6,3 +6,4 @@ admin:admin
 tommy:password
 nickb:qwe
 a:a
+mary:qwe

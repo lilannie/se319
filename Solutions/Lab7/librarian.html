@@ -1,0 +1,72 @@
+<div ng-show="authorization == 'librarian'">
+<table border="1">
+	<tbody>
+		<tr>
+			<th>Art</th>
+			<td ng-repeat="book in books | filter : {category: 'Art'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+		</tr>
+		<tr>
+			<th>Science</th>
+			<td ng-repeat="book in books | filter : {category: 'Science'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+		</tr>
+		<tr>
+			<th>Sport</th>
+			<td ng-repeat="book in books | filter : {category: 'Sport'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+		</tr>
+		<tr>
+			<th>Literature</th>
+			<td ng-repeat="book in books | filter : {category: 'Literature'}" ng-class="{taken:book.presence==0, ref:book.type=='reference'}" ng-click="inspect(book)">{{book.name}}</td>
+		</tr>
+	</tbody>
+</table>
+<div ng-show="inspecting != null">
+	<hr>
+	<table>
+		<tr>
+			<td>BookName: </td>
+			<td>{{inspecting.name}}</td>
+		</tr>
+		<tr>
+			<td>BookType: </td>
+			<td>{{inspecting.type}}</td>
+		</tr>
+		<tr>
+			<td>BorrowedBy: </td>
+			<td>{{inspecting.borrowedBy}}</td>
+		</tr>
+		<tr>
+			<td>Presence: </td>
+			<td>{{inspecting.presence}}</td>
+		</tr>
+	</table>
+</div>
+<hr>
+<div>
+	<h3>Add a Book</h3>
+	<table>
+		<tr>
+			<td><label for="bookName">Book Name</label></td>
+			<td><input id="bookName" type="text" name="bookName" ng-model="form_bookName"></td>
+		</tr>
+		<tr>
+			<td><label for="shelf">Shelf</label></td>
+			<td>
+				<select id="shelf" ng-model="form_shelf">
+					<option value="Art">Art</option>
+					<option value="Science">Science</option>
+					<option value="Sport">Sport</option>
+					<option value="Literature">Literature</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="reference">Reference?</label></td>
+			<td><input id="reference" type="checkbox" ng-model="form_reference"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button ng-click="addBook()">Add Book</button></td>
+		</tr>
+	</table>
+</div>
+</div>
