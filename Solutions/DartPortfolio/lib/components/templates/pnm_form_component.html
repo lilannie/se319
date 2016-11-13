@@ -70,6 +70,71 @@
                         </li>
                     </ul>
                 </div>
+                <div>
+                    <h3>Majors</h3>
+                    <ul>
+                        <li *ngFor="let major of form_pnm.majors">
+                            {{major}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="major" type="text" [(ngModel)]="form_major">
+                        <label for="major">Major Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addMajor()">Add Major</button>
+                </div>
+                <div>
+                    <h3>Minors</h3>
+                    <ul>
+                        <li *ngFor="let minor of form_pnm.minors">
+                            {{minor}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="minor" type="text" [(ngModel)]="form_minor">
+                        <label for="minor">Minor Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addMinor()">Add Minor</button>
+                </div>
+                <div>
+                    <h3>High School Activities</h3>
+                    <ul>
+                        <li *ngFor="let hsActivity of form_pnm.hsActivities">
+                            {{hsActivity}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="hsActivity" type="text" [(ngModel)]="form_hs_activity">
+                        <label for="hsActivity">HS Activity Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addHsActivity()">Add HS Activity</button>
+                </div>
+                <div>
+                    <h3>University Activities</h3>
+                    <ul>
+                        <li *ngFor="let uniActivity of form_pnm.univActivities">
+                            {{uniActivity}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="uniActivity" type="text" [(ngModel)]="form_univ_activity">
+                        <label for="uniActivity">University Activity Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addUnivActivity()">Add University Activity</button>
+                </div>
+                <div>
+                    <h3>Interests</h3>
+                    <ul>
+                        <li *ngFor="let interest of form_pnm.interests">
+                            {{interest}}
+                        </li>
+                    </ul>
+                    <div class="form-element-text">
+                        <input id="interest" type="text" [(ngModel)]="form_interest">
+                        <label for="interest">Interest Name</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" (click)="addInterest()">Add Interest</button>
+                </div>
             </form>
         </div>
 
