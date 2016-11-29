@@ -49,28 +49,28 @@ fragment DISCOVER: ( '6011' TWELVEDIG ) | ( '65' FOURTEENDIG );
 fragment JCB: ( ( '2131' | '1800' ) ELEVENDIG ) | ( '35' FOURTEENDIG );
 fragment CREDITCARD: VISA | MASTERCARD | AMERICANEXPRESS | DINERSCLUB | DISCOVER | JCB;
 
-EMAILELEMENT: '<email>'
+EMAILELEMENT: '<EMAIL>' {System.out.println("---Email Tag Found---");}
 			( EMAIL {System.out.print("Email: "+getText().substring(7));} 
-			| .*? {System.out.print("Invalid Email ("+getText().substring(7)+") On Line " + getLine());} )
-			 '</email>' {System.out.print("\n");};
+			| .* {System.out.print("Invalid Email ("+getText().substring(7)+") On Line " + getLine());} )
+			 '</EMAIL>' {System.out.print("\n\n");};
 
-DATEELEMENT: '<date>'
+DATEELEMENT: '<DATE>' {System.out.println("---Date Tag Found---");}
 			( DATE {System.out.print("Date: "+getText().substring(6));}
 			| .*? {System.out.print("Invalid Date ("+getText().substring(6)+") On Line " + getLine());} )
-			 '</date>'  {System.out.print("\n");};
+			 '</DATE>'  {System.out.print("\n\n");};
 
-PHONEELEMENT: '<phone>'
+PHONEELEMENT: '<PHONE>' {System.out.println("---Phone Tag Found---");}
 			( PHONE {System.out.print("Phone: "+getText().substring(7));}
 			| .*? {System.out.print("Invalid Phone ("+getText().substring(7)+") On Line " + getLine());} )
-			 '</phone>' {System.out.print("\n");};
+			 '</PHONE>' {System.out.print("\n\n");};
 
-CREDITCARDELEMENT: '<creditcard>'
+CREDITCARDELEMENT: '<CREDITCARD>' {System.out.println("---Credit Card Tag Found---");}
 			( CREDITCARD {System.out.print("Credit Card: "+getText().substring(12));}
 			| .*? {System.out.print("Invalid Credit Card ("+getText().substring(12)+") On Line " + getLine());} )
-			 '</creditcard>' {System.out.print("\n");};
+			 '</CREDITCARD>' {System.out.print("\n\n");};
 
-OTHERELEMENT: '<' ELEMNAME? '>' {currentElement = getText(); System.out.print(getText().substring(1,getText().length()-1)+": ");}
+OTHERELEMENT: '<' ELEMNAME '>' {currentElement = getText(); System.out.print("---Other Tag Found---\n" + getText().substring(1,getText().length()-1)+": ");}
 			(ALPHANUM | SPECIAL | ' ')*? {System.out.print(getText().substring(currentElement.length()));}
-			'</' ELEMNAME? '>'? {System.out.print("\n");};
+			'</' ELEMNAME '>' {System.out.print("\n\n");};
 
 WS: [ \r\t\n]+ {skip();};

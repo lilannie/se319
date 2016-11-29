@@ -49,31 +49,31 @@ fragment DISCOVER: ( '6011' TWELVEDIG ) | ( '65' FOURTEENDIG );
 fragment JCB: ( ( '2131' | '1800' ) ELEVENDIG ) | ( '35' FOURTEENDIG );
 fragment CREDITCARD: VISA | MASTERCARD | AMERICANEXPRESS | DINERSCLUB | DISCOVER | JCB;
 
-EMAILELEMENT: '"EMAIL":"'
+EMAILELEMENT: '"EMAIL":"' {System.out.println("---Email Attribute Found---");}
 			( EMAIL {System.out.print("Email: "+getText().substring(9));} 
 			| .*? {System.out.print("Invalid Email ("+getText().substring(9)+") On Line " + getLine());} )
-			 '"' {System.out.print("\n");};
+			 '"' {System.out.print("\n\n");};
 
-DATEELEMENT: '"DATE":"'
+DATEELEMENT: '"DATE":"' {System.out.println("---Date Attribute Found---");}
 			( DATE {System.out.print("Date: "+getText().substring(8));}
 			| .*? {System.out.print("Invalid Date ("+getText().substring(8)+") On Line " + getLine());} )
-			 '"'  {System.out.print("\n");};
+			 '"'  {System.out.print("\n\n");};
 
-PHONEELEMENT: '"PHONE":"'
+PHONEELEMENT: '"PHONE":"' {System.out.println("---Phone Attribute Found---");}
 			( PHONE {System.out.print("Phone: "+getText().substring(9));}
 			| .*? {System.out.print("Invalid Phone ("+getText().substring(9)+") On Line " + getLine());} )
-			 '"' {System.out.print("\n");};
+			 '"' {System.out.print("\n\n");};
 
-CREDITCARDELEMENT: '"CREDITCARD":"'
+CREDITCARDELEMENT: '"CREDITCARD":"' {System.out.println("---Credit Card Attribute Found---");}
 			( CREDITCARD {System.out.print("Credit Card: "+getText().substring(14));}
 			| .*? {System.out.print("Invalid Credit Card ("+getText().substring(14)+") On Line " + getLine());} )
-			 '"' {System.out.print("\n");};
+			 '"' {System.out.print("\n\n");};
 
-OTHERELEMENT: '"' ELEMNAME '":"' {currentElement = getText(); System.out.print(getText().substring(1,getText().length()-3)+": ");}
+OTHERELEMENT: '"' ELEMNAME '":"' {currentElement = getText(); System.out.print("---Other Attribute Found---\n"+getText().substring(1,getText().length()-3)+": ");}
 			(ALPHANUM | SPECIAL | ' ')*? {System.out.print(getText().substring(currentElement.length()));}
-			'"' {System.out.print("\n");};
+			'"' {System.out.print("\n\n");};
 			
-OBJECT: '{' {System.out.println("OBJECT START");} | '}' {System.out.println("OBJECT END");};
-ATTRIBUTE: ',' {System.out.println("Next Attribute");};
+OBJECT: '{' {System.out.println("OBJECT START\n");} | '}' {System.out.println("OBJECT END\n");};
+ATTRIBUTE: ',' {skip();};
 
 WS: [ \r\t\n]+ {skip();};
