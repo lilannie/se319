@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class ActiveMember {
   int id = 0;
   String firstName = '';
@@ -45,5 +47,24 @@ class ActiveMember {
     this.hsActivities = hsActivities;
     this.univActivities = univActivities;
     this.interests = interests;
+  }
+
+  String toJson() {
+    return JSON.encode([{
+        'id': this.id,
+        'firstName': this.firstName,
+        'lastName': this.lastName,
+        'phoneNumber': this.phoneNumber,
+        'year': this.year,
+        'hometownCity': this.hometownCity,
+        'hometownState': this.hometownState,
+        'hometownHs': this.hometownHs,
+        'admin': this.admin,
+        'majors': this.majors,
+        'minors': this.minors,
+        'hsActivities': this.hsActivities,
+        'univActivities': this.univActivities,
+        'interests': this.interests
+    }]);
   }
 }
