@@ -2,14 +2,19 @@ start =
 	html
 
 html =
-	html:(pws:blankSpace node:(block / text) ews:blankSpace {return pws+node+ews;})*
+	html:(pws:blankSpace node:(block / comment / text / soloTag) ews:blankSpace {return pws+node+ews;})*
     	{return html.join("");}
 
 text =
 	ws* words:(word:word ws* {return word;})+ {return words.join(" ");}
+comment =
+	"<!--" txt:(!"-->" txt:. {return txt})* "-->" {return "<span class='html-comment'>&lt;!--"+txt.join("")+"--&gt;</span>" ;}
 block =
 	"<" ot:tag ">" pws:blankSpace? innerHTML:html blankSpace? "</" ct:tag ">"
     	{return "<span class='html-tag'>"+"&lt;"+ot+"&gt;"+"</span>"+pws+innerHTML+"<span class='html-tag'>"+"&lt;/"+ct+"&gt;"+"</span>";}
+soloTag =
+	"<" ot:tag ("/")?">"
+    	{return "<span class='html-tag'>"+"&lt;"+ot+"&gt;"+"</span>";}
 
 tag =
 	t:alphaWord attrs:(ws+ atr:attribute {return ""+atr;})*

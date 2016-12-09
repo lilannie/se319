@@ -32,7 +32,6 @@
 		</select>
 		<label for="code-input">Code:</label>
 		<textarea id="code-input" name="code" placeholder="Paste your code in here..." rows="10"></textarea>
-		<button type="button" id="code-submit">Colorize Code</button>
 
 		<label>Result (pretty):</label>
 		<pre id="result-pretty"></pre>

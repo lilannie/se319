@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function(e){
 
 
-	document.getElementById('code-submit').addEventListener('click', function(e){
+	document.getElementById('code-input').addEventListener('input', function(e){
 
 		displayResult(document.getElementById('code-input').value, document.getElementById('language-select').value)
 	});

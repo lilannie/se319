@@ -34,6 +34,8 @@ main select{
 }
 main textarea {
 	width: 100%;
+	border: none;
+	border-left: 7px solid #ddd;
 	box-sizing: border-box;
 	font-family: inherit ;
 }
