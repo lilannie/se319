@@ -53,7 +53,21 @@ main button:hover {
 
 main pre {
 	background-color: #eee;
-	border: 1px solid #bbb;
+	border-left: 7px solid #ddd;
 	box-sizing: border-box;
 	padding: 0.3em;
+	overflow-x: auto;
+}
+
+.html {
+	color: #324D5C;
+}
+.html .html-tag {
+	color: #46B29D;
+}
+.html .html-attr {
+	color: #E37B40;
+}
+.html .html-attr-value {
+	color: #DE5B49;
 }
