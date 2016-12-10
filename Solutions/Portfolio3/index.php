@@ -10,6 +10,8 @@
 	<meta name="author" content="Zach Newton" />
 	<link rel="stylesheet" href="stylesheet.css">
 	<script type="text/javascript" src="parsers/htmlParser.js"></script>
+	<script type="text/javascript" src="parsers/cssParser.js"></script>
+	<script type="text/javascript" src="parsers/jsParser.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
@@ -25,9 +27,9 @@
 	<form>
 		<label for="language-select">Language:</label>
 		<select id="language-select" name="language">
-			<option value="js">JS</option>
-			<option value="css">CSS</option>
-			<option value="html" selected>HTML</option>
+			<option value="js">JS/JSON</option>
+			<option value="css" selected>CSS</option>
+			<option value="html">HTML</option>
 			<option value="php">PHP</option>
 		</select>
 		<label for="code-input">Code:</label>

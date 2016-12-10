@@ -13,10 +13,10 @@ function displayResult(input,language) {
 	var parser = null;
 	switch(language) {
 		case "js":
-			parser=null;
+			parser=jsParser;
 			break;
 		case "css":
-			parser=null;
+			parser=cssParser;
 			break;
 		case "html":
 			parser = htmlParser;

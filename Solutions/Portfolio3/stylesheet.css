@@ -34,10 +34,12 @@ main select{
 }
 main textarea {
 	width: 100%;
+	max-width: 100%;
 	border: none;
 	border-left: 7px solid #ddd;
 	box-sizing: border-box;
 	font-family: inherit ;
+	font-size: 0.9em;
 }
 main button {
 	width: 100%;
@@ -54,6 +56,8 @@ main button:hover {
 }
 
 main pre {
+	font-family: inherit;
+	font-size: 0.9em;
 	background-color: #eee;
 	border-left: 7px solid #ddd;
 	box-sizing: border-box;
@@ -61,6 +65,7 @@ main pre {
 	overflow-x: auto;
 }
 
+/*HTML*/
 .html {
 	color: #324D5C;
 }
@@ -72,4 +77,27 @@ main pre {
 }
 .html .html-attr-value {
 	color: #DE5B49;
+}
+.html .html-comment {
+	color: #aaa;
+}
+
+/*CSS*/
+.css {
+	color: #324D5C;
+}
+.css .css-selector-tag {
+	color: #DE5B49;
+}
+.css .css-selector-class {
+	color: #E37B40;
+}
+.css .css-selector-id {
+	color: #F0CA4D;
+}
+.css .css-attr {
+	color: #46B29D;
+}
+.css .css-comment {
+	color: #aaa;
 }

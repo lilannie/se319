@@ -1,0 +1,35 @@
+start =
+	js
+
+js =
+	js:(pws:blankSpace node:(array / object / function / declaration / call / comment) ews:blankSpace {return pws+node+ews;})*
+    	{return js.join("");}
+
+function =
+	"function varName(params) { }"
+object =
+	"{ key: value }"
+array =
+	"[val, val, val]"
+declaration =
+	"varType varName = (object / function / declaration / call);"
+call =
+	"varName.functionName(params);"
+
+comment =
+	"/*" txt:(!"*/" txt:. {return txt})* "*/"
+    	{return "<span class='js-comment'>/*"+txt.join("")+"*/</span>" ;}
+    / "//" txt:(!nl txt:. {return txt})* nl?
+    	{return "<span class='js-comment'>//"+txt.join("")+"</span>" ;}
+
+varName =
+	first:[a-zA-Z$_]
+
+alphaNumWord =
+	alpha:[a-zA-Z0-9\-_]+ {return alpha.join("");}
+
+ws = ws:[ \t]+ { return ws.join("");}
+nl = nl:("\n" / "\n\r") {return nl;}
+
+blankSpace =
+	bs:(ws:ws {return ws;}/ nl:nl {return nl;})* {return bs.join("")}
