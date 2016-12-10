@@ -110,3 +110,25 @@ main pre {
 .css .css-comment {
 	color: #aaa;
 }
+
+.js {
+	color: #324D5C;
+}
+.js .js-keyword {
+	color: #DE5B49;
+}
+.js .js-string {
+	color: #46B29D;
+}
+.js .js-parameter {
+	color: #F0CA4D;
+}
+.js .js-function-name {
+	font-style: italic;
+}
+.js .js-function-call {
+	color: #E37B40;
+}
+.js .js-comment {
+	color: #aaa;
+}
