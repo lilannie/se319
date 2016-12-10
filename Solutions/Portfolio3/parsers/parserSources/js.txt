@@ -2,11 +2,11 @@ start =
 	js
 
 js =
-	js:(pws:blankSpace op:"("* obs:blankSpace node:(array / object / function / call / declaration / comment / ifBlock / caseBlock / objType) pscws:blankSpace sc:";"? cbs:blankSpace cp:")"* ews:blankSpace {return pws+op.join("")+obs+node+pscws+(sc != null ? sc: "")+cbs+cp.join("")+ews;})*
+	js:(pws:blankSpace op:"("* obs:blankSpace node:(ifBlock {return "IF\n"} / caseBlock {return "CASE\n"}  / function {return "FUNCTION\n"}/ call {return "CALL\n"}/ declaration {return "DECLARATION\n"} / object {return "OBJECT\n"} / array {return "ARRAY\n"} /  comment {return "COMMENT\n"} ) pscws:blankSpace sc:";"? cbs:blankSpace cp:")"* ews:blankSpace {return pws+op.join("")+obs+node+pscws+(sc != null ? sc: "")+cbs+cp.join("")+ews;})*
     	{return js.join("");}
 
 function =
-	f:"function" ws* v:varName? ws* "(" p:parameters? ")" ws* obr:"{" innerJS:(js / blankSpace) cbr:"}"
+	f:"function" ws* v:varName? ws* "(" p:parameters? ")" blankSpace obr:"{" innerJS:(js / blankSpace) cbr:"}"
     	{return "<span class='js-keyword'>"+f+"</span>" + (v != null ? " <span class='js-function-name'>" + v+"</span>" : "") + " (" + (p != null ? p : "") + ") " + obr + (innerJS != null ? innerJS : "") + cbr;}
 object =
 	obr:"{" rest:(attr:objAttr "," {return attr;})* last:objAttr? cbr:"}"
@@ -15,7 +15,7 @@ array =
 	"[" pws:blankSpace rest:(blankSpace attr:objType blankSpace "," {return attr;})* blankSpace last:objType? ews:blankSpace "]"
     	{rest.push(last); return "[" + pws + rest + ews + "]";}
 declaration =
-	vt:varType ws* vn:varName blankSpace e:(eq:("=" blankSpace val:objType {return " = " + val;})+ {return eq.join("");} / ";")?
+	vt:varType ws* vn:varName blankSpace e:(eq:("=" blankSpace val:objType {return " = " + val;})+ {return eq.join("");} / ";" / nl)
     	{return vt +" "+ vn + e;}
 call =
 	vn:varName c:("." cn:varName "(" p:parameters? ")" {return ".<span class='js-function-call'>" + cn + "</span>(" + (p != null ? p : "") + ")";})+
@@ -29,12 +29,13 @@ ifBlock =
 	ib:(c:("if" / "else if" / "else") ws* p:("(" ws* b:objType ws* ")" {return b;})? ws* obr:"{" innerJS:js cbr:"}" ews:blankSpace {return c+(p != null ? " ("+p+")":"")+obr+innerJS+cbr+ews;})+
     	{return ib.join("");}
 caseBlock =
-	c:("case" / "default") ws* p:(op:"("? o:objType cp:")"? {return (op!=null?op:"")+" "+o+" "+(cp!=null?cp:"")})? ws* ":" innerJS:js "break"
+	c:("case" / "default") ws* p:(op:"("? ws* o:objType ws* cp:")"? {return (op!=null?op:"")+" "+o+" "+(cp!=null?cp:"")})? ws* ":" innerJS:js "break"
     	{return c+(p!=null?" "+p+" ":"")+" : " + innerJS+"break";}
 objAttr =
 	pws:blankSpace key:(varName / string) ":" ws* val:objType ews:blankSpace
     	{ return pws + key + ": " + val + ews; }
 varName =
+    !("break" / "if" / "else" / "function" / "while" / "case" / "continue" / "for" / "var" / "let")
 	first:[a-zA-Z$_] rest:(dot:"."? anw:alphaNumWord {return (dot != null ? dot : "")+anw;})*
     	{return first + rest.join("");}
 varType =

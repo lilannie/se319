@@ -10,7 +10,7 @@ comment =
 	"/*" txt:(!"*/" txt:. {return txt})* "*/"
     	{return "<span class='css-comment'>/*"+txt.join("")+"*/</span>" ;}
 block =
-	sel:(pws:([*,>+~=\[\]|^$:\-()]/ws)* s:selector ews:([*,>+~=\[\]|^$:\-()]/ws)* {return pws.join("") + s + ews.join("");})+ obr:"{" pws:blankSpace? attrs:attrList ews:blankSpace? cbr:"}"
+	sel:(pws:([*,>+~=\[\]|^$:\-()]/ws)* s:selector ews:([*,>+~=\[\]|^$:\-()]/ws/nl)* {return pws.join("") + s + ews.join("");})+ obr:"{" pws:blankSpace? attrs:attrList ews:blankSpace? cbr:"}"
     	{return "<span class='css-selector'>"+sel.join("")+"</span>"+obr+pws+attrs+ews+cbr;}
 selector =
 	sel:(t:alphaNumWord {return "<span class='css-selector-tag'>"+t+"</span>"; }

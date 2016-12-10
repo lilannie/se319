@@ -30,7 +30,7 @@ word = w:[a-zA-Z0-9,.!@#$%^&*(){}+\-=_|~`'":;?/\\\[\]]+ {return w.join("");}
 string = s:[a-zA-Z0-9,.!@#$%^&*(){}+\-=_|~`':;?/\\\[\] ]+ {return s.join("");}
 
 alphaWord =
-	alpha:[a-zA-Z\-_]+ {return alpha.join("");}
+	alpha:[a-zA-Z0-9\-_]+ {return alpha.join("");}
 
 ws = ws:[ \t]+ { return ws.join("");}
 nl = nl:("\n" / "\n\r") {return nl;}

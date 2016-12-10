@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function(e){
 
 		displayResult(document.getElementById('code-input').value, document.getElementById('language-select').value)
 	});
+	document.getElementById('copy').addEventListener('click', function(e){
+		copyToClipboard(document.getElementById('result-pretty').innerHTML);
+	});
 });
 
 function displayResult(input,language) {
@@ -28,6 +31,9 @@ function displayResult(input,language) {
 		case "php":
 			parser = null;
 			break;
+		case "json":
+			parser = jsonParser;
+			break;
 	}
 
 	if(parser == null) return;
@@ -43,4 +49,27 @@ function parse(input, parser) {
 
 	}
 	return 'error';
+}
+
+/*http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript*/
+function copyToClipboard(text){
+	if (window.clipboardData && window.clipboardData.setData) {
+		// IE specific code path to prevent textarea being shown while dialog is visible.
+		return clipboardData.setData("Text", text);
+
+	} else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+		var textarea = document.createElement("textarea");
+		textarea.textContent = text;
+		textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+		document.body.appendChild(textarea);
+		textarea.select();
+		try {
+			return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+		} catch (ex) {
+			console.warn("Copy to clipboard failed.", ex);
+			return false;
+		} finally {
+			document.body.removeChild(textarea);
+		}
+	}
 }

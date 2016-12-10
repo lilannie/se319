@@ -688,6 +688,9 @@ cssParser = /*
           }
           if (s6 === peg$FAILED) {
             s6 = peg$parsews();
+            if (s6 === peg$FAILED) {
+              s6 = peg$parsenl();
+            }
           }
           while (s6 !== peg$FAILED) {
             s5.push(s6);
@@ -700,6 +703,9 @@ cssParser = /*
             }
             if (s6 === peg$FAILED) {
               s6 = peg$parsews();
+              if (s6 === peg$FAILED) {
+                s6 = peg$parsenl();
+              }
             }
           }
           if (s5 !== peg$FAILED) {
@@ -759,6 +765,9 @@ cssParser = /*
               }
               if (s6 === peg$FAILED) {
                 s6 = peg$parsews();
+                if (s6 === peg$FAILED) {
+                  s6 = peg$parsenl();
+                }
               }
               while (s6 !== peg$FAILED) {
                 s5.push(s6);
@@ -771,6 +780,9 @@ cssParser = /*
                 }
                 if (s6 === peg$FAILED) {
                   s6 = peg$parsews();
+                  if (s6 === peg$FAILED) {
+                    s6 = peg$parsenl();
+                  }
                 }
               }
               if (s5 !== peg$FAILED) {
