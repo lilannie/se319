@@ -2,9 +2,10 @@ start =
 	css
 
 css =
-	css:(pws:blankSpace node:(block / comment) ews:blankSpace {return pws+node+ews;})*
+	css:(pws:blankSpace node:(block / comment / import) ews:blankSpace {return pws+node+ews;})*
     	{return css.join("");}
-
+import =
+	"@import" i:(!";" i:. {return i})* ";" {return "@import" + i.join("") + ";";}
 comment =
 	"/*" txt:(!"*/" txt:. {return txt})* "*/"
     	{return "<span class='css-comment'>/*"+txt.join("")+"*/</span>" ;}

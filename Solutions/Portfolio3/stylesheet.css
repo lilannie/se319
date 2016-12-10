@@ -31,6 +31,8 @@ main select{
 	width: 100%;
 	padding: 0.3em;
 	font-family: inherit ;
+	border: none;
+	border-left: 7px solid #ddd;
 }
 main textarea {
 	width: 100%;
@@ -40,6 +42,9 @@ main textarea {
 	box-sizing: border-box;
 	font-family: inherit ;
 	font-size: 0.9em;
+}
+main textarea:focus, main select:focus {
+	outline-color: transparent;
 }
 main button {
 	width: 100%;
@@ -63,6 +68,10 @@ main pre {
 	box-sizing: border-box;
 	padding: 0.3em;
 	overflow-x: auto;
+}
+
+#result-pretty, #result-raw {
+	min-height: 1em;
 }
 
 /*HTML*/

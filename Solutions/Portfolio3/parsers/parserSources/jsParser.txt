@@ -6,7 +6,8 @@ js =
     	{return js.join("");}
 
 function =
-	"function varName(params) { }"
+	f:"function" ws* v:varName? ws* "(" p:parameters? ")" ws* obr:"{" innerJS:(js / blankSpace)? cbr:"}"
+    	{return f + (v != null ? " " + v : "") + "(" + (p != null ? p : "") + ") " + obr + (innerJS != null ? innerJS : "") + cbr;}
 object =
 	"{ key: value }"
 array =
@@ -19,11 +20,23 @@ call =
 comment =
 	"/*" txt:(!"*/" txt:. {return txt})* "*/"
     	{return "<span class='js-comment'>/*"+txt.join("")+"*/</span>" ;}
-    / "//" txt:(!nl txt:. {return txt})* nl?
-    	{return "<span class='js-comment'>//"+txt.join("")+"</span>" ;}
+    / "//" txt:(!nl txt:. {return txt})* nl:nl?
+    	{return "<span class='js-comment'>//"+txt.join("")+"</span>" +(nl != null ? nl : "") ;}
 
 varName =
-	first:[a-zA-Z$_]
+	first:[a-zA-Z$_] rest:alphaNumWord*
+    	{return first + rest.join("");}
+parameters =
+	ws* first:parameter ws* rest:("," ws* param:parameter ws* {return param;})*
+    	{rest.unshift(first); return rest;}
+parameter =
+	varName / string / number
+string =
+	("\"" cont:(!"\"" .)* "\"") {return "\""+cont.join("")+"\"";}
+    / ("'" cont:(!"'" .)* "'") {return "'"+cont.join("")+"'";}
+number =
+	start:[0-9]+ rest:("." nums:[0-9]+ {return nums.join("");})?
+    	{return start + (rest != null ? dec : "");}
 
 alphaNumWord =
 	alpha:[a-zA-Z0-9\-_]+ {return alpha.join("");}

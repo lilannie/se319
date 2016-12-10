@@ -27,13 +27,13 @@
 	<form>
 		<label for="language-select">Language:</label>
 		<select id="language-select" name="language">
-			<option value="js">JS/JSON</option>
-			<option value="css" selected>CSS</option>
+			<option value="js" selected>JS/JSON</option>
+			<option value="css">CSS</option>
 			<option value="html">HTML</option>
 			<option value="php">PHP</option>
 		</select>
 		<label for="code-input">Code:</label>
-		<textarea id="code-input" name="code" placeholder="Paste your code in here..." rows="10"></textarea>
+		<textarea id="code-input" name="code" placeholder="Paste your code in here..." rows="15"></textarea>
 
 		<label>Result (pretty):</label>
 		<pre id="result-pretty"></pre>

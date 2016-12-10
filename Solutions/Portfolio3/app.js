@@ -7,13 +7,17 @@ document.addEventListener('DOMContentLoaded', function(e){
 
 		displayResult(document.getElementById('code-input').value, document.getElementById('language-select').value)
 	});
+	document.getElementById('language-select').addEventListener('change', function(e){
+
+		displayResult(document.getElementById('code-input').value, document.getElementById('language-select').value)
+	});
 });
 
 function displayResult(input,language) {
 	var parser = null;
 	switch(language) {
 		case "js":
-			parser=jsParser;
+			parser=null;
 			break;
 		case "css":
 			parser=cssParser;
