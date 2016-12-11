@@ -172,6 +172,55 @@ object: { key: "value" }
 		</style>
 		<button type="button" id="json-style-copy">Copy JSON Style to Clipboard</button>
 	</div>
+
+	<div id="JS">
+		<h3>JS Styling</h3>
+
+		<form class="color-form">
+			<div class="color-form-element"><label for="js-main-color">.js</label> <input class="jscolor js-color-input" id="js-main-color" value="324D5C"></div>
+			<div class="color-form-element"><label for="js-keyword-color">.js-keyword</label> <input class="jscolor js-color-input" id="js-keyword-color" value="DE5B49"></div>
+			<div class="color-form-element"><label for="js-string-color">.js-string</label> <input class="jscolor js-color-input" id="js-string-color" value="46B29D"></div>
+			<div class="color-form-element"><label for="js-parameter-color">.js-parameter</label> <input class="jscolor js-color-input" id="js-parameter-color" value="F0CA4D"></div>
+			<div class="color-form-element"><label for="js-function-call-color">.js-function-call</label> <input class="jscolor js-color-input" id="js-function-call-color" value="E37B40"></div>
+			<div class="color-form-element"><label for="js-comment-color">.js-comment</label> <input class="jscolor js-color-input" id="js-comment-color" value="aaaaaa"></div>
+		</form>
+
+		<pre id="JS-example" class="js">
+// this is a comment
+var varName = "Variable";
+function name(param) {
+    var variable = "string";
+}
+name.callFunction();
+/*
+this is also a comment
+*/</pre>
+		<pre id="JS-style-printed" class="css"></pre>
+		<style id="JS-style" scoped>
+.js {
+	color: #324D5C;
+}
+.js .js-keyword {
+	color: #DE5B49;
+}
+.js .js-string {
+	color: #46B29D;
+}
+.js .js-parameter {
+	color: #F0CA4D;
+}
+.js .js-function-name {
+	font-style: italic;
+}
+.js .js-function-call {
+	color: #E37B40;
+}
+.js .js-comment {
+	color: #aaa;
+}
+		</style>
+		<button type="button" id="js-style-copy">Copy JS Style to Clipboard</button>
+	</div>
 </main>
 
 </body>
