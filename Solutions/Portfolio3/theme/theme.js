@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', function (e){
 	document.getElementById('CSS-style-printed').innerHTML = parse(document.getElementById('CSS-style').innerHTML,cssParser);
 	document.getElementById('JSON-style-printed').innerHTML = parse(document.getElementById('JSON-style').innerHTML,cssParser);
 
+	document.getElementById('html-style-copy').addEventListener('click', function(e){
+		copyToClipboard(document.getElementById('HTML-style-printed').innerHTML);
+	});
+	document.getElementById('css-style-copy').addEventListener('click', function(e){
+		copyToClipboard(document.getElementById('CSS-style-printed').innerHTML);
+	});
+	document.getElementById('json-style-copy').addEventListener('click', function(e){
+		copyToClipboard(document.getElementById('JSON-style-printed').innerHTML);
+	});
+
 	var html_color_inputs = document.getElementsByClassName('html-color-input');
 	for (var i = 0; i < html_color_inputs.length; i++)
 	{
@@ -149,4 +159,27 @@ function changeJSONStyle(json, key, string, number){
 "";
 	document.getElementById('JSON-style').innerHTML = style;
 	document.getElementById('JSON-style-printed').innerHTML = parse(document.getElementById('JSON-style').innerHTML,cssParser);
+}
+
+/*http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript*/
+function copyToClipboard(text){
+	if (window.clipboardData && window.clipboardData.setData) {
+		// IE specific code path to prevent textarea being shown while dialog is visible.
+		return clipboardData.setData("Text", text);
+
+	} else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+		var textarea = document.createElement("textarea");
+		textarea.textContent = text;
+		textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+		document.body.appendChild(textarea);
+		textarea.select();
+		try {
+			return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+		} catch (ex) {
+			console.warn("Copy to clipboard failed.", ex);
+			return false;
+		} finally {
+			document.body.removeChild(textarea);
+		}
+	}
 }

@@ -9,7 +9,7 @@
 	<meta name="keywords" content="tool, code, color" />
 	<meta name="author" content="Zach Newton" />
 	<link rel="stylesheet" href="stylesheet.css">
-	<link rel="stylesheet" href="colorizer/colorizer.css">
+	<link rel="stylesheet" href="theme/theme.css">
 	<link rel="icon" href="favicon-code.ico">
 	<script type="text/javascript" src="theme/jscolor.min.js"></script>
 	<script type="text/javascript" src="parsers/htmlParser.js"></script>
@@ -17,49 +17,6 @@
 	<script type="text/javascript" src="parsers/jsParser.js"></script>
 	<script type="text/javascript" src="parsers/jsonParser.js"></script>
 	<script type="text/javascript" src="theme/theme.js"></script>
-	<style>
-		pre {
-			text-align: left;
-		}
-		#HTML, #CSS, #JSON {
-			border-bottom: 1px solid #eee;
-		}
-		.css {
-			color: #324D5C;
-		}
-		.css .css-selector-tag {
-			color: #DE5B49;
-		}
-		.css .css-selector-class {
-			color: #E37B40;
-		}
-		.css .css-selector-id {
-			color: #F0CA4D;
-		}
-		.css .css-attr {
-			color: #46B29D;
-		}
-		.css .css-comment {
-			color: #aaa;
-		}
-
-		.color-form .color-form-element {
-			position: relative;
-			display: inline-block;
-		}
-		.color-form .color-form-element > label,
-		.color-form .color-form-element > input {
-			position: relative;
-			display: block;
-		}
-		input.jscolor {
-			border: none;
-			color: transparent !important;
-			height: 1em;
-			border-radius: 0.5em;
-			cursor: pointer;
-		}
-	</style>
 </head>
 <body>
 
@@ -102,6 +59,7 @@
 	color: #aaa;
 }
 		</style>
+		<button type="button" id="html-style-copy">Copy HTML Style to Clipboard</button>
 	</div>
 
 	<div id="CSS">
@@ -160,7 +118,7 @@ main .class{
 	color: #aaa;
 }
 		</style>
-
+		<button type="button" id="css-style-copy">Copy CSS Style to Clipboard</button>
 	</div>
 
 	<div id="JSON">
@@ -203,7 +161,7 @@ object: { key: "value" }
 	display: list-item;
 }
 		</style>
-
+		<button type="button" id="json-style-copy">Copy JSON Style to Clipboard</button>
 	</div>
 </main>
 
