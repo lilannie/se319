@@ -7,6 +7,41 @@ body {
 	margin: 0;
 	padding: 0;
 }
+nav {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+nav > div {
+	position: relative;
+	display: inline-block;
+	width: 49%;
+	box-sizing: border-box;
+}
+nav > div.nav-left {
+	text-align: left;
+}
+nav > div.nav-right {
+	text-align: right;
+}
+
+nav > div > a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 0.5em 0.5em;
+	font-size: 1.2em;
+	color: #222222;
+	background-color: transparent;
+}
+nav > div > a.active {
+	border-bottom: 3px solid #ddd;
+}
+nav > div > a:hover {
+	color: #000000;
+	background-color: #ddd;
+	transition: background-color 0.3s;
+}
 
 main {
 	width: 90vw;
@@ -49,7 +84,7 @@ main textarea:focus, main select:focus {
 main button {
 	/*width: 100%;*/
 	display: inline-block;
-	border: 1px solid #bbb;
+	border: 1px solid #ccc;
 	background-color: #fff;
 	font-size: 1em;
 	font-family: inherit;
