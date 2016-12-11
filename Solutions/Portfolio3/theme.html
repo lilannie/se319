@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="stylesheet.css">
 	<link rel="stylesheet" href="colorizer/colorizer.css">
 	<link rel="icon" href="favicon-code.ico">
+	<script type="text/javascript" src="theme/jscolor.min.js"></script>
 	<script type="text/javascript" src="parsers/htmlParser.js"></script>
 	<script type="text/javascript" src="parsers/cssParser.js"></script>
 	<script type="text/javascript" src="parsers/jsParser.js"></script>
@@ -41,6 +42,23 @@
 		.css .css-comment {
 			color: #aaa;
 		}
+
+		.color-form .color-form-element {
+			position: relative;
+			display: inline-block;
+		}
+		.color-form .color-form-element > label,
+		.color-form .color-form-element > input {
+			position: relative;
+			display: block;
+		}
+		input.jscolor {
+			border: none;
+			color: transparent !important;
+			height: 1em;
+			border-radius: 0.5em;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -53,10 +71,15 @@
 
 	<div id="HTML">
 		<h3>HTML Styling</h3>
-		<form>
-
+		<form class="color-form">
+			<div class="color-form-element"><label for="html-main-color">.html</label> <input class="jscolor html-color-input" id="html-main-color" value="324D5C"></div>
+			<div class="color-form-element"><label for="html-tag-color">.html-tag</label> <input class="jscolor html-color-input" id="html-tag-color" value="46B29D"></div>
+			<div class="color-form-element"><label for="html-attr-color">.html-attr</label> <input class="jscolor html-color-input" id="html-attr-color" value="E37B40"></div>
+			<div class="color-form-element"><label for="html-attr-value-color">.html-attr-value</label> <input class="jscolor html-color-input" id="html-attr-value-color" value="DE5B49"></div>
+			<div class="color-form-element"><label for="html-comment-color">.html-comment</label> <input class="jscolor html-color-input" id="html-comment-color" value="aaaaaa"></div>
 		</form>
 		<pre id="HTML-example" class="html">
+<!-- this is a comment -->
 <div class="class">
 	<span id="id">This is a span</span>
 	<img src="img/src">
@@ -83,10 +106,18 @@
 
 	<div id="CSS">
 		<h3>CSS Styling</h3>
-		<form>
 
+		<form class="color-form">
+			<div class="color-form-element"><label for="css-main-color">.css</label> <input class="jscolor css-color-input" id="css-main-color" value="324D5C"></div>
+			<div class="color-form-element"><label for="css-selector-tag-color">.css-selector-tag</label> <input class="jscolor css-color-input" id="css-selector-tag-color" value="DE5B49"></div>
+			<div class="color-form-element"><label for="css-selector-class-color">.css-selector-class</label> <input class="jscolor css-color-input" id="css-selector-class-color" value="E37B40"></div>
+			<div class="color-form-element"><label for="css-selector-id-color">.css-selector-id</label> <input class="jscolor css-color-input" id="css-selector-id-color" value="F0CA4D"></div>
+			<div class="color-form-element"><label for="css-attr-color">.css-attr</label> <input class="jscolor css-color-input" id="css-attr-color" value="46B29D"></div>
+			<div class="color-form-element"><label for="css-comment-color">.css-comment</label> <input class="jscolor css-color-input" id="css-comment-color" value="aaaaaa"></div>
 		</form>
+
 		<pre id="CSS-example" class="css">
+/* this is a comment */
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 body {
 	font-size: 100%;
@@ -134,9 +165,14 @@ main .class{
 
 	<div id="JSON">
 		<h3>JSON Styling</h3>
-		<form>
 
+		<form class="color-form">
+			<div class="color-form-element"><label for="json-main-color">.json</label> <input class="jscolor json-color-input" id="json-main-color" value="324D5C"></div>
+			<div class="color-form-element"><label for="json-key-color">.json-key</label> <input class="jscolor json-color-input" id="json-key-color" value="46B29D"></div>
+			<div class="color-form-element"><label for="json-string-color">.json-string</label> <input class="jscolor json-color-input" id="json-string-color" value="E37B40"></div>
+			<div class="color-form-element"><label for="json-number-color">.json-number</label> <input class="jscolor json-color-input" id="json-number-color" value="DE5B49"></div>
 		</form>
+
 		<pre id="JSON-example" class="json">
 {
 key: "value",
