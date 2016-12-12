@@ -1,11 +1,15 @@
+
+
 document.addEventListener('DOMContentLoaded', function (e){
 	document.getElementById('HTML-example').innerHTML = parse(document.getElementById('HTML-example').innerHTML,htmlParser);
 	document.getElementById('CSS-example').innerHTML = parse(document.getElementById('CSS-example').innerHTML,cssParser);
 	document.getElementById('JSON-example').innerHTML = parse(document.getElementById('JSON-example').innerHTML, jsonParser);
+	document.getElementById('JS-example').innerHTML = parse(document.getElementById('JS-example').innerHTML, jsParser);
 
 	document.getElementById('HTML-style-printed').innerHTML = parse(document.getElementById('HTML-style').innerHTML,cssParser);
 	document.getElementById('CSS-style-printed').innerHTML = parse(document.getElementById('CSS-style').innerHTML,cssParser);
 	document.getElementById('JSON-style-printed').innerHTML = parse(document.getElementById('JSON-style').innerHTML,cssParser);
+	document.getElementById('JS-style-printed').innerHTML = parse(document.getElementById('JS-style').innerHTML,cssParser);
 
 	document.getElementById('html-style-copy').addEventListener('click', function(e){
 		copyToClipboard(document.getElementById('HTML-style-printed').innerHTML);
@@ -15,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function (e){
 	});
 	document.getElementById('json-style-copy').addEventListener('click', function(e){
 		copyToClipboard(document.getElementById('JSON-style-printed').innerHTML);
+	});
+	document.getElementById('js-style-copy').addEventListener('click', function(e){
+		copyToClipboard(document.getElementById('JS-style-printed').innerHTML);
 	});
 
 	var html_color_inputs = document.getElementsByClassName('html-color-input');
@@ -53,6 +60,19 @@ document.addEventListener('DOMContentLoaded', function (e){
 			changeJSONStyle(json, json_key, json_string, json_number);
 		});
 	}
+	var js_color_inputs = document.getElementsByClassName('js-color-input');
+	for (i = 0; i < js_color_inputs.length; i++)
+	{
+		js_color_inputs[i].addEventListener('change', function(e){
+			var js = "#"+document.getElementById('js-main-color').value;
+			var js_keyword = "#"+document.getElementById('js-keyword-color').value;
+			var js_string = "#"+document.getElementById('js-string-color').value;
+			var js_parameter = "#"+document.getElementById('js-parameter-color').value;
+			var js_function_call = "#"+document.getElementById('js-function-call-color').value;
+			var js_comment = "#"+document.getElementById('js-comment-color').value;
+			changeJSStyle(js, js_keyword, js_string, js_parameter, js_function_call, js_comment);
+		});
+	}
 
 
 	var html = "#"+document.getElementById('html-main-color').value;
@@ -75,6 +95,14 @@ document.addEventListener('DOMContentLoaded', function (e){
 	var json_string = "#"+document.getElementById('json-string-color').value;
 	var json_number = "#"+document.getElementById('json-number-color').value;
 	changeJSONStyle(json, json_key, json_string, json_number);
+
+	var js = "#"+document.getElementById('js-main-color').value;
+	var js_keyword = "#"+document.getElementById('js-keyword-color').value;
+	var js_string = "#"+document.getElementById('js-string-color').value;
+	var js_parameter = "#"+document.getElementById('js-parameter-color').value;
+	var js_function_call = "#"+document.getElementById('js-function-call-color').value;
+	var js_comment = "#"+document.getElementById('js-comment-color').value;
+	changeJSStyle(js, js_keyword, js_string, js_parameter, js_function_call, js_comment);
 });
 
 
@@ -159,6 +187,34 @@ function changeJSONStyle(json, key, string, number){
 "";
 	document.getElementById('JSON-style').innerHTML = style;
 	document.getElementById('JSON-style-printed').innerHTML = parse(document.getElementById('JSON-style').innerHTML,cssParser);
+}
+
+function changeJSStyle(js, keyword, string, parameter, function_call, comment){
+	var style = ""+
+		".js {"+"\n"+
+		"	color: "+js+";"+"\n"+
+		"}"+"\n"+
+		".js .js-keyword {"+"\n"+
+		"	color: "+keyword+";"+"\n"+
+		"}"+"\n"+
+		".js .js-string {"+"\n"+
+		"	color: "+string+";"+"\n"+
+		"}"+"\n"+
+		".js .js-parameter {"+"\n"+
+		"	color: "+parameter+";"+"\n"+
+		"}"+"\n"+
+		".js .js-function-name {"+"\n"+
+		"	font-style: italic;"+"\n"+
+		"}"+"\n"+
+		".js .js-function-call {"+"\n"+
+		"	color: "+function_call+";"+"\n"+
+		"}"+"\n"+
+		".js .js-comment {"+"\n"+
+		"	color: "+comment+";"+"\n"+
+		"}"+"\n"+
+		"";
+	document.getElementById('JS-style').innerHTML = style;
+	document.getElementById('JS-style-printed').innerHTML = parse(document.getElementById('JS-style').innerHTML,cssParser);
 }
 
 /*http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript*/

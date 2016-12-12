@@ -18,6 +18,15 @@
 	<script type="text/javascript" src="colorizer/colorizer.js"></script>
 </head>
 <body>
+<nav>
+	<div class="nav-left">
+		<a href="/" class="active">Code Colorizer</a>
+		<a href="theme.html">Theme Picker</a>
+	</div>
+	<div class="nav-right">
+		<a href="login.html">Login / Sign Up</a>
+	</div>
+</nav>
 
 <main>
 	<h2>Code Colorizer</h2>
@@ -29,10 +38,10 @@
 	<form>
 		<label for="language-select">Language:</label>
 		<select id="language-select" name="language">
-			<option value="js" disabled>JS</option>
 			<option value="json">JSON</option>
 			<option value="css">CSS</option>
 			<option value="html" selected>HTML</option>
+			<option value="js">JS(warning, only very simple JS)</option>
 			<option value="php" disabled>PHP</option>
 		</select>
 		<label for="code-input">Code:</label>
